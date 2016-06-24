@@ -1,6 +1,6 @@
 # Huello-2
 
-The successor for Huello (RIP) a OS X Dashboard widget for quickly controlling your Philips Hue bulbs.
+The successor to Huello (formally an OS X Dashboard widget) built with Ember and Electron for quickly controlling your Philips Hue bulbs.
 
 ## Prerequisites
 
