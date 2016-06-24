@@ -7,6 +7,23 @@ module.exports = function(defaults) {
     // Add options here
   });
 
+  // app.import('app/fonts/arimo/Arimo-Bold.ttf', {
+  //   destDir: 'assets'
+  // });
+  //
+  // app.import('app/fonts/arimo/Arimo-BoldItalic.ttf', {
+  //   destDir: 'assets'
+  // });
+  //
+  // app.import('app/fonts/arimo/Arimo-Italic.ttf', {
+  //   destDir: 'assets'
+  // });
+  //
+  // app.import('app/fonts/arimo/Arimo-Regular.ttf', {
+  //   destDir: 'assets'
+  // });
+
+
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //
