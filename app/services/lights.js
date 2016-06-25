@@ -9,8 +9,27 @@ export default Ember.Service.extend({
     console.log('Hue Bridges Found: ' + JSON.stringify(bridge));
   },
 
-  hue: function() {
+  logBridge: function() {
 
     return hue.nupnpSearch().then(this.get('displayBridges')).done();
+  },
+
+  displayResult: function(result) {
+
+    console.log(JSON.stringify(result, null, 2));
+  },
+
+  displayUserResult: function(result) {
+
+    console.log('Created user: ' + JSON.stringify(result));
+  },
+
+  displayError: function(err) {
+    console.log(err);
+  },
+
+  hueApi: function() {
+
+    return hue.HueApi;
   }
 });
