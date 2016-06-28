@@ -2,6 +2,24 @@
   <h4>{{light.name}}</h4>
   <ul>
     <li>ID: {{light.id}}</li>
-    <button {{action "displayInfo"}}>Info</button>
+    <button {{action "togglePower"}}>Power</button>
+
+    {{! hue }}
+    <div class="range">
+      <label for="hue_"{{light.id}}>Col:</label>
+      <input type="range" id="hue_"{{light.id}} value={{light.state.hue}} min="1" max="65280"/>
+    </div>
+
+    {{! saturation }}
+    <div class="range">
+      <label for="sat_"{{light.id}}>Sat:</label>
+      <input type="range" id="sat_"{{light.id}} value={{light.state.sat}} min="1" max="254"/>
+    </div>
+
+    {{! brightness }}
+    <div class="range">
+      <label for="bri_"{{light.id}}>Bri:</label>
+      <input type="range" id="bri_"{{light.id}} value={{light.state.bri}} min="1" max="254"/>
+    </div>
   </ul>
 </div>

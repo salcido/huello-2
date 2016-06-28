@@ -8,13 +8,23 @@ export default Ember.Component.extend({
 
   lightsService: Ember.inject.service('lights'),
 
-  name: '',
-
   actions: {
 
-    displayInfo: function() {
+    togglePower: function() {
 
-      return console.log('Is on: ' + this.get('light.state.on'));
+      let
+          id = this.get('light.id'),
+          lights = this.get('lightsService'),
+          isOn = new Ember.RSVP.Promise(function(resolve) {
+
+            return resolve( lights.getStatus(id) );
+          });
+
+      lights.setState(id, { on: !isOn.state.on });
+
+      //lights.setState(id, { on: true });
+
+      return isOn;
 
       // let
       //     HueApi = hue.HueApi,
