@@ -1,5 +1,4 @@
 import Ember from 'ember';
-
 import hue from 'npm:node-hue-api';
 
 export default Ember.Service.extend({
@@ -31,5 +30,21 @@ export default Ember.Service.extend({
   hueApi: function() {
 
     return hue.HueApi;
+  },
+
+  getLights: function() {
+
+    let
+        HueApi = hue.HueApi,
+        hostname = '10.0.1.2',
+        username = 'mbRWI0ncjZbp2pRH89KeId2-ocSansGrD0eRY12o',
+        api;
+
+    api = new HueApi(hostname, username);
+
+    return api.lights().then(res => {
+
+      return res;
+    });
   }
 });

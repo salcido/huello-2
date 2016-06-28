@@ -6,18 +6,22 @@ import hue from 'npm:node-hue-api';
 
 export default Ember.Component.extend({
 
-  lights: Ember.inject.service(),
+  lightsService: Ember.inject.service('lights'),
+
+  name: '',
 
   actions: {
 
     displayInfo: function() {
 
-      let
-          HueApi = hue.HueApi,
-          hostname = '10.0.1.2',
-          username = 'mbRWI0ncjZbp2pRH89KeId2-ocSansGrD0eRY12o',
-          userDescription = 'Huello 2',
-          api;
+      return console.log('Is on: ' + this.get('light.state.on'));
+
+      // let
+      //     HueApi = hue.HueApi,
+      //     hostname = '10.0.1.2',
+      //     username = 'mbRWI0ncjZbp2pRH89KeId2-ocSansGrD0eRY12o',
+      //     userDescription = 'Huello 2',
+      //     api;
 
       // Log id/ipaddress
       //this.get('lights').logBridge();
@@ -31,7 +35,7 @@ export default Ember.Component.extend({
       //   .done();
 
       // Log bridge config
-      api = new HueApi(hostname, username);
+      // api = new HueApi(hostname, username);
 
       // api.getConfig().then(this.get('lights.displayResult')).done();
       //
@@ -53,7 +57,7 @@ export default Ember.Component.extend({
       // });
 
       // Log lights state
-      api.lights().then(this.get('lights.displayResult')).done();
+      // api.lights().then(this.get('lights.displayResult')).done();
     }
   }
 });
