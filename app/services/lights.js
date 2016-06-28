@@ -52,13 +52,21 @@ export default Ember.Service.extend({
   getStatus: function(id) {
 
     return api.lightStatus(id).then(res => {
-      console.log('Lights Service: ', res);
-      return res;
-    }).done();
+      console.log('Light Status: ', res.state);
+      return res.state;
+    });
   },
 
   setState: function(id, state) {
 
     return api.setLightState(id, state);
+  },
+
+  togglePower: function(id) {
+
+    this.getStatus(id).then(res => {
+
+      return res.on ? this.setState(id, {on: false}) : this.setState(id, {on: true});
+    }).done();
   }
 });

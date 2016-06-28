@@ -20,5 +20,13 @@ export default Ember.Route.extend({
   model: function() {
 
     return this.get('lightsService').getLights();
+  },
+
+  actions: {
+
+    updateModel: function() {
+      console.log('updateModel called...');
+      return this.refresh();
+    }
   }
 });

@@ -8,23 +8,30 @@ export default Ember.Component.extend({
 
   lightsService: Ember.inject.service('lights'),
 
+
   actions: {
 
     togglePower: function() {
 
       let
           id = this.get('light.id'),
-          lights = this.get('lightsService'),
-          isOn = new Ember.RSVP.Promise(function(resolve) {
+          lights = this.get('lightsService');
 
-            return resolve( lights.getStatus(id) );
-          });
+      let sendId = new Ember.RSVP.Promise(function(resolve) {
 
-      lights.setState(id, { on: !isOn.state.on });
+        lights.togglePower(id);
+      });
+
+      // setTimeout(() => {
+      //
+      //   this.sendAction('update');
+      // }, 500);
+
+      return sendId.then(this.sendAction('update'));
+
+
 
       //lights.setState(id, { on: true });
-
-      return isOn;
 
       // let
       //     HueApi = hue.HueApi,
