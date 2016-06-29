@@ -21,14 +21,14 @@
     width: 89%;
 
     &.range-hue {
+      left: 28px;
       position: absolute;
       top: 2px;
-      left: 28px;
     }
   }
 
   button {
-    background: url('img/light-bulp-on.png') no-repeat;
+    background: url('img/light-bulp-off.png') no-repeat;
     background-color: #000;
     background-size: cover;
     border-radius: 5px;
@@ -38,8 +38,8 @@
     width: 25px;
 
     &.powered {
-      background: url('img/light-bulp-off.png') no-repeat;
-      background-color: yellow;
+      background: url('img/light-bulp-on.png') no-repeat;
+      background-color: orange;
       border: 1px solid #333;
       background-size: cover;
     }
