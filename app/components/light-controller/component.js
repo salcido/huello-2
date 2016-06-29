@@ -1,7 +1,5 @@
 import Ember from 'ember';
 
-import hue from 'npm:node-hue-api';
-
 // [{"id":"001788fffe2282ae","ipaddress":"10.0.1.2"}]
 
 export default Ember.Component.extend({

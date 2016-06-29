@@ -48,7 +48,7 @@ export default Ember.Service.extend({
     return api.setLightState(id, state);
   },
 
-  togglePower: function(id, callback) {
+  togglePower: function(id) {
 
     this.getStatus(id).then(res => {
 
