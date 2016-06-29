@@ -22,9 +22,25 @@ export default Ember.Route.extend({
   //   return this.get('lightsService').getLights();
   // },
 
+  // model() {
+  //
+  //   let lights = this.get('lightsService');
+  //
+  //   return Ember.RSVP.hash({
+  //     allLights: lights.getLights(),
+  //     group: lights.getGroups()
+  //   });
+  // },
+
+  // setupController(controller, model) {
+  //   this._super(...arguments);
+  //   Ember.set(controller, 'lights', model.lights);
+  //   Ember.set(controller, 'groups', model.groups);
+  // },
+
   model: function() {
 
-    let temp = {
+    let lights = {
       "lights": [
         {
           "id": "1",
@@ -272,7 +288,58 @@ export default Ember.Route.extend({
       ]
     };
 
-    return temp;
+    let groups = [
+          {
+            "id": "0",
+            "name": "Lightset 0",
+            "type": "LightGroup"
+          },
+          {
+            "id": "1",
+            "name": "VRC 1",
+            "lights": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8"
+            ],
+            "type": "LightGroup",
+            "action": {
+              "on": false,
+              "bri": 162,
+              "hue": 13088,
+              "sat": 213,
+              "effect": "none",
+              "xy": [
+                0.5134,
+                0.4149
+              ],
+              "ct": 467,
+              "alert": "none",
+              "colormode": "xy"
+            }
+          }
+        ];
+
+    let model = {
+      lights: lights,
+      groups: groups
+    };
+
+    // Rename "Lightset 0"
+    groups[0].name = 'All lights';
+
+    return model;
+  },
+
+  setupController(controller, model) {
+    this._super(...arguments);
+    Ember.set(controller, 'lights', model.lights);
+    Ember.set(controller, 'groups', model.groups[0]);
   },
 
   actions: {

@@ -2,7 +2,7 @@
 
     <div class="title-wrap">
       <div class="title">
-        <h4>{{light.name}}</h4>
+        <h4>{{ember-inline-edit value=light.name onSave=(action "changeName" light.name light.id)}}</h4>
       </div>
 
     </div>
@@ -10,7 +10,7 @@
     <div class="range-wrap">
       {{! hue }}
       <div class="range">
-        <label><button {{action "togglePower"}} class="{{if light.state.on "powered" ""}}"></button></label>
+        <label><button {{action "togglePower"}} class="{{if light.state.on "powered" "off"}}"></button></label>
         <input type="range" {{action "changeColor" on="change"}} class="range-hue" id={{light.id}} value={{light.state.hue}} min="1" max="65280"/>
       </div>
 

@@ -1,4 +1,5 @@
-.light-controller {
+.light-controller,
+.group-controller {
 
   background-color: gray;
   border: 1px solid white;
@@ -28,20 +29,27 @@
   }
 
   button {
-    background: url('img/light-bulp-off.png') no-repeat;
-    background-color: #000;
-    background-size: cover;
-    border-radius: 5px;
-    border: 1px solid #999;
-    display: block;
-    height: 25px;
-    width: 25px;
+
+    &.off {
+      background: url('img/light-bulp-off.png') no-repeat;
+      background-color: #000;
+      background-size: cover;
+      border-radius: 5px;
+      border: 1px solid #999;
+      display: block;
+      height: 25px;
+      width: 25px;
+    }
 
     &.powered {
       background: url('img/light-bulp-on.png') no-repeat;
       background-color: orange;
-      border: 1px solid #333;
       background-size: cover;
+      border-radius: 5px;
+      border: 1px solid #333;
+      display: block;
+      height: 25px;
+      width: 25px;
     }
   }
 
@@ -52,6 +60,40 @@
       // position: absolute;
       left: 30px;
       top: -15px;
+    }
+  }
+
+  .ember-inline-edit {
+    width: 200px;
+    position: relative;
+
+    button {
+      &.ember-inline-edit-save {
+        background: #8cd934;
+        background-image: linear-gradient(to bottom, #8cd934, #339e08);
+        border-radius: 5px;
+        box-shadow: 0px 1px 3px #666666;
+        color: #ffffff;
+        padding: 5px 10px 5px 10px;
+        text-decoration: none;
+        border: none;
+        position: absolute;
+        right: -60px;
+        top: -2px;
+
+        &.ember-inline-edit-save:hover {
+          background: #a5d934;
+          background-image: linear-gradient(to bottom, #a5d934, #8cb30b);
+          text-decoration: none;
+        }
+      }
+    }
+
+    .ember-inline-edit-input {
+      font-size: 13px;
+      font-weight: bold;
+      outline: none;
+      border: none;
     }
   }
 }

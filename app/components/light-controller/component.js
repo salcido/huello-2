@@ -67,6 +67,7 @@ export default Ember.Component.extend({
     },
 
     changeColor: function() {
+
       let value = event.target.value,
           id = event.target.id,
           lights = this.get('lightsService');
@@ -75,6 +76,7 @@ export default Ember.Component.extend({
     },
 
     changeBrightness: function() {
+
       let value = event.target.value,
           id = event.target.id,
           lights = this.get('lightsService');
@@ -83,11 +85,24 @@ export default Ember.Component.extend({
     },
 
     changeSaturation: function() {
+
       let value = event.target.value,
           id = event.target.id,
           lights = this.get('lightsService');
 
       lights.setState(id, {sat: value});
+    },
+
+    changeName: function(newName, id) {
+
+      let lights = this.get('lightsService');
+
+      lights.rename(id, newName);
+
+      // update the current model
+      Ember.run.later(() => {
+          this.sendAction('update');
+      }, 500);
     }
   }
 });
