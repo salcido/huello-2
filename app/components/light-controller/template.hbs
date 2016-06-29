@@ -1,0 +1,27 @@
+<div class="light-controller">
+
+    <div class="title-wrap">
+      <div class="title">
+        <h4>{{light.name}}</h4>
+      </div>
+      <button {{action "togglePower"}} class="{{if light.state.on "powered" ""}}"></button>
+    </div>
+
+    {{! hue }}
+    <div class="range">
+      <label for="hue_"{{light.id}}>Color:</label>
+      <input type="range" {{action "changeColor" on="change"}}  id={{light.id}} value={{light.state.hue}} min="1" max="65280"/>
+    </div>
+
+    {{! saturation }}
+    <div class="range">
+      <label for="sat_"{{light.id}}>Saturation:</label>
+      <input type="range" {{action "changeSaturation" on="change"}} id={{light.id}} value={{light.state.sat}} min="1" max="254"/>
+    </div>
+
+    {{! brightness }}
+    <div class="range">
+      <label for="bri_"{{light.id}}>Brightness:</label>
+      <input type="range" {{action "changeBrightness" on="change"}} id={{light.id}} value={{light.state.bri}} min="1" max="254"/>
+    </div>
+</div>

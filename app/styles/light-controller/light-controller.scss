@@ -1,0 +1,40 @@
+.light-controller {
+
+  background-color: gray;
+  border: 1px solid white;
+  padding: 10px;
+  width: 350px;
+
+  label {
+    display: block;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  button {
+    background-color: #000;
+    border-radius: 5px;
+    border: 1px solid #999;
+    display: block;
+    height: 25px;
+    margin: 5px 0;
+    width: 25px;
+
+    &.powered {
+      background-color: yellow;
+      border: 1px solid #333;
+    }
+  }
+
+  .title-wrap {
+    position: relative;
+
+    .title {
+      position: absolute;;
+      left: 30px;
+      top: -15px;
+    }
+  }
+}

@@ -8,7 +8,6 @@ export default Ember.Component.extend({
 
   lightsService: Ember.inject.service('lights'),
 
-
   actions: {
 
     togglePower: function() {
@@ -17,19 +16,11 @@ export default Ember.Component.extend({
           id = this.get('light.id'),
           lights = this.get('lightsService');
 
-      let sendId = new Ember.RSVP.Promise(function(resolve) {
+      lights.togglePower(id);
 
-        lights.togglePower(id);
-      });
-
-      // setTimeout(() => {
-      //
-      //   this.sendAction('update');
-      // }, 500);
-
-      return sendId.then(this.sendAction('update'));
-
-
+      Ember.run.later(() => {
+          this.sendAction('update');
+      }, 500);
 
       //lights.setState(id, { on: true });
 
@@ -75,6 +66,30 @@ export default Ember.Component.extend({
 
       // Log lights state
       // api.lights().then(this.get('lights.displayResult')).done();
+    },
+
+    changeColor: function() {
+      let value = event.target.value,
+          id = event.target.id,
+          lights = this.get('lightsService');
+
+      lights.setState(id, {hue: value});
+    },
+
+    changeBrightness: function() {
+      let value = event.target.value,
+          id = event.target.id,
+          lights = this.get('lightsService');
+
+      lights.setState(id, {bri: value});
+    },
+
+    changeSaturation: function() {
+      let value = event.target.value,
+          id = event.target.id,
+          lights = this.get('lightsService');
+
+      lights.setState(id, {sat: value});
     }
   }
 });

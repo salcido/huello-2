@@ -1,6 +1,21 @@
 /* Arimo font*/
 @import url(https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic);
 
-h2 {
+h1,
+h2,
+h3,
+h4,
+label {
   font-family: 'Arimo', sans-serif;
+}
+
+h4 {
+  font-size: 14px;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+label {
+  font-size: 12px;
+  text-transform: uppercase;
 }

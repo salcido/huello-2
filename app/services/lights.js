@@ -28,20 +28,6 @@ export default Ember.Service.extend({
     console.log(JSON.stringify(result, null, 2));
   },
 
-  displayUserResult: function(result) {
-
-    console.log('Created user: ' + JSON.stringify(result));
-  },
-
-  displayError: function(err) {
-    console.log(err);
-  },
-
-  hueApi: function() {
-
-    return hue.HueApi;
-  },
-
   getLights: function() {
 
     return api.lights().then(res => {
@@ -62,7 +48,7 @@ export default Ember.Service.extend({
     return api.setLightState(id, state);
   },
 
-  togglePower: function(id) {
+  togglePower: function(id, callback) {
 
     this.getStatus(id).then(res => {
 

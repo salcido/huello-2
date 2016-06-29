@@ -1,5 +1,7 @@
 <h3>All Lights</h3>
 
-{{#each model.lights as |light|}}
-  {{test-hue light=light update="updateModel"}}
-{{/each}}
+<div class='side-bar'>
+  {{#each model.lights as |light|}}
+    {{light-controller light=light update="updateModel"}}
+  {{/each}}
+</div>
