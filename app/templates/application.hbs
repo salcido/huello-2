@@ -1,3 +1,11 @@
-<h1 id="title">Huello 2</h1>
+<h1 id="title">Huello</h1>
+
+<div class="mode">
+  <select class="mode" onchange={{action "changeMode"}}>
+    <option value="all">All Lights</option>
+    <option value="groups">Groups</option>
+    <option value="temp">Color Temperature</option>
+  </select>
+</div>
 
 {{outlet}}
