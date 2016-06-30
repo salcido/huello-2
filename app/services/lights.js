@@ -38,6 +38,7 @@ export default Ember.Service.extend({
   getLights: function() {
 
     return api.lights().then(res => {
+
       return res;
     });
   },
@@ -46,7 +47,9 @@ export default Ember.Service.extend({
   getStatus: function(id) {
 
     return api.lightStatus(id).then(res => {
-      console.log('Light Status: ', res.state);
+
+      //console.log('Light Status: ', res.state);
+
       return res.state;
     });
   },
@@ -63,6 +66,7 @@ export default Ember.Service.extend({
     this.getStatus(id).then(res => {
 
       return res.on ? this.setState(id, {on: false}) : this.setState(id, {on: true});
+
     }).done();
   },
 
@@ -82,6 +86,7 @@ export default Ember.Service.extend({
    getGroups: function() {
 
      return api.groups().then(res => {
+
        return res;
      });
    },
@@ -94,16 +99,19 @@ export default Ember.Service.extend({
      });
    },
 
-   toggleGroupPower: function(id) {
+   toggleGroupPower: function(groupId) {
 
-     this.getStatus(id).then(res => {
+     this.getGroupState(groupId).then(res => {
 
-       return res.on ? this.setState(id, {on: false}) : this.setState(id, {on: true});
+       return res.on ? this.setGroupState(groupId, {on: false}) : this.setGroupState(groupId, {on: true});
+
      }).done();
    },
 
    setGroupState: function(groupId, state) {
-console.log('setting group ' + groupId + ' with state: ' + JSON.stringify(state));
+
+    //console.log('setting group ' + groupId + ' with state: ' + JSON.stringify(state));
+
      return api.setGroupLightState(groupId, state);
    },
 

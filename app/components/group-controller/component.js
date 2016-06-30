@@ -14,8 +14,7 @@ export default Ember.Component.extend({
 
     togglePower: function() {
 
-      let
-          groupId = this.get('group.id'),
+      let groupId = this.get('group.id'),
           lights = this.get('lightsService');
 
       lights.toggleGroupPower(groupId);
