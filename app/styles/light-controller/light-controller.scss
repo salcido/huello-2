@@ -1,11 +1,11 @@
 .light-controller,
 .group-controller {
 
-  background-color: $gray;
+  background-color: $mineshaft;
   border: 1px solid $white;
   padding: 10px;
   width: 300px;
-
+  color: $white;
   h4 {
     margin: 0 0 10px 0;
   }
@@ -30,9 +30,8 @@
 
     &.range-hue::-webkit-slider-runnable-track {
       /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff0000+0,ff9600+10,ffda46+20,fff710+30,a2ff10+40,ffffff+50,f0d9fe+60,7c3cff+70,ff00e4+80,ff006c+90,ff0000+100 */
-      // background: url('img/color-spectrum.png');
       background-size: cover;
-      background: linear-gradient(to right,  #ff0000 0%,#ff9600 10%,#ffda46 20%,#fff710 30%,#a2ff10 40%,#ffffff 50%,#f0d9fe 60%,#7c3cff 70%,#ff00e4 80%,#ff006c 90%,#ff0000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      background: linear-gradient(to right,  #ff0000 0%,#ff9600 10%,#ffda46 20%,#fff710 30%,#a2ff10 40%,#ffffff 50%,#f0d9fe 60%,#7c3cff 70%,#ff00e4 80%,#ff006c 90%,#ff0000 100%);
       border-radius: 5px;
       display: block;
       height: 25px;
@@ -46,6 +45,17 @@
       //  -webkit-appearance: none;
     }
   }
+
+  // .range-hue-bg {
+  //   background-size: cover;
+  //   background: $white;
+  //   border-radius: 5px;
+  //   display: block;
+  //   height: 25px;
+  //   margin-top: -25px;
+  //   margin-left: 30px;
+  //   width: 267px;
+  // }
 
   button {
 
@@ -115,4 +125,9 @@
       border: none;
     }
   }
+}
+
+.group-controller {
+ background-color: $gray;
+ color: $mineshaft;
 }
