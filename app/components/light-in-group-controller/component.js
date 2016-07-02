@@ -10,11 +10,20 @@ export default Ember.Component.extend({
   // The id of the light
   lightId: null,
 
-  // the current state of the light
-  lightState: null,
-
   // the name of the light
   lightName: null,
+
+  // if the light is on
+  power: null,
+
+  // hue value
+  hue: null,
+
+  // bri value
+  bri: null,
+
+  // sat value
+  sat: null,
 
   // Assign the initial values of each light
   init: function() {
@@ -29,11 +38,35 @@ export default Ember.Component.extend({
 
     this.set('lightState', lights.getStatus(id)).then( res => {
 
-      this.set('lightState', res.state);
+      this.set('power', res.state.on);
 
       this.set('lightName', res.name);
 
-      //console.log('res:', res);
+      this.set('hue', res.state.hue);
+
+      this.set('bri', res.state.bri);
+
+      this.set('sat', res.state.sat);
+    });
+  },
+
+  // update light states when model refreshes
+  didReceiveAttrs: function() {
+
+    let lights = this.get('lightsService'),
+        id = this.get('light');
+
+    this.set('lightState', lights.getStatus(id)).then( res => {
+
+      this.set('power', res.state.on);
+
+      this.set('lightName', res.name);
+
+      this.set('hue', res.state.hue);
+
+      this.set('bri', res.state.bri);
+
+      this.set('sat', res.state.sat);
     });
   },
 

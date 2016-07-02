@@ -31,6 +31,10 @@ export default Ember.Component.extend({
           lights = this.get('lightsService');
 
       lights.setGroupState(groupId, {hue: value});
+
+      Ember.run.later(() => {
+          this.sendAction('update');
+      }, 500);
     },
 
     changeBrightness: function() {
@@ -40,6 +44,10 @@ export default Ember.Component.extend({
           lights = this.get('lightsService');
 
       lights.setGroupState(groupId, {bri: value});
+
+      Ember.run.later(() => {
+          this.sendAction('update');
+      }, 500);
     },
 
     changeSaturation: function() {
@@ -49,6 +57,10 @@ export default Ember.Component.extend({
           lights = this.get('lightsService');
 
       lights.setGroupState(groupId, {sat: value});
+
+      Ember.run.later(() => {
+          this.sendAction('update');
+      }, 500);
     },
 
     changeGroupName: function(newName, groupId) {

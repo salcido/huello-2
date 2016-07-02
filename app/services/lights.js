@@ -110,8 +110,6 @@ export default Ember.Service.extend({
 
    setGroupState: function(groupId, state) {
 
-    //console.log('setting group ' + groupId + ' with state: ' + JSON.stringify(state));
-
      return api.setGroupLightState(groupId, state);
    },
 

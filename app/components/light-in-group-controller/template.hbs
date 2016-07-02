@@ -10,20 +10,20 @@
     <div class="range-wrap">
       {{! hue }}
       <div class="range">
-        <label><button {{action "togglePower"}} class="{{if lightState.on "powered" "off"}}"></button></label>
-        <input type="range" {{action "changeColor" on="change"}} class="range-hue" id={{light}} value={{lightState.hue}} min="1" max="65280"/>
+        <label><button {{action "togglePower"}} class="{{if power "powered" "off"}}"></button></label>
+        <input type="range" {{action "changeColor" on="change"}} class="range-hue" id={{light}} value={{hue}} min="1" max="65280"/>
       </div>
 
       {{! saturation }}
       <div class="range">
         <label>Sat:</label>
-        <input type="range" {{action "changeSaturation" on="change"}} class="range-sat" id={{light}} value={{lightState.sat}} min="1" max="254"/>
+        <input type="range" {{action "changeSaturation" on="change"}} class="range-sat" id={{light}} value={{sat}} min="1" max="254"/>
       </div>
 
       {{! brightness }}
       <div class="range">
         <label>Bri:</label>
-        <input type="range" {{action "changeBrightness" on="change"}} class="range-bri" id={{light}} value={{lightState.bri}} min="1" max="254"/>
+        <input type="range" {{action "changeBrightness" on="change"}} class="range-bri" id={{light}} value={{bri}} min="1" max="254"/>
       </div>
     </div>
 </div>
