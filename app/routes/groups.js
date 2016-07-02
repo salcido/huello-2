@@ -6,6 +6,8 @@ export default Ember.Route.extend({
 
   currentGroup: 0,
 
+  colorTemp: false,
+
   /**
    * Index's model
    *
@@ -34,14 +36,27 @@ export default Ember.Route.extend({
     // Rename `name` prop so it's not listed as "Lightset 0"
     model.groups[0].name = 'All Lights';
 
-    //model.currentGroup = null;
-
     // map all lights ids into 'All Lights' group (why Philips doesn't do this, I will never know)
     model.groups[0].lights = model.lights.lights.map(function(light) {
+
       return light.id;
     });
 
-    // just get all lights from group array
+    // add state object into 'All Lights' group because Philips is inconsistant with their group properties
+    for (let i = 0; i < model.lights.lights.length; i++) {
+
+      if (model.lights.lights[i].state.on) {
+
+        model.groups[0].state = {any_on: true};
+
+        break;
+
+      } else {
+
+        model.groups[0].state = {any_on: false};
+      }
+    }
+
     Ember.set(controller, 'groups', model.groups[this.get('currentGroup')]);
 
     Ember.set(controller, 'allLights', model.allLights);
