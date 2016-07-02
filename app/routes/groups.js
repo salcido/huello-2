@@ -34,6 +34,8 @@ export default Ember.Route.extend({
     // Rename `name` prop so it's not listed as "Lightset 0"
     model.groups[0].name = 'All Lights';
 
+    //model.currentGroup = null;
+
     // map all lights ids into 'All Lights' group (why Philips doesn't do this, I will never know)
     model.groups[0].lights = model.lights.lights.map(function(light) {
       return light.id;
@@ -54,7 +56,9 @@ export default Ember.Route.extend({
      */
 
     updateModel: function(value) {
-      value = value || 0;
+
+      value = value || this.get('currentGroup');
+
       this.set('currentGroup', value);
 
       return Ember.run.later(() => {

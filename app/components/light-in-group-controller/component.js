@@ -37,22 +37,6 @@ export default Ember.Component.extend({
     });
   },
 
-  didReceiveAttrs: function() {
-    //console.log('didReceiveAttrs')
-
-    let lights = this.get('lightsService'),
-        id = this.get('light');
-
-    this.set('lightId', id);
-
-    this.set('lightState', lights.getStatus(id)).then( res => {
-
-      this.set('lightState', res.state);
-
-      this.set('lightName', res.name);
-    });
-  },
-
   actions: {
 
     togglePower: function() {

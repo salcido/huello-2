@@ -101,9 +101,9 @@ export default Ember.Service.extend({
 
    toggleGroupPower: function(groupId) {
 
-     this.getGroupState(groupId).then(res => {
+     this.getGroupInfo(groupId).then(res => {
 
-       return res.on ? this.setGroupState(groupId, {on: false}) : this.setGroupState(groupId, {on: true});
+       return res.lastAction.on ? this.setGroupState(groupId, {on: false}) : this.setGroupState(groupId, {on: true});
 
      }).done();
    },

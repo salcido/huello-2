@@ -11,7 +11,7 @@
     <div class="range-wrap">
       {{! hue }}
       <div class="range">
-        <label><button {{action "togglePower"}} class="{{if allLights.on "powered" "off"}}"></button></label>
+        <label><button {{action "togglePower"}} class="{{if allLights.lastAction.on "powered" "off"}}"></button></label>
         <input type="range" {{action "changeColor" on="change"}} class="range-hue" id={{group.id}} value={{group.state.hue}} min="1" max="65280"/>
       </div>
 

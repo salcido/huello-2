@@ -8,6 +8,6 @@
 
 <div class='side-bar'>
   {{#each groups.lights as |light|}}
-    {{light-in-group-controller light=light update="updateModel"}}
+    {{light-in-group-controller light=light update="updateModel" currentGroup=currentGroup}}
   {{/each}}
 </div>
