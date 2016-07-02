@@ -16,7 +16,7 @@ export default Ember.Route.extend({
     return Ember.RSVP.hash({
       lights: lights.getLights(),
       groups: lights.getGroups(),
-      allLights: lights.getGroupState(0)
+      allLights: lights.getGroupState(1)
     });
   },
 
@@ -332,7 +332,7 @@ export default Ember.Route.extend({
     Ember.set(controller, 'lights', model.lights);
 
     // just get all lights from group array
-    Ember.set(controller, 'groups', model.groups[0]);
+    Ember.set(controller, 'groups', model.groups);
 
     Ember.set(controller, 'allLights', model.allLights);
   },

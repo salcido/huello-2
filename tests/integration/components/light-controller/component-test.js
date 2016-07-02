@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('light-controller', 'Integration | Component | test hue', {
+moduleForComponent('light-controller', 'Integration | Component | light controller', {
   integration: true
 });
 

@@ -11,7 +11,6 @@
       {{! hue }}
       <div class="range">
         <label><button {{action "togglePower"}} class="{{if light.state.on "powered" "off"}}"></button></label>
-        {{!-- <div class="range-hue-bg"></div> --}}
         <input type="range" {{action "changeColor" on="change"}} class="range-hue" id={{light.id}} value={{light.state.hue}} min="1" max="65280"/>
       </div>
 

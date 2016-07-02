@@ -1,11 +1,11 @@
 .light-controller,
 .group-controller {
 
-  background-color: $mineshaft;
+  background-color: $dovegray;
   border: 1px solid $white;
   padding: 10px;
   width: 300px;
-  color: $white;
+
   h4 {
     margin: 0 0 10px 0;
   }
@@ -20,6 +20,12 @@
 
   input {
     width: 89%;
+  }
+
+  input.range-hue {
+
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    background: transparent;
 
     &.range-hue {
       left: 28px;
@@ -29,56 +35,60 @@
     }
 
     &.range-hue::-webkit-slider-runnable-track {
-      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff0000+0,ff9600+10,ffda46+20,fff710+30,a2ff10+40,ffffff+50,f0d9fe+60,7c3cff+70,ff00e4+80,ff006c+90,ff0000+100 */
+      -webkit-appearance: none;
+      margin: 10px 0;
+      width: 100%;
       background-size: cover;
       background: linear-gradient(to right,  #ff0000 0%,#ff9600 10%,#ffda46 20%,#fff710 30%,#a2ff10 40%,#ffffff 50%,#f0d9fe 60%,#7c3cff 70%,#ff00e4 80%,#ff006c 90%,#ff0000 100%);
       border-radius: 5px;
       display: block;
       height: 25px;
       margin-top: -4px;
-      width: 100vw;
+      width: 267px;
     }
 
     &.range-hue::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        border-bottom: 17px solid $gray;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        height: 20px;
         margin-top: 6px;
         outline: none;
-      //  -webkit-appearance: none;
+        width: 10px;
     }
   }
 
-  // .range-hue-bg {
-  //   background-size: cover;
-  //   background: $white;
-  //   border-radius: 5px;
-  //   display: block;
-  //   height: 25px;
-  //   margin-top: -25px;
-  //   margin-left: 30px;
-  //   width: 267px;
-  // }
+  input.range-hue:focus {
+    outline: none;
+  }
 
   button {
 
     &.off {
       background: url('img/light-bulp-off.png') no-repeat;
-      background-color: $black;
+      background-color: $emperor;
       background-size: cover;
       border-radius: 5px;
-      border: 1px solid $dustygray;
+      border-top: 1px solid $dovegray;
+      border-left: 1px solid #222;
+      border-right: 1px solid #222;
+      border-bottom: 1px solid $black;
       display: block;
-      height: 25px;
-      width: 25px;
+      height: 30px;
+      width: 30px;
+      box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
     }
 
     &.powered {
-      background: url('img/light-bulp-on.png') no-repeat;
-      background-color: orange;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffa200+0,ffa200+50,ffcc00+100 */
+      background: url('img/light-bulp-on.png') no-repeat, linear-gradient(to top, #ffa200 0%, #ffc000 50%, #ffcc00 100%);
       background-size: cover;
       border-radius: 5px;
       border: 1px solid $mineshaft;
       display: block;
-      height: 25px;
-      width: 25px;
+      height: 30px;
+      width: 30px;
     }
   }
 
@@ -125,9 +135,4 @@
       border: none;
     }
   }
-}
-
-.group-controller {
- background-color: $gray;
- color: $mineshaft;
 }

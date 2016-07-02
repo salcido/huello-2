@@ -50,7 +50,7 @@ export default Ember.Service.extend({
 
       //console.log('Light Status: ', res.state);
 
-      return res.state;
+      return res;
     });
   },
 
@@ -65,7 +65,7 @@ export default Ember.Service.extend({
 
     this.getStatus(id).then(res => {
 
-      return res.on ? this.setState(id, {on: false}) : this.setState(id, {on: true});
+      return res.state.on ? this.setState(id, {on: false}) : this.setState(id, {on: true});
 
     }).done();
   },
@@ -91,11 +91,11 @@ export default Ember.Service.extend({
      });
    },
 
-   getGroupState: function(groupId) {
+   getGroupInfo: function(groupId) {
 
      return api.getGroup(groupId).then(res => {
 
-       return res.lastAction;
+       return res;
      });
    },
 
