@@ -14,19 +14,19 @@
     <div class="range-wrap">
       {{! hue }}
       <div class="range">
-        <label>Color:</label>
+        <label class="label-color">Color:</label>
         <input type="range" {{action "changeColor" on="change"}} class="range-hue" id={{group.id}} value={{group.state.hue}} min="1" max="65280"/>
       </div>
 
       {{! saturation }}
       <div class="range">
-        <label>Saturation:</label>
+        <label class="label-sat">Saturation:</label>
         <input type="range" {{action "changeSaturation" on="change"}} class="range-sat" id={{group.id}} value={{group.state.sat}} min="1" max="254"/>
       </div>
 
       {{! brightness }}
       <div class="range">
-        <label>Brightness:</label>
+        <label class="label-bri">Brightness:</label>
         <input type="range" {{action "changeBrightness" on="change"}} class="range-bri" id={{group.id}} value={{group.state.bri}} min="1" max="254"/>
       </div>
     </div>

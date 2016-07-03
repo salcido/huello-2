@@ -3,7 +3,7 @@
   border: 1px solid $white;
   padding: 20px;
   width: 358px;
-  height: 292px;
+  height: 254px;
 
   h4 {
     margin: 0 0 10px 0;
@@ -14,7 +14,22 @@
     font-weight: bold;
     margin-bottom: 10px;
     font-size: 14px;
+
+    &.label-sat,
+    &.label-bri {
+      margin-bottom: 0;
+    }
+
+    &.label-sat {
+      margin-top: 3px;
+    }
+
+    &.label-bri {
+      margin-top: 15px;
+    }
   }
+
+
 
   .range {
     position: relative;
@@ -26,26 +41,24 @@
 
   input.range-hue {
 
-    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    -webkit-appearance: none;
     background: transparent;
-    left: 28px;
-    top: 2px;
     cursor: pointer;
 
-    &.range-hue::-webkit-slider-runnable-track {
+    &::-webkit-slider-runnable-track {
       -webkit-appearance: none;
       margin: 10px 0;
       width: 100%;
       background-size: cover;
       background: linear-gradient(to right,  #ff0000 0%,#ff9600 10%,#ffda46 20%,#fff710 30%,#a2ff10 40%,#ffffff 50%,#f0d9fe 60%,#7c3cff 70%,#ff00e4 80%,#ff006c 90%,#ff0000 100%);
-      border-radius: 5px;
+      border-radius: 3px;
       display: block;
       height: 30px;
       margin-top: -4px;
       width: 320px;
     }
 
-    &.range-hue::-webkit-slider-thumb {
+    &::-webkit-slider-thumb {
         -webkit-appearance: none;
         border-bottom: 15px solid $emperor;
         border-left: 8px solid transparent;
@@ -57,11 +70,36 @@
     }
   }
 
+  input.range-hue,
+  input.range-bri {
+    -webkit-appearance: none;
+    outline: none;
+    margin: 0;
+  }
+
   input.range-hue:focus {
     outline: none;
   }
 
+  input.range-sat::-webkit-slider-runnable-track,
+  input.range-bri::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    background: $mineshaft;
+    box-shadow: inset 0px 0px px rgba(0, 0, 0, 0.5); //0px 0px 1px #0d0d0d;
+    cursor: pointer;
+    height: 5px;
+    width: 100%;
+    border: none;
+  }
+
+  input.range-sat::-webkit-slider-thumb,
+  input.range-bri::-webkit-slider-thumb {
+    margin-top: -5px;
+  }
+
   button {
+    outline: none;
+    cursor: pointer;
 
     &.group-power {
       position: absolute;
@@ -70,26 +108,20 @@
     }
 
     &.off {
-      background: url('img/light-bulp-off.png') no-repeat;
+      background: url('img/light-power-off.png') no-repeat;
       background-color: $emperor;
       background-size: cover;
-      border-radius: 5px;
-      border-top: 1px solid $dovegray;
-      border-left: 1px solid #222;
-      border-right: 1px solid #222;
-      border-bottom: 1px solid $black;
+      border: none;
       display: block;
       height: 30px;
       width: 30px;
-      box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
     }
 
     &.powered {
       /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffa200+0,ffa200+50,ffcc00+100 */
-      background: url('img/light-bulp-on.png') no-repeat, linear-gradient(to top, #ffa200 0%, #ffc000 50%, #ffcc00 100%);
+      background: url('img/group-power-on.png') no-repeat;
       background-size: cover;
-      border-radius: 5px;
-      border: 1px solid $mineshaft;
+      border:none;
       display: block;
       height: 30px;
       width: 30px;
