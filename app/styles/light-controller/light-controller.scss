@@ -1,9 +1,42 @@
 .light-controller {
+  border: 1px solid $darkmineshaft;
+  padding: 15px 30px;
+  width: 338px;
 
-  background-color: $dovegray;
-  border: 1px solid $white;
-  padding: 10px;
-  width: 300px;
+  &.powered {
+    background-color: $tundora;
+  }
+
+  &.off {
+    background-color: $mineshaft;
+
+    input.range-hue::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      border-bottom: 14px solid $mineshaft;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      height: 20px;
+      margin-top: 8px;
+      outline: none;
+      width: 10px;
+    }
+
+    input.range-sat::-webkit-slider-runnable-track,
+    input.range-bri::-webkit-slider-runnable-track {
+      -webkit-appearance: none;
+      background: $darkmineshaft;
+      box-shadow: inset 0px 0px px rgba(0, 0, 0, 0.5); //0px 0px 1px #0d0d0d;
+      cursor: pointer;
+      height: 5px;
+      width: 100%;
+      border: none;
+    }
+
+    label,
+    h4 {
+      color: $emperor;
+    }
+  }
 
   h4 {
     margin: 0 0 10px 0;
@@ -11,6 +44,9 @@
 
   label {
     display: inline-block;
+    font-weight: bold;
+    margin-right: 5px;
+    font-size: 13px;
   }
 
   .range {
@@ -18,41 +54,38 @@
   }
 
   input {
-    width: 89%;
+    width: 88%;
   }
 
   input.range-hue {
-
     -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
     background: transparent;
+    cursor: pointer;
+    left: 36px;
+    position: absolute;
+    top: -9px;
+    width: 300px;
 
-    &.range-hue {
-      left: 28px;
-      position: absolute;
-      top: 2px;
-      cursor: pointer;
-    }
-
-    &.range-hue::-webkit-slider-runnable-track {
+    &::-webkit-slider-runnable-track {
       -webkit-appearance: none;
-      margin: 10px 0;
-      width: 100%;
       background-size: cover;
       background: linear-gradient(to right,  #ff0000 0%,#ff9600 10%,#ffda46 20%,#fff710 30%,#a2ff10 40%,#ffffff 50%,#f0d9fe 60%,#7c3cff 70%,#ff00e4 80%,#ff006c 90%,#ff0000 100%);
-      border-radius: 5px;
+      border-radius: 3px;
       display: block;
-      height: 25px;
+      height: 28px;
       margin-top: -4px;
+      margin: 10px 0;
+      width: 100%;
       width: 267px;
     }
 
-    &.range-hue::-webkit-slider-thumb {
+    &::-webkit-slider-thumb {
         -webkit-appearance: none;
-        border-bottom: 17px solid $gray;
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
+        border-bottom: 14px solid $tundora;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
         height: 20px;
-        margin-top: 6px;
+        margin-top: 8px;
         outline: none;
         width: 10px;
     }
@@ -62,29 +95,62 @@
     outline: none;
   }
 
+  input.range-hue,
+  input.range-bri,
+  input.range-sat {
+    -webkit-appearance: none;
+    outline: none;
+    margin: 0;
+  }
+
+  .range-sat {
+    margin-top: 12px;
+    margin-bottom: 10px;
+  }
+
+  .range-bri {
+    margin: 10px 0;
+  }
+
+  input.range-hue:focus {
+    outline: none;
+  }
+
+  input.range-sat::-webkit-slider-runnable-track,
+  input.range-bri::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    background: $mineshaft;
+    box-shadow: inset 0px 0px px rgba(0, 0, 0, 0.5); //0px 0px 1px #0d0d0d;
+    cursor: pointer;
+    height: 5px;
+    width: 100%;
+    border: none;
+  }
+
+  input.range-sat::-webkit-slider-thumb,
+  input.range-bri::-webkit-slider-thumb {
+    margin-top: -5px;
+  }
+
   button {
+    outline: none;
+    margin-right: 10px;
+    cursor: pointer;
 
     &.off {
-      background: url('img/light-bulp-off.png') no-repeat;
-      background-color: $emperor;
+      background: url('img/light-power-off.png') no-repeat;
+      background-color: $mineshaft;
       background-size: cover;
-      border-radius: 5px;
-      border-top: 1px solid $dovegray;
-      border-left: 1px solid #222;
-      border-right: 1px solid #222;
-      border-bottom: 1px solid $black;
+      border: none;
       display: block;
       height: 30px;
       width: 30px;
-      box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
     }
 
     &.powered {
-      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffa200+0,ffa200+50,ffcc00+100 */
-      background: url('img/light-bulp-on.png') no-repeat, linear-gradient(to top, #ffa200 0%, #ffc000 50%, #ffcc00 100%);
+      background: url('img/light-power-on.png') no-repeat;
       background-size: cover;
-      border-radius: 5px;
-      border: 1px solid $mineshaft;
+      border:none;
       display: block;
       height: 30px;
       width: 30px;
@@ -92,13 +158,7 @@
   }
 
   .title-wrap {
-    position: relative;
-
-    .title {
-      // position: absolute;
-      left: 30px;
-      top: -15px;
-    }
+    padding-bottom: 5px;
   }
 
   .ember-inline-edit {
@@ -128,10 +188,10 @@
     }
 
     .ember-inline-edit-input {
+      border: none;
       font-size: 13px;
       font-weight: bold;
       outline: none;
-      border: none;
     }
   }
 }

@@ -1,6 +1,6 @@
 .group-controller {
   background-color: $emperor;
-  border: 1px solid $white;
+  border: 1px solid $emperor;
   padding: 20px;
   width: 358px;
   height: 254px;
@@ -13,7 +13,8 @@
     display: inline-block;
     font-weight: bold;
     margin-bottom: 10px;
-    font-size: 14px;
+    font-size: 13.5px;
+    letter-spacing: 1px;
 
     &.label-sat,
     &.label-bri {
@@ -111,17 +112,16 @@
       background: url('img/light-power-off.png') no-repeat;
       background-color: $emperor;
       background-size: cover;
-      border: none;
+      border: 0;
       display: block;
       height: 30px;
       width: 30px;
     }
 
     &.powered {
-      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffa200+0,ffa200+50,ffcc00+100 */
       background: url('img/group-power-on.png') no-repeat;
       background-size: cover;
-      border:none;
+      border: 0;
       display: block;
       height: 30px;
       width: 30px;
@@ -141,8 +141,8 @@
   }
 
   .ember-inline-edit {
-    width: 200px;
     position: relative;
+    width: 200px;
 
     button {
       &.ember-inline-edit-save {
