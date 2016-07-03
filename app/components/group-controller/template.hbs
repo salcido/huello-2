@@ -1,29 +1,32 @@
-
 <div class="group-controller">
+  <div class="logo">
+    <img src="/assets/img/huello-@2x.png"/>
+  </div>
 
-    <div class="title-wrap">
+    {{!-- <div class="title-wrap">
       <div class="title">
         <h4>{{ember-inline-edit value=group.name onSave=(action "changeGroupName" group.name group.id)}}</h4>
       </div>
 
-    </div>
+    </div> --}}
+    <button {{action "togglePower"}} class="{{if group.state.any_on "powered" "off"}} group-power"></button>
 
     <div class="range-wrap">
       {{! hue }}
       <div class="range">
-        <label><button {{action "togglePower"}} class="{{if group.state.any_on "powered" "off"}}"></button></label>
+        <label>Color:</label>
         <input type="range" {{action "changeColor" on="change"}} class="range-hue" id={{group.id}} value={{group.state.hue}} min="1" max="65280"/>
       </div>
 
       {{! saturation }}
       <div class="range">
-        <label>Sat:</label>
+        <label>Saturation:</label>
         <input type="range" {{action "changeSaturation" on="change"}} class="range-sat" id={{group.id}} value={{group.state.sat}} min="1" max="254"/>
       </div>
 
       {{! brightness }}
       <div class="range">
-        <label>Bri:</label>
+        <label>Brightness:</label>
         <input type="range" {{action "changeBrightness" on="change"}} class="range-bri" id={{group.id}} value={{group.state.bri}} min="1" max="254"/>
       </div>
     </div>
