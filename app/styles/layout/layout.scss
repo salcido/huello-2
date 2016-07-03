@@ -1,20 +1,14 @@
 .side-bar {
-  // bottom: 0;
-  // height: 100%;
-  // overflow-y: scroll;
-  // position: fixed;
-  // right: 0;
-  // top: 0;
-  // width: auto;
-  bottom: 0;
-  height: auto;
+  height: 400px;
+  left: 0;
   overflow-y: scroll;
-  //position: fixed;
-  left: 8px;
-  top: 243px;
+  position: fixed;
+  right: 0;
+  top: 296px;
   width: auto;
 }
 
+// select box
 .mode {
   margin: 10px auto;
 }
