@@ -1,10 +1,31 @@
 .light-controller {
   border: 1px solid $darkmineshaft;
-  padding: 15px 30px;
+  padding: 11px 30px;
   width: 338px;
+
+  h4 {
+    //letter-spacing: 0.5px;
+  }
 
   &.powered {
     background-color: $tundora;
+
+    h4 {
+      text-shadow: 0px 1px 1px $darkmineshaft;
+    }
+
+    input.range-hue::-webkit-slider-runnable-track {
+      -webkit-appearance: none;
+      background-size: cover;
+      background: linear-gradient(to right,  #ff0000 0%,#ff9600 10%,#ffda46 20%,#fff710 30%,#a2ff10 40%,#ffffff 50%,#f0d9fe 60%,#7c3cff 70%,#ff00e4 80%,#ff006c 90%,#ff0000 100%);
+      border-radius: 3px;
+      display: block;
+      height: 28px;
+      margin-top: -4px;
+      margin: 10px 0;
+      width: 100%;
+      width: 267px;
+    }
   }
 
   &.off {
@@ -19,6 +40,20 @@
       margin-top: 8px;
       outline: none;
       width: 10px;
+    }
+
+    input.range-hue::-webkit-slider-runnable-track {
+      opacity: 0.3;
+      -webkit-appearance: none;
+      background-size: cover;
+      background: linear-gradient(to right,  #ff0000 0%,#ff9600 10%,#ffda46 20%,#fff710 30%,#a2ff10 40%,#ffffff 50%,#f0d9fe 60%,#7c3cff 70%,#ff00e4 80%,#ff006c 90%,#ff0000 100%);
+      border-radius: 3px;
+      display: block;
+      height: 28px;
+      margin-top: -4px;
+      margin: 10px 0;
+      width: 100%;
+      width: 267px;
     }
 
     input.range-sat::-webkit-slider-runnable-track,
@@ -65,19 +100,6 @@
     position: absolute;
     top: -9px;
     width: 300px;
-
-    &::-webkit-slider-runnable-track {
-      -webkit-appearance: none;
-      background-size: cover;
-      background: linear-gradient(to right,  #ff0000 0%,#ff9600 10%,#ffda46 20%,#fff710 30%,#a2ff10 40%,#ffffff 50%,#f0d9fe 60%,#7c3cff 70%,#ff00e4 80%,#ff006c 90%,#ff0000 100%);
-      border-radius: 3px;
-      display: block;
-      height: 28px;
-      margin-top: -4px;
-      margin: 10px 0;
-      width: 100%;
-      width: 267px;
-    }
 
     &::-webkit-slider-thumb {
         -webkit-appearance: none;
@@ -158,7 +180,8 @@
   }
 
   .title-wrap {
-    padding-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 3px;
   }
 
   .ember-inline-edit {
