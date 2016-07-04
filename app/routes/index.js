@@ -4,9 +4,13 @@ export default Ember.Route.extend({
 
   lightsService: Ember.inject.service('lights'),
 
+  /**
+   * Will eventually be used to create a new user on the hub
+   *
+   * @method   init
+   * @return   {undefined}
+   */
   init() {
-
-    console.log('initing from index...');
 
     let lights = this.get('lightsService');
 
