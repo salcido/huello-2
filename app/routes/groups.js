@@ -4,12 +4,14 @@ export default Ember.Route.extend({
 
   lightsService: Ember.inject.service('lights'),
 
+  // The id of the group that will be controlled by the Group Controller Component
   currentGroup: 0,
 
+  // Whether to use color temperature values
   colorTemp: false,
 
   /**
-   * Index's model
+   * The Group model
    *
    * @method model
    */
@@ -26,6 +28,14 @@ export default Ember.Route.extend({
     });
   },
 
+  /**
+   * Configure controller with model properties
+   *
+   * @method   setupController
+   * @param    {object}        controller [the controller object]
+   * @param    {object}        model      [the model]
+   * @return   {undefined}
+   */
   setupController(controller, model) {
 
     console.log('model from route', model);
@@ -34,10 +44,10 @@ export default Ember.Route.extend({
 
     Ember.set(controller, 'lights', model.lights);
 
-    // Rename `name` prop so it's not listed as "Lightset 0"
+    // Rename `name` prop of Group 0 so it's not listed as "Lightset 0"
     model.groups[0].name = 'All Lights';
 
-    // map all lights ids into 'All Lights' group (why Philips doesn't do this, I will never know)
+    // Map all lights ids into 'All Lights' group so that Group 0 has the same properties/structure as subsequent groups
     model.groups[0].lights = model.lights.lights.map(function(light) {
 
       return light.id;
@@ -58,6 +68,7 @@ export default Ember.Route.extend({
       }
     }
 
+    // Set props on controller object
     Ember.set(controller, 'groups', model.groups[this.get('currentGroup')]);
 
     Ember.set(controller, 'allLights', model.allLights);
@@ -71,8 +82,11 @@ export default Ember.Route.extend({
 
     /**
      * Updates the model with all lights' current state
+     *
+     * @method   function
+     * @param    {number} value [the group number that will be controlled by the group controller component]
+     * @return   {undefined}
      */
-
     updateModel: function(value) {
 
       value = value || this.get('currentGroup');
@@ -85,11 +99,18 @@ export default Ember.Route.extend({
       }, 500);
     },
 
+    /**
+     * Sets colorTemp boolean
+     *
+     * @method   function
+     * @param    {boolean} value [whether to use color temperature values]
+     * @return   {undefined}
+     */
     setColorTemp: function(value) {
-      console.log('colortemp from route', value)
-       this.set('colorTemp', value);
 
-       this.refresh();
+      this.set('colorTemp', value);
+
+      this.refresh();
     }
   }
 });
