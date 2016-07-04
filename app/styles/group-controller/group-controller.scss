@@ -30,7 +30,17 @@
     }
   }
 
-
+  .color-temp-wrap {
+    position: absolute;
+    top: 111px;
+    left: 315px;
+    z-index: 2;
+    input {
+      position: absolute;
+      top: 0;
+      left: 45px;
+    }
+  }
 
   .range {
     position: relative;
@@ -174,4 +184,14 @@
       border: none;
     }
   }
+}
+
+.bg-logo {
+  z-index: -1;
+}
+
+// dropdown
+.ember-power-select-trigger {
+  background: $mineshaft;
+  color: $gray;
 }

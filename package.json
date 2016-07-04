@@ -78,7 +78,7 @@
     "extend-info": null,
     "extra-resource": null,
     "helper-bundle-id": null,
-    "icon": "/img/Icon.icns",
+    "icon": "dist/assets/img/Icon.icns",
     "ignore": null,
     "out": null,
     "osx-sign": {

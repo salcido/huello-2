@@ -26,11 +26,17 @@ app.on('window-all-closed', function onWindowAllClosed() {
 });
 
 app.on('ready', function onReady() {
+
     mainWindow = new BrowserWindow({
         width: 400,
         height: 650,
-        resizable: false,
-        icon: __dirname + '/img/Icon.ico'
+        resizable: true,
+        maxWidth: 400,
+        minWidth: 400,
+        minHeight: 315,
+        title: 'Huello',
+
+        icon: __dirname + 'file://${dirname}/dist/img/Icon.icns'
     });
 
     delete mainWindow.module;

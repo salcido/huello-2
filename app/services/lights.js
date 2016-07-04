@@ -13,6 +13,13 @@ api = new HueApi(hostname, username);
 
 export default Ember.Service.extend({
 
+  config: function(){
+    return api.config().then(res => {
+
+      return res;
+    });
+  },
+
   displayBridges: function(bridge) {
 
     console.log('Hue Bridges Found: ' + JSON.stringify(bridge));
@@ -20,7 +27,10 @@ export default Ember.Service.extend({
 
   logBridge: function() {
 
-    return hue.nupnpSearch().then(this.get('displayBridges')).done();
+    return hue.nupnpSearch().then(res => {
+
+      return res[0];
+    });
   },
 
   displayResult: function(result) {

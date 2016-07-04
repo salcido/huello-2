@@ -1,16 +1,31 @@
-body,
 html {
   background: $darkmineshaft;
 }
 
+.bg-logo {
+  background: url('img/huello-@2x.png') no-repeat;
+  background-size: cover;
+  width: 135px;
+  height: 30px;
+  position: fixed;
+  top: 250px;
+  left: 132px;
+}
+
+.spacer {
+  height: 296px;
+  width: 400px;
+}
+
 .side-bar {
-  height: 331px;
+  height: 100%;
   left: 0;
   overflow-y: scroll;
   position: fixed;
   right: 0;
-  top: 296px;
+  top: 0;
   width: auto;
+  z-index: -1;
 }
 
 // select box

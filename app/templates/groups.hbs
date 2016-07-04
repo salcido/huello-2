@@ -7,7 +7,7 @@
 {{group-controller group=groups allLights=allLights update="updateModel"}}
 
 <div class='side-bar'>
-  <div class="shadow"></div>
+  <div class="spacer"></div>
   <div class="group-wrap">
     {{#each groups.lights as |light|}}
       {{light-in-group-controller light=light update="updateModel" currentGroup=currentGroup}}
