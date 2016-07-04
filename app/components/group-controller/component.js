@@ -97,11 +97,17 @@ export default Ember.Component.extend({
      */
     changeSaturation: function() {
 
-      let value = event.target.value,
+      let
+          value = event.target.value,
           groupId = event.target.id,
-          lights = this.get('lightsService');
+          initial = Number(254 / value),
+          lights = this.get('lightsService'),
+          percentage = (100 / initial) / 100,
+          spectrum = Ember.$('.group-spectrum-bg');
 
       lights.setGroupState(groupId, {sat: value});
+
+      spectrum.fadeTo('slow', percentage);
 
       Ember.run.later(() => {
           this.sendAction('update');

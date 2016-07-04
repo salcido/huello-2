@@ -25,6 +25,9 @@ export default Ember.Component.extend({
   // sat value
   sat: null,
 
+  // spectrum-bg saturation opacity
+  satOpacity: null,
+
   // Assign the initial values of each light
   init: function() {
 
@@ -146,9 +149,14 @@ export default Ember.Component.extend({
 
       let value = event.target.value,
           id = event.target.id,
+          initial = Number(254 / value),
+          percentage = (100 / initial) / 100,
+          spectrum = Ember.$('.individual-spectrum-bg.' + id),
           lights = this.get('lightsService');
-
+console.log(spectrum)
       lights.setState(id, {sat: value});
+
+      spectrum.fadeTo('slow', percentage);
     },
 
     /**
