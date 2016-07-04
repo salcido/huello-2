@@ -6,3 +6,8 @@
 'light-controller/light-controller',
 'group-controller/group-select',
 'group-controller/group-controller';
+
+// hide scrollbars for electron
+::-webkit-scrollbar {
+    display: none;
+}

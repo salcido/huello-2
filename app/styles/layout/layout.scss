@@ -1,5 +1,10 @@
+body,
+html {
+  background: $darkmineshaft;
+}
+
 .side-bar {
-  height: 400px;
+  height: 331px;
   left: 0;
   overflow-y: scroll;
   position: fixed;
@@ -14,8 +19,11 @@
 }
 
 .shadow {
+  background: url('img/shadow.png');
+  background-size: cover;
   overflow: hidden;
   position: fixed;
-  top: 270px;
+  top: 284px;
   width: 400px;
+  height: 30px;
 }

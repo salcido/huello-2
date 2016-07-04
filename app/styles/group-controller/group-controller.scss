@@ -134,10 +134,11 @@
   }
 
   .logo {
-
-    img {
-      width: 135px;
-    }
+    background: url('img/huello-@2x.png');
+    width: 135px;
+    height: 30px;
+    display: block;
+    background-size: cover;
   }
 
   .ember-inline-edit {
