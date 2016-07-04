@@ -20,6 +20,7 @@
       {{! hue }}
       <div class="range">
         <label class="label-color">Color:</label>
+        <div class="white-bg"></div>
         <input type="range" {{action "changeColor" on="change"}} class="range-hue {{if colorTemp "color-temp" ""}}" id={{group.id}} value={{group.state.hue}} min={{if colorTemp "154" "1"}} max={{if colorTemp "500" "65280"}}/>
       </div>
 

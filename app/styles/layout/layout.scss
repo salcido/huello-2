@@ -1,5 +1,12 @@
 html {
   background: $darkmineshaft;
+  width: 400px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 400px;
 }
 
 .bg-logo {
@@ -31,6 +38,7 @@ html {
 // select box
 .mode {
   margin: 10px auto;
+  z-index: 10;
 }
 
 .shadow {
@@ -51,5 +59,4 @@ html {
   bottom: 0;
   left: 0;
   position: fixed;
-
 }

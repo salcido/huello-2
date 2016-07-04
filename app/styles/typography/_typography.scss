@@ -1,11 +1,6 @@
 /* Arimo font*/
 @import url(https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic);
 
-body {
-  margin: 0;
-  padding: 0;
-}
-
 h1,
 h2,
 h3,
@@ -20,7 +15,6 @@ h2,
 h3,
 h4,
 label {
-  font-family: 'Arimo', sans-serif;
   color: $dustygray;
   /* offset-x | offset-y | blur-radius | color */
   text-shadow: 0px 1px 1px $mineshaft;
@@ -30,9 +24,14 @@ h4 {
   font-size: 16px;
   margin-bottom: 0;
   padding: 0;
+  cursor: pointer;
 }
 
 label {
   font-size: 12px;
   text-transform: uppercase;
+}
+
+label, h4, .range {
+  -webkit-user-select: none;
 }
