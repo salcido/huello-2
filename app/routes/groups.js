@@ -21,7 +21,8 @@ export default Ember.Route.extend({
     return Ember.RSVP.hash({
       lights: lights.getLights(),
       groups: lights.getGroups(group),
-      allLights: lights.getGroupInfo(group)
+      allLights: lights.getGroupInfo(group),
+      colorTemp: this.get('colorTemp')
     });
   },
 
@@ -62,6 +63,8 @@ export default Ember.Route.extend({
     Ember.set(controller, 'allLights', model.allLights);
 
     Ember.set(controller, 'currentGroup', model.groups[this.get('currentGroup')]);
+
+    Ember.set(controller, 'colorTemp', this.get('colorTemp'));
   },
 
   actions: {
@@ -80,6 +83,13 @@ export default Ember.Route.extend({
 
         this.refresh();
       }, 500);
+    },
+
+    setColorTemp: function(value) {
+      console.log('colortemp from route', value)
+       this.set('colorTemp', value);
+
+       this.refresh();
     }
   }
 });

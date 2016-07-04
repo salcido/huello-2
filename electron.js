@@ -33,7 +33,7 @@ app.on('ready', function onReady() {
         resizable: true,
         maxWidth: 400,
         minWidth: 400,
-        minHeight: 315,
+        minHeight: 325,
         title: 'Huello',
 
         icon: __dirname + 'file://${dirname}/dist/img/Icon.icns'

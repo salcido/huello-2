@@ -13,13 +13,14 @@
     <div class="color-temp-wrap">
       <label>Temp:</label>
       <input type="checkbox" />
+      {{input type="checkbox" name="color-temp" checked=colorTemp change=(action "toggleColorTemp")}}
     </div>
 
     <div class="range-wrap">
       {{! hue }}
       <div class="range">
         <label class="label-color">Color:</label>
-        <input type="range" {{action "changeColor" on="change"}} class="range-hue" id={{group.id}} value={{group.state.hue}} min="1" max="65280"/>
+        <input type="range" {{action "changeColor" on="change"}} class="range-hue {{if colorTemp "color-temp" ""}}" id={{group.id}} value={{group.state.hue}} min={{if colorTemp "154" "1"}} max={{if colorTemp "500" "65280"}}/>
       </div>
 
       {{! saturation }}
@@ -36,3 +37,4 @@
     </div>
 </div>
 <div class="shadow"></div>
+<div class="drag-handle"></div>

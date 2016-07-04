@@ -72,6 +72,12 @@ export default Ember.Component.extend({
 
   actions: {
 
+    /**
+     * Toggles the power for an individual light
+     *
+     * @method   function
+     * @return   {undefined}
+     */
     togglePower: function() {
 
       let
@@ -91,15 +97,36 @@ export default Ember.Component.extend({
       }, 500);
     },
 
+    /**
+     * Changes the color value for an individual light
+     *
+     * @method   function
+     * @return   {undefined}
+     */
     changeColor: function() {
 
-      let value = event.target.value,
+      let
+          colorTemp = this.get('colorTemp'),
           id = event.target.id,
-          lights = this.get('lightsService');
+          lights = this.get('lightsService'),
+          value = event.target.value;
 
-      lights.setState(id, {hue: value});
+      if (colorTemp) {
+
+        lights.setState(id, {ct: value});
+
+      } else {
+
+        lights.setState(id, {hue: value});
+      }
     },
 
+    /**
+     * Changes the brightness value for an individual light
+     *
+     * @method   function
+     * @return   {undefined}
+     */
     changeBrightness: function() {
 
       let value = event.target.value,
@@ -109,6 +136,12 @@ export default Ember.Component.extend({
       lights.setState(id, {bri: value});
     },
 
+    /**
+     * Changes the saturation value for an individual light
+     *
+     * @method   function
+     * @return   {undefined}
+     */
     changeSaturation: function() {
 
       let value = event.target.value,
@@ -118,6 +151,14 @@ export default Ember.Component.extend({
       lights.setState(id, {sat: value});
     },
 
+    /**
+     * Changes the name of an individual light
+     *
+     * @method   function
+     * @param    {String} newName [the new name of the light]
+     * @param    {String} id      [the id of the light to be updated]
+     * @return   {undefined}
+     */
     changeName: function(newName, id) {
 
       let lights = this.get('lightsService');

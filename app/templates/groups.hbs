@@ -4,13 +4,13 @@
   {{/power-select}}
 </div>
 
-{{group-controller group=groups allLights=allLights update="updateModel"}}
+{{group-controller group=groups allLights=allLights update="updateModel" colorTemp=colorTemp useColorTemp="setColorTemp"}}
 
 <div class='side-bar'>
   <div class="spacer"></div>
   <div class="group-wrap">
     {{#each groups.lights as |light|}}
-      {{light-in-group-controller light=light update="updateModel" currentGroup=currentGroup}}
+      {{light-in-group-controller light=light update="updateModel" currentGroup=currentGroup colorTemp=colorTemp}}
     {{/each}}
   </div>
 </div>

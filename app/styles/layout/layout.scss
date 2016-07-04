@@ -42,3 +42,14 @@ html {
   width: 400px;
   height: 30px;
 }
+
+.drag-handle {
+  background: url('img/drag-handle.png');
+  background-size: cover;
+  height: 15px;
+  width: 400px;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+
+}

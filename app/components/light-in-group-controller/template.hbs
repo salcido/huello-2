@@ -11,7 +11,7 @@
       {{! hue }}
       <div class="range">
         <label><button {{action "togglePower"}} class="{{if power "powered" "off"}}"></button></label>
-        <input type="range" {{action "changeColor" on="change"}} class="range-hue" id={{light}} value={{hue}} min="1" max="65280"/>
+        <input type="range" {{action "changeColor" on="change"}} class="range-hue {{if colorTemp "color-temp" ""}}" id={{light}} value={{hue}} min={{if colorTemp "154" "1"}} max={{if colorTemp "500" "65280"}} />
       </div>
 
       {{! saturation }}

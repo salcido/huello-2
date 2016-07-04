@@ -12,6 +12,12 @@ export default Ember.Component.extend({
 
   actions: {
 
+    /**
+     * Toggles the power state for the light group
+     *
+     * @method   function
+     * @return   {undefined}
+     */
     togglePower: function() {
 
       let groupId = this.get('group.id'),
@@ -24,19 +30,52 @@ export default Ember.Component.extend({
       }, 500);
     },
 
+    /**
+     * Sets the color temp value on the model
+     *
+     * @method   function
+     * @param    {object} event
+     * @return   {undefined}
+     */
+    toggleColorTemp: function(event) {
+
+      this.sendAction('useColorTemp', event.target.checked);
+    },
+
+    /**
+     * Sets the color value for the light group
+     *
+     * @method   function
+     * @return   {undefined}
+     */
     changeColor: function() {
 
-      let value = event.target.value,
+      let
+          colorTemp = this.get('colorTemp'),
           groupId = event.target.id,
-          lights = this.get('lightsService');
+          lights = this.get('lightsService'),
+          value = event.target.value;
 
-      lights.setGroupState(groupId, {hue: value});
+      if (colorTemp) {
+
+        lights.setGroupState(groupId, {ct: value});
+
+      } else {
+
+        lights.setGroupState(groupId, {hue: value});
+      }
 
       Ember.run.later(() => {
           this.sendAction('update');
       }, 500);
     },
 
+    /**
+     * Sets the brightness for the light group
+     *
+     * @method   function
+     * @return   {undefined}
+     */
     changeBrightness: function() {
 
       let value = event.target.value,
@@ -50,6 +89,12 @@ export default Ember.Component.extend({
       }, 500);
     },
 
+    /**
+     * Sets the saturation value for the light group
+     *
+     * @method   function
+     * @return   {undefined}
+     */
     changeSaturation: function() {
 
       let value = event.target.value,
@@ -63,6 +108,14 @@ export default Ember.Component.extend({
       }, 500);
     },
 
+    /**
+     * Sets a new group name
+     *
+     * @method   function
+     * @param    {String} newName [the new name of the group]
+     * @param    {String} groupId [the id of the group that will be updated]
+     * @return   {undefined}
+     */
     changeGroupName: function(newName, groupId) {
 
       let lights = this.get('lightsService');
