@@ -75,7 +75,16 @@ export default Ember.Component.extend({
 
       this.set('lightName', res.name);
 
-      this.set('hue', res.state.hue);
+      // Animate Sat range when new values are received
+      Ember.$({position: this.get('hue')}).animate({position: res.state.hue}, {
+
+        duration: 500,
+
+        step: function() {
+
+          Ember.$('.range-hue.' + id).val(Math.ceil(this.position));
+        }
+      });
 
       // Animate Sat range when new values are received
       Ember.$({position: this.get('sat')}).animate({position: res.state.sat}, {
@@ -100,6 +109,9 @@ export default Ember.Component.extend({
       });
 
       Ember.run.later(() => {
+
+        // Update hue val to new value
+        this.set('hue', res.state.hue);
 
         // Update sat val to new value
         this.set('sat', res.state.sat);
