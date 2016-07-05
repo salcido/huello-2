@@ -29,11 +29,11 @@ app.on('ready', function onReady() {
 
     mainWindow = new BrowserWindow({
         width: 400,
-        height: 650,
+        height: 335, //650
         resizable: true,
         maxWidth: 400,
         minWidth: 400,
-        minHeight: 325,
+        minHeight: 335,
         title: 'Huello',
 
         icon: __dirname + 'file://${dirname}/dist/img/Icon.icns'
