@@ -44,7 +44,7 @@ export default Ember.Component.extend({
 
       let initial = Number(254 / res.state.sat),
           percentage = (100 / initial) / 100;
-console.log(percentage)
+
       this.set('power', res.state.on);
 
       this.set('lightName', res.name);
@@ -77,12 +77,40 @@ console.log(percentage)
 
       this.set('hue', res.state.hue);
 
-      this.set('bri', res.state.bri);
+      // Animate Sat range when new values are received
+      Ember.$({position: this.get('sat')}).animate({position: res.state.sat}, {
 
-      this.set('sat', res.state.sat);
+        duration: 500,
 
+        step: function() {
+
+          Ember.$('.range-sat.' + id).val(Math.ceil(this.position));
+        }
+      });
+
+      // Animate Bri range when new values are received
+      Ember.$({position: this.get('bri')}).animate({position: res.state.bri}, {
+
+        duration: 500,
+
+        step: function() {
+
+          Ember.$('.range-bri.' + id).val(Math.ceil(this.position));
+        }
+      });
+
+      Ember.run.later(() => {
+
+        // Update sat val to new value
+        this.set('sat', res.state.sat);
+
+        // Update bri val to new value
+        this.set('bri', res.state.bri);
+      }, 600);
+
+
+      // Fade spectrum to new opacity
       spectrum.fadeTo('slow', percentage);
-
     });
   },
 
