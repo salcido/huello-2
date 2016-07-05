@@ -19,6 +19,9 @@ export default Ember.Component.extend({
   // hue value
   hue: null,
 
+  // color temperature value
+  ct: null,
+
   // bri value
   bri: null,
 
@@ -45,25 +48,26 @@ export default Ember.Component.extend({
       let initial = Number(254 / res.state.sat),
           percentage = (100 / initial) / 100;
 
-      this.set('power', res.state.on);
-
-      this.set('lightName', res.name);
-
-      this.set('hue', res.state.hue);
-
-      this.set('bri', res.state.bri);
-
-      this.set('sat', res.state.sat);
-
-      this.set('satOpacity', percentage);
+      this.setProperties({
+        power: res.state.on,
+        lightName: res.name,
+        hue: res.state.hue,
+        bri: res.state.bri,
+        sat: res.state.sat,
+        ct: res.state.ct,
+        satOpacity: percentage
+      });
     });
   },
 
   // update light states when model refreshes
   didReceiveAttrs: function() {
 
-    let lights = this.get('lightsService'),
+    let
+        lights = this.get('lightsService'),
         id = this.get('light'),
+        positionVal,
+        rangeVal = Ember.$('.powered .range-hue.' + id).val(),
         spectrum = Ember.$('.powered .individual-spectrum-bg.' + id);
 
     this.set('lightState', lights.getStatus(id)).then( res => {
@@ -75,54 +79,53 @@ export default Ember.Component.extend({
 
       this.set('lightName', res.name);
 
-      // Animate Sat range when new values are received
-      Ember.$({position: this.get('hue')}).animate({position: res.state.hue}, {
+      // use colorTemp max val of 500 if colorTemp is selected
+      positionVal = (this.get('colorTemp') ? res.state.ct : res.state.hue);
 
-        duration: 500,
-
-        step: function() {
-
-          Ember.$('.range-hue.' + id).val(Math.ceil(this.position));
-        }
-      });
+      // Animate Hue range when new values are received
+      this.animateRange(rangeVal, positionVal, '.range-hue' + '.' + id);
 
       // Animate Sat range when new values are received
-      Ember.$({position: this.get('sat')}).animate({position: res.state.sat}, {
-
-        duration: 500,
-
-        step: function() {
-
-          Ember.$('.range-sat.' + id).val(Math.ceil(this.position));
-        }
-      });
+      this.animateRange(this.get('sat'), res.state.sat, '.range-sat' + '.' + id);
 
       // Animate Bri range when new values are received
-      Ember.$({position: this.get('bri')}).animate({position: res.state.bri}, {
-
-        duration: 500,
-
-        step: function() {
-
-          Ember.$('.range-bri.' + id).val(Math.ceil(this.position));
-        }
-      });
+      this.animateRange(this.get('bri'), res.state.bri, '.range-bri' + '.' + id);
 
       Ember.run.later(() => {
 
-        // Update hue val to new value
-        this.set('hue', res.state.hue);
-
-        // Update sat val to new value
-        this.set('sat', res.state.sat);
-
-        // Update bri val to new value
-        this.set('bri', res.state.bri);
+        // Update props to new values
+        this.setProperties({
+          hue: res.state.hue,
+          sat: res.state.sat,
+          bri: res.state.bri,
+          ct: res.state.ct
+        });
       }, 600);
-
 
       // Fade spectrum to new opacity
       spectrum.fadeTo('slow', percentage);
+    });
+  },
+
+  /**
+   * Animates an input range from it's current position to a new one
+   *
+   * @method   function
+   * @param    {Number} currPos [the current range position]
+   * @param    {Number} newPos  [the new range position]
+   * @param    {String} target  [element target]
+   * @return   {undefined}
+   */
+  animateRange: function(currPos, newPos, target) {
+
+    Ember.$({position: currPos}).animate({position: newPos}, {
+
+      duration: 500,
+
+      step: function() {
+
+        Ember.$(target).val(Math.ceil(this.position));
+      }
     });
   },
 
