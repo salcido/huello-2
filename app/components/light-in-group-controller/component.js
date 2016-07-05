@@ -39,8 +39,12 @@ export default Ember.Component.extend({
     // set light id
     this.set('lightId', id);
 
+    // set range positions
     this.set('lightState', lights.getStatus(id)).then( res => {
 
+      let initial = Number(254 / res.state.sat),
+          percentage = (100 / initial) / 100;
+console.log(percentage)
       this.set('power', res.state.on);
 
       this.set('lightName', res.name);
@@ -50,6 +54,8 @@ export default Ember.Component.extend({
       this.set('bri', res.state.bri);
 
       this.set('sat', res.state.sat);
+
+      this.set('satOpacity', percentage);
     });
   },
 
@@ -57,9 +63,13 @@ export default Ember.Component.extend({
   didReceiveAttrs: function() {
 
     let lights = this.get('lightsService'),
-        id = this.get('light');
+        id = this.get('light'),
+        spectrum = Ember.$('.powered .individual-spectrum-bg.' + id);
 
     this.set('lightState', lights.getStatus(id)).then( res => {
+
+      let initial = Number(254 / res.state.sat),
+          percentage = (100 / initial) / 100;
 
       this.set('power', res.state.on);
 
@@ -70,6 +80,9 @@ export default Ember.Component.extend({
       this.set('bri', res.state.bri);
 
       this.set('sat', res.state.sat);
+
+      spectrum.fadeTo('slow', percentage);
+
     });
   },
 
@@ -153,7 +166,7 @@ export default Ember.Component.extend({
           percentage = (100 / initial) / 100,
           spectrum = Ember.$('.individual-spectrum-bg.' + id),
           lights = this.get('lightsService');
-console.log(spectrum)
+
       lights.setState(id, {sat: value});
 
       spectrum.fadeTo('slow', percentage);

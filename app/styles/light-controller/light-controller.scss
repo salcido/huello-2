@@ -94,6 +94,11 @@
       border: none;
     }
 
+    .individual-white-bg,
+    .individual-spectrum-bg {
+      display: none;
+    }
+
     label,
     h4 {
       color: $emperor;
