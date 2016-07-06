@@ -10,6 +10,15 @@ export default Ember.Route.extend({
   // Whether to use color temperature values
   colorTemp: false,
 
+  init() {
+
+    let lights = this.get('lightsService');
+
+    this._super(...arguments);
+
+    lights.config();
+  },
+
   /**
    * The Group model
    *

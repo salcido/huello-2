@@ -18,6 +18,7 @@ export default Ember.Component.extend({
      * @method   function
      * @return   {undefined}
      */
+
     togglePower: function() {
 
       let groupId = this.get('group.id'),
@@ -37,6 +38,7 @@ export default Ember.Component.extend({
      * @param    {object} event
      * @return   {undefined}
      */
+
     toggleColorTemp: function(event) {
 
       this.sendAction('useColorTemp', event.target.checked);
@@ -48,6 +50,7 @@ export default Ember.Component.extend({
      * @method   function
      * @return   {undefined}
      */
+
     changeColor: function() {
 
       let
@@ -76,6 +79,7 @@ export default Ember.Component.extend({
      * @method   function
      * @return   {undefined}
      */
+
     changeBrightness: function() {
 
       let value = event.target.value,
@@ -85,7 +89,9 @@ export default Ember.Component.extend({
       lights.setGroupState(groupId, {bri: value});
 
       Ember.run.later(() => {
+
           this.sendAction('update');
+
       }, 500);
     },
 
@@ -95,6 +101,7 @@ export default Ember.Component.extend({
      * @method   function
      * @return   {undefined}
      */
+
     changeSaturation: function() {
 
       let
@@ -122,6 +129,7 @@ export default Ember.Component.extend({
      * @param    {String} groupId [the id of the group that will be updated]
      * @return   {undefined}
      */
+
     changeGroupName: function(newName, groupId) {
 
       let lights = this.get('lightsService');

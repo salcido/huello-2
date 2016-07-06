@@ -5,25 +5,58 @@ import hue from 'npm:node-hue-api';
 
 let
     HueApi = hue.HueApi,
-    hostname = '10.0.1.2',
-    username = 'mbRWI0ncjZbp2pRH89KeId2-ocSansGrD0eRY12o',
+    hostname,
+    username,
     api;
-
-api = new HueApi(hostname, username);
 
 export default Ember.Service.extend({
 
-  config: function(){
+  /**
+   * Configures a new HueApi instance
+   *
+   * @method   function
+   * @return   {object}
+   */
+
+  config: function() {
+
+    hostname = localStorage.getItem('hostname');
+    username = localStorage.getItem('username');
+
+    api = new HueApi(hostname, username);
+
     return api.config().then(res => {
 
       return res;
     });
   },
 
-  displayBridges: function(bridge) {
+  /**
+   * Deletes a user from the hub
+   *
+   * @method   function
+   * @param    {user} user [the unique user id]
+   * @return   {object}
+   */
 
-    console.log('Hue Bridges Found: ' + JSON.stringify(bridge));
+  deleteUser: function(user) {
+
+    return api.deleteUser(user).then(res => {
+
+      return res;
+
+    }).fail(res => {
+
+      return 'Error deleting user: ' + res;
+    });
   },
+
+  /**
+   * Returns the IP Address of the Bridge
+   *
+   * @method   function
+   * @return   {object}
+   */
 
   logBridge: function() {
 
@@ -33,18 +66,19 @@ export default Ember.Service.extend({
     });
   },
 
-  displayResult: function(result) {
-
-    console.log(JSON.stringify(result, null, 2));
-  },
-
   /*
 
     Individual lights
 
    */
 
-  // Get all lights and status
+  /**
+   * Returns all lights and statuses
+   *
+   * @method   function
+   * @return   {object}
+   */
+
   getLights: function() {
 
     return api.lights().then(res => {
@@ -53,7 +87,14 @@ export default Ember.Service.extend({
     });
   },
 
-  // Get light status
+  /**
+   * Returns the stats for a particular light
+   *
+   * @method   function
+   * @param    {string} id [the light's id]
+   * @return   {object}
+   */
+
   getStatus: function(id) {
 
     return api.lightStatus(id).then(res => {
@@ -64,13 +105,28 @@ export default Ember.Service.extend({
     });
   },
 
-  // Set light state
+  /**
+   * Sets the state of a particular light
+   *
+   * @method   function
+   * @param    {String} id    [the light's id]
+   * @param    {object} state [an object representing the new state]
+   * @return   {method}
+   */
+
   setState: function(id, state) {
 
     return api.setLightState(id, state);
   },
 
-  // Power on/off lights
+  /**
+   * Turns a light on or off
+   *
+   * @method   function
+   * @param    {String} id [the light's id]
+   * @return   {method}
+   */
+
   togglePower: function(id) {
 
     this.getStatus(id).then(res => {
@@ -80,7 +136,15 @@ export default Ember.Service.extend({
     }).done();
   },
 
-  // Rename a light
+  /**
+   * Renames a light
+   *
+   * @method   function
+   * @param    {String} id      [The light's id]
+   * @param    {String} newName [The new name of the light]
+   * @return   {method}
+   */
+
   rename: function(id, newName) {
 
     return api.setLightName(id, newName).done();
@@ -92,7 +156,13 @@ export default Ember.Service.extend({
 
    */
 
-   // Get ALL light groups
+   /**
+    * Returns an object with all light groups
+    *
+    * @method   function
+    * @return   {object}
+    */
+
    getGroups: function() {
 
      return api.groups().then(res => {
@@ -101,6 +171,14 @@ export default Ember.Service.extend({
      });
    },
 
+   /**
+    * Returns various attributes of the group state
+    *
+    * @method   function
+    * @param    {String} groupId [the ID of the group]
+    * @return   {object}
+    */
+
    getGroupInfo: function(groupId) {
 
      return api.getGroup(groupId).then(res => {
@@ -108,6 +186,14 @@ export default Ember.Service.extend({
        return res;
      });
    },
+
+   /**
+    * Toggles the power state for the group
+    *
+    * @method   function
+    * @param    {String} groupId [the group's ID]
+    * @return   {method}
+    */
 
    toggleGroupPower: function(groupId) {
 
@@ -118,12 +204,29 @@ export default Ember.Service.extend({
      }).done();
    },
 
+   /**
+    * Sets the state of the group
+    *
+    * @method   function
+    * @param    {String} groupId [The group's ID]
+    * @param    {Object} state   [An object representing the new state]
+    * @return   {method}
+    */
+
    setGroupState: function(groupId, state) {
 
      return api.setGroupLightState(groupId, state);
    },
 
-   // Rename a light
+   /**
+    * Renames a group
+    *
+    * @method   function
+    * @param    {String} groupId [the ID of the group]
+    * @param    {String} newName [the new name of the group]
+    * @return   {method}
+    */
+
    renameGroup: function(groupId, newName) {
 
      return api.updateGroup(groupId, newName).done();
