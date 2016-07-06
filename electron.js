@@ -29,7 +29,7 @@ app.on('ready', function onReady() {
 
     mainWindow = new BrowserWindow({
         width: 400,
-        height: 335, //650
+        height: 650, //335
         resizable: true,
         maxWidth: 400,
         minWidth: 400,
