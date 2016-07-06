@@ -116,6 +116,7 @@ export default Ember.Component.extend({
    * @param    {String} target  [element target]
    * @return   {undefined}
    */
+
   animateRange: function(currPos, newPos, target) {
 
     Ember.$({position: currPos}).animate({position: newPos}, {
@@ -137,6 +138,7 @@ export default Ember.Component.extend({
      * @method   function
      * @return   {undefined}
      */
+
     togglePower: function() {
 
       let
@@ -162,6 +164,7 @@ export default Ember.Component.extend({
      * @method   function
      * @return   {undefined}
      */
+
     changeColor: function() {
 
       let
@@ -186,6 +189,7 @@ export default Ember.Component.extend({
      * @method   function
      * @return   {undefined}
      */
+
     changeBrightness: function() {
 
       let value = event.target.value,
@@ -201,6 +205,7 @@ export default Ember.Component.extend({
      * @method   function
      * @return   {undefined}
      */
+
     changeSaturation: function() {
 
       let value = event.target.value,
@@ -223,6 +228,7 @@ export default Ember.Component.extend({
      * @param    {String} id      [the id of the light to be updated]
      * @return   {undefined}
      */
+
     changeName: function(newName, id) {
 
       let lights = this.get('lightsService');
@@ -236,49 +242,3 @@ export default Ember.Component.extend({
     }
   }
 });
-
-
-//lights.setState(id, { on: true });
-
-// let
-//     HueApi = hue.HueApi,
-//     hostname = '10.0.1.2',
-//     username = 'mbRWI0ncjZbp2pRH89KeId2-ocSansGrD0eRY12o',
-//     userDescription = 'Huello 2',
-//     api;
-
-// Log id/ipaddress
-//this.get('lights').logBridge();
-
-// api = new HueApi();
-//
-// // create username
-// api.registerUser(hostname, userDescription)
-//   .then(this.get('lights.displayUserResult'))
-//   .fail(this.get('displayError'))
-//   .done();
-
-// Log bridge config
-// api = new HueApi(hostname, username);
-
-// api.getConfig().then(this.get('lights.displayResult')).done();
-//
-// api.getConfig(function(err, config) {
-//
-//     if (err) {
-//       throw err;
-//     }
-//
-//     this.get('lights').displayResult(config);
-// });
-
-// Log full state of bridge
-// api.fullState().then(this.get('lights.displayResult')).done();
-//
-// api.fullState(function(err, config) {
-//   if (err) { throw err; }
-//   this.get('lights').displayResult(config);
-// });
-
-// Log lights state
-// api.lights().then(this.get('lights.displayResult')).done();
