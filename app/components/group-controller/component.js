@@ -57,7 +57,13 @@ export default Ember.Component.extend({
           colorTemp = this.get('colorTemp'),
           groupId = event.target.id,
           lights = this.get('lightsService'),
+          overlay = Ember.$('.overlay'),
+          spinner = Ember.$('.loader'),
           value = event.target.value;
+
+      // Display the overlay/spinner
+      overlay.fadeIn('fast');
+      spinner.fadeIn('fast');
 
       if (colorTemp) {
 
@@ -84,7 +90,12 @@ export default Ember.Component.extend({
 
       let value = event.target.value,
           groupId = event.target.id,
-          lights = this.get('lightsService');
+          lights = this.get('lightsService'),
+          overlay = Ember.$('.overlay'),
+          spinner = Ember.$('.loader');
+
+      overlay.fadeIn('fast');
+      spinner.fadeIn('fast');
 
       lights.setGroupState(groupId, {bri: value});
 
@@ -110,7 +121,12 @@ export default Ember.Component.extend({
           initial = Number(254 / value),
           lights = this.get('lightsService'),
           percentage = (100 / initial) / 100,
-          spectrum = Ember.$('.group-spectrum-bg');
+          spectrum = Ember.$('.group-spectrum-bg'),
+          overlay = Ember.$('.overlay'),
+          spinner = Ember.$('.loader');
+
+      overlay.fadeIn('fast');
+      spinner.fadeIn('fast');
 
       lights.setGroupState(groupId, {sat: value});
 

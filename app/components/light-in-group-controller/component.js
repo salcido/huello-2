@@ -66,45 +66,54 @@ export default Ember.Component.extend({
     let
         lights = this.get('lightsService'),
         id = this.get('light'),
+        overlay = Ember.$('.overlay'),
         positionVal,
-        rangeVal = Ember.$('.powered .range-hue.' + id).val(),
-        spectrum = Ember.$('.powered .individual-spectrum-bg.' + id);
+        hueVal = Ember.$('.powered .range-hue.' + id).val(),
+        satVal = Ember.$('.powered .range-sat.' + id).val(),
+        briVal = Ember.$('.powered .range-bri.' + id).val(),
+        spectrum = Ember.$('.powered .individual-spectrum-bg.' + id),
+        spinner = Ember.$('.loader');
 
-    this.set('lightState', lights.getStatus(id)).then( res => {
 
-      let initial = Number(254 / res.state.sat),
-          percentage = (100 / initial) / 100;
+    // Only update the component if the light is on
+    if (this.get('power')) {
 
-      this.set('power', res.state.on);
+      this.set('lightState', lights.getStatus(id)).then( res => {
 
-      this.set('lightName', res.name);
+        let initial = Number(254 / res.state.sat),
+            percentage = (100 / initial) / 100;
 
-      // use colorTemp max val of 500 if colorTemp is selected
-      positionVal = (this.get('colorTemp') ? res.state.ct : res.state.hue);
+        this.set('power', res.state.on);
 
-      // Animate Hue range when new values are received
-      this.animateRange(rangeVal, positionVal, '.range-hue' + '.' + id);
+        this.set('lightName', res.name);
 
-      // Animate Sat range when new values are received
-      this.animateRange(this.get('sat'), res.state.sat, '.range-sat' + '.' + id);
+        // use colorTemp max val of 500 if colorTemp is selected
+        positionVal = (this.get('colorTemp') ? res.state.ct : res.state.hue);
 
-      // Animate Bri range when new values are received
-      this.animateRange(this.get('bri'), res.state.bri, '.range-bri' + '.' + id);
+        // Animate Hue/Sat/Bri ranges when new values are received
+        this.animateRange(hueVal, positionVal, '.range-hue' + '.' + id);
+        this.animateRange(satVal, res.state.sat, '.range-sat' + '.' + id);
+        this.animateRange(briVal, res.state.bri, '.range-bri' + '.' + id);
 
-      Ember.run.later(() => {
+        Ember.run.later(() => {
 
-        // Update props to new values
-        this.setProperties({
-          hue: res.state.hue,
-          sat: res.state.sat,
-          bri: res.state.bri,
-          ct: res.state.ct
-        });
-      }, 600);
+          // Update props to new values
+          this.setProperties({
+            hue: res.state.hue,
+            sat: res.state.sat,
+            bri: res.state.bri,
+            ct: res.state.ct
+          });
+        }, 600);
 
-      // Fade spectrum to new opacity
-      spectrum.fadeTo('slow', percentage);
-    });
+        // hide the overlay
+        overlay.fadeOut('fast');
+        spinner.fadeOut('fast');
+
+        // Fade spectrum to new opacity
+        spectrum.fadeTo('slow', percentage);
+      });
+    }
   },
 
   /**
