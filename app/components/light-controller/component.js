@@ -4,7 +4,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
-  lightsService: Ember.inject.service('lights'),
+  lightsService: Ember.inject.service(),
 
   actions: {
 

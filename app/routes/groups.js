@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-  lightsService: Ember.inject.service('lights'),
+  lightsService: Ember.inject.service(),
 
   // The id of the group that will be controlled by the Group Controller Component
   currentGroup: 0,

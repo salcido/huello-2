@@ -1,5 +1,6 @@
-
-<div class="light-controller {{if power "powered" "off"}}">
+{{! Extended color light }}
+{{#if extendedLight}}
+<div class="light-controller extended-color-light {{if power "powered" "off"}}">
   <div class="overlay"></div>
       <div class="loader"></div>
   <div class="title-wrap">
@@ -33,3 +34,68 @@
     </div>
   </div>
 </div>
+{{/if}}
+
+{{! Color light }}
+{{#if colorLight}}
+  <div class="light-controller color-light {{if power "powered" "off"}}">
+    <div class="overlay"></div>
+        <div class="loader"></div>
+    <div class="title-wrap">
+      <div class="title">
+        <h4>{{ember-inline-edit value=lightName onSave=(action "changeName" lightName lightId)}}</h4>
+      </div>
+
+    </div>
+
+    <div class="range-wrap">
+      {{! hue }}
+      <div class="range">
+        <label><button {{action "togglePower"}} class="{{if power "powered" "off"}}"></button></label>
+        {{! color spectrum }}
+        <div class="individual-white-bg"></div>
+        <div class="individual-spectrum-bg {{light}}"></div>
+        {{! hue slider }}
+        <input type="range" {{action "changeColor" on="change"}} class="range-hue {{light}}" id={{light}} value={{if colorTemp ct hue}} min={{if colorTemp "154" "1"}} max={{if colorTemp "500" "65280"}} />
+      </div>
+
+      {{! saturation }}
+      <div class="range range-sat">
+        <label>Sat:</label>
+        <input type="range" {{action "changeSaturation" on="change"}} class="range-sat {{light}}" id={{light}} value={{sat}} min="1" max="254"/>
+      </div>
+
+      {{! brightness }}
+      <div class="range range-bri">
+        <label>Bri:</label>
+        <input type="range" {{action "changeBrightness" on="change"}} class="range-bri {{light}}" id={{light}} value={{bri}} min="1" max="254"/>
+      </div>
+    </div>
+  </div>
+{{/if}}
+
+{{! Dimmable light}}
+{{#if dimmableLight}}
+<div class="light-controller dimmable-light {{if power "powered" "off"}}">
+  <div class="overlay"></div>
+      <div class="loader"></div>
+  <div class="title-wrap">
+    <div class="title">
+      <h4>{{ember-inline-edit value=lightName onSave=(action "changeName" lightName lightId)}}</h4>
+    </div>
+
+  </div>
+
+  <div class="range-wrap">
+    {{! hue }}
+    <div class="range">
+      <label><button {{action "togglePower"}} class="{{if power "powered" "off"}}"></button></label>
+      {{! hue slider }}
+      <div class="range range-bri">
+        <label>Bri:</label>
+        <input type="range" {{action "changeBrightness" on="change"}} class="range-bri {{light}}" id={{light}} value={{bri}} min="1" max="254"/>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}

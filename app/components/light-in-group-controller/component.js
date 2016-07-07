@@ -5,7 +5,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 
   // Light service injection
-  lightsService: Ember.inject.service('lights'),
+  lightsService: Ember.inject.service(),
 
   // The id of the light
   lightId: null,
@@ -31,6 +31,17 @@ export default Ember.Component.extend({
   // The type of light (e.g. Dimmable Light, Color Light, etc...)
   type: null,
 
+  /**
+   * The following 4 properties will determine which type of template to render
+   */
+  dimmableLight: Ember.computed.equal('type', 'Dimmable light'),
+
+  colorTempLight: Ember.computed.equal('type', 'Color temperature light'),
+
+  colorLight: Ember.computed.equal('type', 'Color light'),
+
+  extendedLight: Ember.computed.equal('type', 'Extended color light'),
+
   // Assign the initial values of each light
   init: function() {
 
@@ -44,9 +55,6 @@ export default Ember.Component.extend({
 
     // set range positions
     this.set('lightState', lights.getStatus(id)).then( res => {
-
-      let initial = Number(254 / res.state.sat),
-          percentage = (100 / initial) / 100;
 
       this.setProperties({
         power: res.state.on,
@@ -78,6 +86,7 @@ export default Ember.Component.extend({
     // Only update the component if the light is on
     this.set('lightState', lights.getStatus(id)).then( res => {
 
+      // These vars are used to tell the specturm what percentage to fade to
       let initial = Number(254 / res.state.sat),
           percentage = (100 / initial) / 100;
 

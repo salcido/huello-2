@@ -15,7 +15,7 @@ export default Ember.Route.extend({
    * @return   {undefined}
    */
 
-  lightsService: Ember.inject.service('lights'),
+  lightsService: Ember.inject.service(),
 
   /**
    * Registers a new user on the hub

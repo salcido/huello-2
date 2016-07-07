@@ -3,13 +3,17 @@ import Ember from 'ember';
 
 /**
  * Group Controller
+ *
  * @method   extend
+ * @return   {undefined}
  */
 
 export default Ember.Component.extend({
 
-  lightsService: Ember.inject.service('lights'),
+  // Inject the lights service
+  lightsService: Ember.inject.service(),
 
+  // hide the mode-overlay after updating
   didReceiveAttrs: function() {
 
     let modeOverlay = Ember.$('.mode-overlay');
