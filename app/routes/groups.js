@@ -24,6 +24,7 @@ export default Ember.Route.extend({
    *
    * @method model
    */
+
   model: function() {
 
     let lights = this.get('lightsService'),
@@ -45,9 +46,10 @@ export default Ember.Route.extend({
    * @param    {object}        model      [the model]
    * @return   {undefined}
    */
+
   setupController(controller, model) {
 
-    console.log('model from route', model);
+    console.info('[Huello 2] Model:', model);
 
     this._super(...arguments);
 
@@ -62,7 +64,7 @@ export default Ember.Route.extend({
       return light.id;
     });
 
-    // add state object into 'All Lights' group because Philips is inconsistant with their group properties
+    // Add state object into 'All Lights' group because Philips is inconsistant with their group properties
     for (let i = 0; i < model.lights.lights.length; i++) {
 
       if (model.lights.lights[i].state.on) {
@@ -96,6 +98,7 @@ export default Ember.Route.extend({
      * @param    {number} value [the group number that will be controlled by the group controller component]
      * @return   {undefined}
      */
+
     updateModel: function(value) {
 
       value = value || this.get('currentGroup');
@@ -115,6 +118,7 @@ export default Ember.Route.extend({
      * @param    {boolean} value [whether to use color temperature values]
      * @return   {undefined}
      */
+
     setColorTemp: function(value) {
 
       this.set('colorTemp', value);

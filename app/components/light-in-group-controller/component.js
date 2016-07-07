@@ -31,6 +31,9 @@ export default Ember.Component.extend({
   // spectrum-bg saturation opacity
   satOpacity: null,
 
+  // The type of light (e.g. Dimmable Light, Color Light, etc...)
+  type: null,
+
   // Assign the initial values of each light
   init: function() {
 
@@ -55,7 +58,8 @@ export default Ember.Component.extend({
         bri: res.state.bri,
         sat: res.state.sat,
         ct: res.state.ct,
-        satOpacity: percentage
+        satOpacity: percentage,
+        type: res.type
       });
     });
   },
@@ -76,14 +80,14 @@ export default Ember.Component.extend({
 
 
     // Only update the component if the light is on
-    if (this.get('power')) {
+    this.set('lightState', lights.getStatus(id)).then( res => {
 
-      this.set('lightState', lights.getStatus(id)).then( res => {
+      let initial = Number(254 / res.state.sat),
+          percentage = (100 / initial) / 100;
 
-        let initial = Number(254 / res.state.sat),
-            percentage = (100 / initial) / 100;
+      this.set('power', res.state.on);
 
-        this.set('power', res.state.on);
+      if (this.get('power')) {
 
         this.set('lightName', res.name);
 
@@ -112,8 +116,8 @@ export default Ember.Component.extend({
 
         // Fade spectrum to new opacity
         spectrum.fadeTo('slow', percentage);
-      });
-    }
+      }
+    });
   },
 
   /**

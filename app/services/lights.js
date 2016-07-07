@@ -99,8 +99,6 @@ export default Ember.Service.extend({
 
     return api.lightStatus(id).then(res => {
 
-      //console.log('Light Status: ', res.state);
-
       return res;
     });
   },
