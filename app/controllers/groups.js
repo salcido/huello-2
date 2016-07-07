@@ -7,6 +7,8 @@ export default Ember.Controller.extend({
     changeMode: function(value) {
 
       this.send('updateModel', value.id);
+
+      Ember.$('.mode-overlay').fadeIn('fast');
     }
   }
 });

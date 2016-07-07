@@ -10,6 +10,19 @@ export default Ember.Component.extend({
 
   lightsService: Ember.inject.service('lights'),
 
+  didReceiveAttrs: function() {
+
+    let modeOverlay = Ember.$('.mode-overlay');
+
+    if (modeOverlay) {
+
+      Ember.run.later(function() {
+
+        modeOverlay.fadeOut('fast');
+      }, 300);
+    }
+  },
+
   actions: {
 
     /**
@@ -27,6 +40,7 @@ export default Ember.Component.extend({
       lights.toggleGroupPower(groupId);
 
       Ember.run.later(() => {
+
           this.sendAction('update');
       }, 500);
     },

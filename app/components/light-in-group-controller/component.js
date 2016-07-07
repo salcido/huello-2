@@ -28,9 +28,6 @@ export default Ember.Component.extend({
   // sat value
   sat: null,
 
-  // spectrum-bg saturation opacity
-  satOpacity: null,
-
   // The type of light (e.g. Dimmable Light, Color Light, etc...)
   type: null,
 
@@ -58,7 +55,6 @@ export default Ember.Component.extend({
         bri: res.state.bri,
         sat: res.state.sat,
         ct: res.state.ct,
-        satOpacity: percentage,
         type: res.type
       });
     });

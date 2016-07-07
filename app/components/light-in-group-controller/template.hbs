@@ -15,7 +15,7 @@
       <label><button {{action "togglePower"}} class="{{if power "powered" "off"}}"></button></label>
       {{! color spectrum }}
       <div class="individual-white-bg"></div>
-      <div class="individual-spectrum-bg {{light}} {{if colorTemp "color-temp" ""}}" style="opacity:{{satOpacity}}"></div>
+      <div class="individual-spectrum-bg {{light}} {{if colorTemp "color-temp" ""}}"></div>
       {{! hue slider }}
       <input type="range" {{action "changeColor" on="change"}} class="range-hue {{light}} {{if colorTemp "color-temp" ""}}" id={{light}} value={{if colorTemp ct hue}} min={{if colorTemp "154" "1"}} max={{if colorTemp "500" "65280"}} />
     </div>

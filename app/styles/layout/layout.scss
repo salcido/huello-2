@@ -49,6 +49,40 @@ body {
   z-index: 10;
 }
 
+.mode-overlay {
+  background: $darkmineshaft;
+  height: 100%;
+  width: 400px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  opacity: 0.75;
+  display: none;
+
+  .mode-loader {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: url('img/loader.png');//linear-gradient(to right, $white 10%, rgba(255, 255, 255, 0) 42%);
+    position: absolute;
+    animation: load3 1.4s infinite linear;
+    transform: translateZ(0);
+    background-size: cover;
+    top: 50%;
+    left: 50%;
+  }
+
+  @keyframes load3 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
 .shadow {
   background: url('img/shadow.png');
   background-size: cover;
