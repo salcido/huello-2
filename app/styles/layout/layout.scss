@@ -58,13 +58,13 @@ body {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: url('img/loader.png');//linear-gradient(to right, $white 10%, rgba(255, 255, 255, 0) 42%);
+    background: url('img/loader.png');
     position: absolute;
     animation: load3 1.4s infinite linear;
     transform: translateZ(0);
     background-size: cover;
-    top: 50%;
-    left: 50%;
+    top: 48%;
+    left: 48%;
   }
 
   @keyframes load3 {

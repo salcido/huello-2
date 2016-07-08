@@ -25,15 +25,15 @@
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      background: url('img/loader.png');//linear-gradient(to right, $white 10%, rgba(255, 255, 255, 0) 42%);
+      background: url('img/loader.png');
       position: absolute;
       animation: load3 1.4s infinite linear;
       transform: translateZ(0);
       z-index: 4;
       background-size: cover;
       display: none;
-      top: 50%;
-      left: 50%;
+      top: 48%;
+      left: 48%;
     }
 
     @keyframes load3 {
@@ -108,7 +108,6 @@
       -webkit-appearance: none;
       background-size: cover;
       background: #292929;
-      //background: linear-gradient(to right,  #ffffff 1%,#ffa801 100%);
       border-radius: 3px;
       display: block;
       height: 28px;
@@ -160,7 +159,7 @@
   }
 
   input.range-hue {
-    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    -webkit-appearance: none;
     background: transparent;
     cursor: pointer;
     left: 36px;
@@ -209,7 +208,7 @@
   input.range-bri::-webkit-slider-runnable-track {
     -webkit-appearance: none;
     background: $mineshaft;
-    box-shadow: inset 0px 0px px rgba(0, 0, 0, 0.5); //0px 0px 1px #0d0d0d;
+    box-shadow: inset 0px 0px px rgba(0, 0, 0, 0.5);
     cursor: pointer;
     height: 5px;
     width: 100%;

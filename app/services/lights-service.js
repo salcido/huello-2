@@ -125,13 +125,26 @@ export default Ember.Service.extend({
    * @return   {method}
    */
 
-  togglePower: function(id) {
+  togglePower: function(id, context, cb) {
 
     this.getStatus(id).then(res => {
 
-      return res.state.on ? this.setState(id, {on: false}) : this.setState(id, {on: true});
+      if (res.state.on) {
 
-    }).done();
+        this.setState(id, {on: false});
+
+        return context.setProperties({
+                  power: false,
+                  sat: 0,
+                  bri: 0,
+                  hue: 0
+                });
+
+      } else {
+
+        return this.setState(id, {on: true});
+      }
+    });
   },
 
   /**
