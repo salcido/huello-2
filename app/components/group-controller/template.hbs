@@ -1,25 +1,37 @@
-<div class="group-controller">
+<div class="group-controller {{if group.state.any_on "powered" "off"}}">
 
   <div class="logo">
   </div>
 
     <button {{action "togglePower"}} class="{{if group.state.any_on "powered" "off"}} group-power"></button>
 
-    <div class="color-temp-wrap">
+    <div class="color-temp-box-wrap">
       <label>Temp:</label>
       <input type="checkbox" />
       {{input type="checkbox" name="color-temp" checked=colorTemp change=(action "toggleColorTemp")}}
     </div>
 
     <div class="range-wrap">
-      {{! hue }}
+
       <div class="range">
         <label class="label-color">Color:</label>
-        <div class="group-brightness-wrap">
-          <div class="white-bg"></div>
-          <div class="group-spectrum-bg {{if colorTemp "color-temp" ""}}"></div>
+
+        {{! color temperature }}
+        <div class="{{if colorTemp "" "hide"}}">
+          <div class="group-brightness-wrap">
+            <div class="group-spectrum-bg color-temp"></div>
+          </div>
+          <input type="range" {{action "changeColor" on="change"}} class="range-hue color-temp" id={{group.id}} value={{group.state.ct}} min="154" max="500"/>
         </div>
-        <input type="range" {{action "changeColor" on="change"}} class="range-hue {{if colorTemp "color-temp" ""}}" id={{group.id}} value={{group.state.hue}} min={{if colorTemp "154" "1"}} max={{if colorTemp "500" "65280"}}/>
+
+        {{! hue }}
+        <div class="{{if colorTemp "hide" ""}}">
+          <div class="group-brightness-wrap">
+            <div class="white-bg"></div>
+            <div class="group-spectrum-bg"></div>
+          </div>
+          <input type="range" {{action "changeColor" on="change"}} class="range-hue" id={{group.id}} value={{group.state.hue}} min="1" max="65280"/>
+        </div>
       </div>
 
       {{! saturation }}

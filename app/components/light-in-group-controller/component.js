@@ -141,9 +141,9 @@ export default Ember.Component.extend({
   updateRanges: function() {
 
     let
-        positionVal = (this.get('colorTemp') ? this.get('ct') : this.get('hue')),
         id = this.get('light'),
-        hueVal = Ember.$('.powered .range-hue.' + id).val(),
+        hueVal = Ember.$('.powered .range-hue.hue.' + id).val(),
+        ctVal = Ember.$('.powered .range-hue.color-temp.' + id).val(),
         satVal = Ember.$('.powered .range-sat.' + id).val(),
         briVal = Ember.$('.powered .range-bri.' + id).val(),
         spectrum = Ember.$('.powered .individual-spectrum-bg.' + id),
@@ -155,7 +155,8 @@ export default Ember.Component.extend({
 
 
     // Animate ranges
-    this.animateRange(hueVal, positionVal, '.range-hue' + '.' + id);
+    this.animateRange(hueVal, this.get('hue'), '.range-hue' + '.' + id);
+    this.animateRange(ctVal, this.get('ct'), '.range-hue.color-temp' + '.' + id);
     this.animateRange(satVal, this.get('sat'), '.range-sat' + '.' + id);
     this.animateRange(briVal, this.get('bri'), '.range-bri' + '.' + id);
 
@@ -191,22 +192,14 @@ export default Ember.Component.extend({
      * @return   {undefined}
      */
 
-    changeColor: function() {
+    changeColor: function(event) {
 
       let
-          colorTemp = this.get('colorTemp'),
           id = event.target.id,
-          lights = this.get('lightsService'),
-          value = event.target.value;
+          value = event.target.value,
+          lights = this.get('lightsService');
 
-      if (colorTemp) {
-
-        lights.setState(id, {ct: value});
-
-      } else {
-
-        lights.setState(id, {hue: value});
-      }
+      lights.setState(id, {hue: value, ct: value});
     },
 
     /**
@@ -216,14 +209,17 @@ export default Ember.Component.extend({
      * @return   {undefined}
      */
 
-    changeBrightness: function() {
+    changeBrightness: function(event) {
 
-      let value = event.target.value,
+      let
+          value = event.target.value,
           id = event.target.id,
-          brightness = Ember.$('.brightness-wrap.' + id),
           briInitial = Number(254 / value),
           briPercentage = ( (100 / briInitial) / 100 < 0.07 ? 0.07 : (100 / briInitial) / 100 ),
+          brightness = Ember.$('.brightness-wrap.' + id),
+
           lights = this.get('lightsService');
+
 
       lights.setState(id, {bri: value});
 
@@ -237,9 +233,10 @@ export default Ember.Component.extend({
      * @return   {undefined}
      */
 
-    changeSaturation: function() {
+    changeSaturation: function(event) {
 
-      let value = event.target.value,
+      let
+          value = event.target.value,
           id = event.target.id,
           initial = Number(254 / value),
           percentage = (100 / initial) / 100,

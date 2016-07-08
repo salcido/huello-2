@@ -31,7 +31,7 @@
     }
   }
 
-  .color-temp-wrap {
+  .color-temp-box-wrap {
     position: absolute;
     top: 111px;
     left: 317px;
@@ -79,19 +79,6 @@
         margin-top: 10px;
         outline: none;
         width: 10px;
-    }
-
-    &.color-temp::-webkit-slider-runnable-track {
-      -webkit-appearance: none;
-      margin: 10px 0;
-      width: 100%;
-      background-size: cover;
-      background: linear-gradient(to right,  #ffffff 1%,#ffa801 100%);
-      border-radius: 3px;
-      display: block;
-      height: 30px;
-      margin-top: -4px;
-      width: 320px;
     }
   }
 
@@ -217,6 +204,32 @@ input[type=checkbox] {
   margin-top: -4px;
   position: fixed;
   z-index: 0;
+
+  &.color-temp {
+    background: linear-gradient(to right,  #ffffff 1%,#ffa801 100%);
+  }
+}
+
+// off state
+.group-controller {
+  &.off {
+    .group-spectrum-bg {
+      margin: 10px 0;
+      width: 360px;
+      background-size: cover;
+      background: $mineshaft;
+      border-radius: 3px;
+      display: block;
+      height: 30px;
+      margin-top: -4px;
+      position: fixed;
+      z-index: 0;
+    }
+
+    .white-bg {
+      display: none;
+    }
+  }
 }
 
 input.range-sat {

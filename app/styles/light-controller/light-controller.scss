@@ -60,19 +60,6 @@
       width: 267px;
       z-index: 3;
     }
-
-    input.color-temp::-webkit-slider-runnable-track {
-      -webkit-appearance: none;
-      background-size: cover;
-      background: linear-gradient(to right,  #ffffff 1%,#ffa801 100%);
-      border-radius: 3px;
-      display: block;
-      height: 28px;
-      margin-top: -4px;
-      margin: 10px 0;
-      width: 100%;
-      width: 267px;
-    }
   }
 
   &.off {

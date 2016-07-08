@@ -4,7 +4,8 @@ import Ember from 'ember';
 /**
  * Group Controller
  *
- * @method   extend
+ * @constructor
+ * @extends App.Component
  * @return   {undefined}
  */
 
@@ -146,14 +147,18 @@ export default Ember.Component.extend({
           satPercentage = (100 / satInitial) / 100,
           spectrum = Ember.$('.group-spectrum-bg'),
           overlay = Ember.$('.overlay'),
-          spinner = Ember.$('.loader');
+          spinner = Ember.$('.loader'),
+          colorTemp = this.get('colorTemp');
 
       overlay.fadeIn('fast');
       spinner.fadeIn('fast');
 
       lights.setGroupState(groupId, {sat: value});
 
-      spectrum.fadeTo('slow', satPercentage);
+      if (!colorTemp) {
+
+        spectrum.fadeTo('slow', satPercentage);
+      }
 
       Ember.run.later(() => {
           this.sendAction('update');
