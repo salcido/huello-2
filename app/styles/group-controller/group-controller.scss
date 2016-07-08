@@ -166,40 +166,6 @@
     display: block;
     background-size: cover;
   }
-
-  .ember-inline-edit {
-    position: relative;
-    width: 200px;
-
-    button {
-      &.ember-inline-edit-save {
-        background: $atlantis;
-        background-image: linear-gradient(to bottom, $atlantis, $christi);
-        border-radius: 5px;
-        box-shadow: 0px 1px 3px $dovegray;
-        color: $white;
-        padding: 5px 10px 5px 10px;
-        text-decoration: none;
-        border: none;
-        position: absolute;
-        right: -60px;
-        top: -2px;
-
-        &.ember-inline-edit-save:hover {
-          background: $atlantis;
-          background-image: linear-gradient(to bottom, $atlantis, $pistachio);
-          text-decoration: none;
-        }
-      }
-    }
-
-    .ember-inline-edit-input {
-      font-size: 13px;
-      font-weight: bold;
-      outline: none;
-      border: none;
-    }
-  }
 }
 
 .bg-logo {
