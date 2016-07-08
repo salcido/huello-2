@@ -121,7 +121,10 @@ export default Ember.Route.extend({
 
       this.set('currentScene', scene.sceneId);
 
-      this.refresh();
+      return Ember.run.later(() => {
+
+        this.refresh();
+      }, 5000);
     },
 
     /**

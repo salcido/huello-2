@@ -87,12 +87,14 @@ export default Ember.Component.extend({
 
     this.set('lightState', lights.getStatus(id)).then( res => {
 
+      // Set power state
       this.set('power', res.state.on);
+
+      // Set new name value (if necessary)
+      this.set('lightName', res.name);
 
       // Only update the component if the light is on
       if (this.get('power')) {
-
-        this.set('lightName', res.name);
 
         this.setProperties({
           hue: res.state.hue,
@@ -101,11 +103,11 @@ export default Ember.Component.extend({
           ct: res.state.ct
         });
 
+        this.updateRanges();
+
         // hide the overlay
         overlay.fadeOut('fast');
         spinner.fadeOut('fast');
-
-        this.updateRanges();
 
       } else {
 
@@ -192,14 +194,15 @@ export default Ember.Component.extend({
      * @return   {undefined}
      */
 
-    changeColor: function(event) {
+    changeColor: function() {
 
       let
           id = event.target.id,
-          value = event.target.value,
+          value = event.target.value || null,
+          colorTemp = this.get('colorTemp'),
           lights = this.get('lightsService');
 
-      lights.setState(id, {hue: value, ct: value});
+      return colorTemp ? lights.setState(id, {ct: value}) : lights.setState(id, {hue: value});
     },
 
     /**
@@ -209,7 +212,7 @@ export default Ember.Component.extend({
      * @return   {undefined}
      */
 
-    changeBrightness: function(event) {
+    changeBrightness: function() {
 
       let
           value = event.target.value,
@@ -233,7 +236,7 @@ export default Ember.Component.extend({
      * @return   {undefined}
      */
 
-    changeSaturation: function(event) {
+    changeSaturation: function() {
 
       let
           value = event.target.value,
