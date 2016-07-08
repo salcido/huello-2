@@ -51,20 +51,20 @@ body {
   top: 0;
   left: 0;
   z-index: 10;
-  opacity: 0.75;
+  opacity: 0.8;
   display: none;
 
   .mode-loader {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background: url('img/loader.png');
     position: absolute;
     animation: load3 1.4s infinite linear;
     transform: translateZ(0);
     background-size: cover;
-    top: 48%;
-    left: 48%;
+    top: 46.5%;
+    left: 46.5%;
   }
 
   @keyframes load3 {
