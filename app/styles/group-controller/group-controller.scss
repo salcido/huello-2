@@ -5,6 +5,7 @@
   width: 358px;
   height: 254px;
   position: fixed;
+
   h4 {
     margin: 0 0 10px 0;
   }
@@ -130,7 +131,7 @@
     &.group-power {
       position: absolute;
       top: 20px;
-      left: 350px;
+      left: 351px;
     }
 
     &.off {
@@ -251,4 +252,12 @@ input[type=checkbox] {
   margin-top: -4px;
   position: fixed;
   z-index: 0;
+}
+
+input.range-sat {
+  margin-left: 0;
+}
+
+input.range-bri {
+  margin-left: 1px;
 }

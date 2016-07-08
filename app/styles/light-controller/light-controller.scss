@@ -4,10 +4,6 @@
   width: 338px;
   position: relative;
 
-  h4 {
-    //letter-spacing: 0.5px;
-  }
-
   &.powered {
     background-color: $tundora;
 
@@ -56,7 +52,6 @@
     input.range-hue::-webkit-slider-runnable-track {
       -webkit-appearance: none;
       background-size: cover;
-      //background: linear-gradient(to right,  #ff0000 0%,#ff9600 10%,#ffda46 20%,#fff710 30%,#a2ff10 40%,#ffffff 50%,#f0d9fe 60%,#7c3cff 70%,#ff00e4 80%,#ff006c 90%,#ff0000 100%);
       border-radius: 3px;
       display: block;
       height: 28px;
@@ -98,7 +93,7 @@
       opacity: 0.3;
       -webkit-appearance: none;
       background-size: cover;
-      background: linear-gradient(to right,  #ff0000 0%,#ff9600 10%,#ffda46 20%,#fff710 30%,#a2ff10 40%,#ffffff 50%,#f0d9fe 60%,#7c3cff 70%,#ff00e4 80%,#ff006c 90%,#ff0000 100%);
+      background: #292929;
       border-radius: 3px;
       display: block;
       height: 28px;
@@ -112,7 +107,8 @@
       opacity: 0.3;
       -webkit-appearance: none;
       background-size: cover;
-      background: linear-gradient(to right,  #ffffff 1%,#ffa801 100%);
+      background: #292929;
+      //background: linear-gradient(to right,  #ffffff 1%,#ffa801 100%);
       border-radius: 3px;
       display: block;
       height: 28px;
@@ -125,8 +121,7 @@
     input.range-sat::-webkit-slider-runnable-track,
     input.range-bri::-webkit-slider-runnable-track {
       -webkit-appearance: none;
-      background: $darkmineshaft;
-      box-shadow: inset 0px 0px px rgba(0, 0, 0, 0.5); //0px 0px 1px #0d0d0d;
+      background: #333;
       cursor: pointer;
       height: 5px;
       width: 100%;
@@ -289,34 +284,19 @@
       outline: none;
     }
   }
-}
 
-.individual-white-bg {
-  margin: 10px 0;
-  width: 300px;
-  background-size: cover;
-  background: white;
-  border-radius: 3px;
-  display: block;
-  height: 28px;
-  margin-top: -4px;
-  position: absolute;
-  top: 5px;
-  left: 36px;
-  z-index: 2;
-}
-
-.individual-spectrum-bg {
-  margin: 10px 0;
-  width: 300px;
-  background-size: cover;
-  background: linear-gradient(to right,  #ff0000 0%,#ff9600 10%,#ffda46 20%,#fff710 30%,#a2ff10 40%,#ffffff 50%,#f0d9fe 60%,#7c3cff 70%,#ff00e4 80%,#ff006c 90%,#ff0000 100%);
-  border-radius: 3px;
-  display: block;
-  height: 28px;
-  margin-top: -4px;
-  position: absolute;
-  top: 5px;
-  left: 36px;
-  z-index: 3;
+  .individual-white-bg {
+    margin: 10px 0;
+    width: 300px;
+    background-size: cover;
+    background: white;
+    border-radius: 3px;
+    display: block;
+    height: 28px;
+    margin-top: -4px;
+    position: absolute;
+    top: 5px;
+    left: 36px;
+    z-index: 2;
+  }
 }
