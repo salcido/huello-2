@@ -4,7 +4,6 @@
     border: 1px solid $darkmineshaft;
     padding: 11px 30px;
     width: 338px;
-    height: 80px;
     position: relative;
 
     &.powered {
@@ -28,7 +27,7 @@
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        background: url('img/loader.png');//linear-gradient(to right, $white 10%, rgba(255, 255, 255, 0) 42%);
+        background: url('img/loader.png');
         position: absolute;
         animation: load3 1.4s infinite linear;
         transform: translateZ(0);
@@ -51,19 +50,91 @@
       h4 {
         text-shadow: 0px 1px 1px $darkmineshaft;
       }
+
+      input.range-hue::-webkit-slider-runnable-track {
+        -webkit-appearance: none;
+        background-size: cover;
+        border-radius: 3px;
+        display: block;
+        height: 28px;
+        margin-top: -4px;
+        margin: 10px 0;
+        width: 267px;
+        z-index: 3;
+      }
+
+      input.color-temp::-webkit-slider-runnable-track {
+        -webkit-appearance: none;
+        background-size: cover;
+        background: linear-gradient(to right,  #ffffff 1%,#ffa801 100%);
+        border-radius: 3px;
+        display: block;
+        height: 28px;
+        margin-top: -4px;
+        margin: 10px 0;
+        width: 100%;
+        width: 267px;
+      }
     }
 
     &.off {
       background-color: $mineshaft;
 
+      input.range-hue::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        border-bottom: 14px solid $mineshaft;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        height: 20px;
+        margin-top: 8px;
+        outline: none;
+        width: 10px;
+      }
+
+      input.range-hue::-webkit-slider-runnable-track {
+        opacity: 0.3;
+        -webkit-appearance: none;
+        background-size: cover;
+        //box-shadow: inset 0px 0px px rgba(0, 0, 0, 0.5); //0px 0px 1px #0d0d0d;
+        background: #292929;
+        //linear-gradient(to right,  #ff0000 0%,#ff9600 10%,#ffda46 20%,#fff710 30%,#a2ff10 40%,#ffffff 50%,#f0d9fe 55%, #195aff 60%, #7c3cff 70%,#ff00e4 80%,#ff006c 90%,#ff0000 100%);
+        border-radius: 3px;
+        display: block;
+        height: 28px;
+        margin-top: -4px;
+        margin: 10px 0;
+        width: 100%;
+        width: 267px;
+      }
+
+      input.color-temp::-webkit-slider-runnable-track {
+        opacity: 0.3;
+        -webkit-appearance: none;
+        background-size: cover;
+        background: #292929;
+        //background: linear-gradient(to right,  #ffffff 1%,#ffa801 100%);
+        border-radius: 3px;
+        display: block;
+        height: 28px;
+        margin-top: -4px;
+        margin: 10px 0;
+        width: 100%;
+        width: 267px;
+      }
+
+      input.range-sat::-webkit-slider-runnable-track,
       input.range-bri::-webkit-slider-runnable-track {
         -webkit-appearance: none;
-        background: $darkmineshaft;
-        box-shadow: inset 0px 0px px rgba(0, 0, 0, 0.5); //0px 0px 1px #0d0d0d;
+        background: #333;
         cursor: pointer;
         height: 5px;
         width: 100%;
         border: none;
+      }
+
+      .individual-white-bg,
+      .individual-spectrum-bg {
+        display: none;
       }
 
       label,
@@ -79,25 +150,62 @@
     label {
       display: inline-block;
       font-weight: bold;
+      margin-right: 5px;
       font-size: 13px;
     }
 
     .range {
-      position: absolute;
-      display: inline-block;
-      width: 294px;
+      position: relative;
+    }
 
-      &.range-bri {
-        margin-top: -3px;
+    input {
+      width: 88%;
+      outline: none;
+    }
+
+    input.range-hue {
+      -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+      background: transparent;
+      cursor: pointer;
+      left: 36px;
+      position: absolute;
+      top: -9px;
+      width: 300px;
+
+      &::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          border-bottom: 14px solid $tundora;
+          border-left: 7px solid transparent;
+          border-right: 7px solid transparent;
+          height: 20px;
+          margin-top: 8px;
+          outline: none;
+          width: 10px;
       }
     }
 
-    input.range-bri {
-      -webkit-appearance: none;
+    input.range-hue:focus {
       outline: none;
-      width: 100%;
     }
 
+    input.range-hue,
+    input.range-bri,
+    input.range-sat {
+      -webkit-appearance: none;
+      outline: none;
+      margin: 0;
+    }
+
+    .range-sat {
+      margin-top: 12px;
+      margin-bottom: 10px;
+    }
+
+    .range-bri {
+      margin: 10px 0;
+    }
+
+    input.range-sat::-webkit-slider-runnable-track,
     input.range-bri::-webkit-slider-runnable-track {
       -webkit-appearance: none;
       background: $mineshaft;
@@ -108,6 +216,7 @@
       border: none;
     }
 
+    input.range-sat::-webkit-slider-thumb,
     input.range-bri::-webkit-slider-thumb {
       margin-top: -5px;
     }
@@ -176,4 +285,19 @@
       }
     }
   }
+}
+
+.dimmable-bg {
+  margin: 10px 0;
+  width: 300px;
+  background-size: cover;
+  background: $lemonchiffon;
+  border-radius: 3px;
+  display: block;
+  height: 28px;
+  margin-top: -4px;
+  position: absolute;
+  top: 5px;
+  left: 36px;
+  z-index: 2;
 }

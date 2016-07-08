@@ -80,6 +80,7 @@ export default Ember.Component.extend({
         satVal = Ember.$('.powered .range-sat.' + id).val(),
         briVal = Ember.$('.powered .range-bri.' + id).val(),
         spectrum = Ember.$('.powered .individual-spectrum-bg.' + id),
+        brightness = Ember.$('.powered .brightness-wrap.' + id),
         spinner = Ember.$('.loader');
 
 
@@ -87,8 +88,11 @@ export default Ember.Component.extend({
     this.set('lightState', lights.getStatus(id)).then( res => {
 
       // These vars are used to tell the specturm what percentage to fade to
-      let initial = Number(254 / res.state.sat),
-          percentage = (100 / initial) / 100;
+      let
+          briInitial = Number(254 / res.state.bri),
+          briPercentage = ( (100 / briInitial) / 100 < 0.07 ? 0.07 : (100 / briInitial) / 100 ),
+          satInitial = Number(254 / res.state.sat),
+          satPercentage = (100 / satInitial) / 100;
 
       this.set('power', res.state.on);
 
@@ -120,7 +124,8 @@ export default Ember.Component.extend({
         spinner.fadeOut('fast');
 
         // Fade spectrum to new opacity
-        spectrum.fadeTo('slow', percentage);
+        spectrum.fadeTo('slow', satPercentage);
+        brightness.fadeTo('slow', briPercentage);
       }
     });
   },
@@ -212,9 +217,14 @@ export default Ember.Component.extend({
 
       let value = event.target.value,
           id = event.target.id,
+          brightness = Ember.$('.brightness-wrap.' + id),
+          briInitial = Number(254 / value),
+          briPercentage = ( (100 / briInitial) / 100 < 0.07 ? 0.07 : (100 / briInitial) / 100 ),
           lights = this.get('lightsService');
 
       lights.setState(id, {bri: value});
+
+      brightness.fadeTo('slow', briPercentage);
     },
 
     /**

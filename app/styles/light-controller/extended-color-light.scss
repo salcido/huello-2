@@ -95,7 +95,9 @@
         opacity: 0.3;
         -webkit-appearance: none;
         background-size: cover;
-        background: linear-gradient(to right,  #ff0000 0%,#ff9600 10%,#ffda46 20%,#fff710 30%,#a2ff10 40%,#ffffff 50%,#f0d9fe 60%,#7c3cff 70%,#ff00e4 80%,#ff006c 90%,#ff0000 100%);
+        //box-shadow: inset 0px 0px px rgba(0, 0, 0, 0.5); //0px 0px 1px #0d0d0d;
+        background: #292929;
+        //linear-gradient(to right,  #ff0000 0%,#ff9600 10%,#ffda46 20%,#fff710 30%,#a2ff10 40%,#ffffff 50%,#f0d9fe 55%, #195aff 60%, #7c3cff 70%,#ff00e4 80%,#ff006c 90%,#ff0000 100%);
         border-radius: 3px;
         display: block;
         height: 28px;
@@ -109,7 +111,8 @@
         opacity: 0.3;
         -webkit-appearance: none;
         background-size: cover;
-        background: linear-gradient(to right,  #ffffff 1%,#ffa801 100%);
+        background: #292929;
+        //background: linear-gradient(to right,  #ffffff 1%,#ffa801 100%);
         border-radius: 3px;
         display: block;
         height: 28px;
@@ -122,8 +125,7 @@
       input.range-sat::-webkit-slider-runnable-track,
       input.range-bri::-webkit-slider-runnable-track {
         -webkit-appearance: none;
-        background: $darkmineshaft;
-        box-shadow: inset 0px 0px px rgba(0, 0, 0, 0.5); //0px 0px 1px #0d0d0d;
+        background: #333;
         cursor: pointer;
         height: 5px;
         width: 100%;

@@ -1,13 +1,8 @@
 <div class="group-controller">
+
   <div class="logo">
   </div>
 
-    {{!-- <div class="title-wrap">
-      <div class="title">
-        <h4>{{ember-inline-edit value=group.name onSave=(action "changeGroupName" group.name group.id)}}</h4>
-      </div>
-
-    </div> --}}
     <button {{action "togglePower"}} class="{{if group.state.any_on "powered" "off"}} group-power"></button>
 
     <div class="color-temp-wrap">
@@ -20,8 +15,10 @@
       {{! hue }}
       <div class="range">
         <label class="label-color">Color:</label>
-        <div class="white-bg"></div>
-        <div class="group-spectrum-bg {{if colorTemp "color-temp" ""}}"></div>
+        <div class="group-brightness-wrap">
+          <div class="white-bg"></div>
+          <div class="group-spectrum-bg {{if colorTemp "color-temp" ""}}"></div>
+        </div>
         <input type="range" {{action "changeColor" on="change"}} class="range-hue {{if colorTemp "color-temp" ""}}" id={{group.id}} value={{group.state.hue}} min={{if colorTemp "154" "1"}} max={{if colorTemp "500" "65280"}}/>
       </div>
 

@@ -109,6 +109,9 @@ export default Ember.Component.extend({
       let value = event.target.value,
           groupId = event.target.id,
           lights = this.get('lightsService'),
+          brightness = Ember.$('.group-brightness-wrap'),
+          briInitial = Number( 254 / value ),
+          briPercentage = ( (100 / briInitial) / 100 < 0.07 ? 0.07 : (100 / briInitial) / 100 ),
           overlay = Ember.$('.overlay'),
           spinner = Ember.$('.loader');
 
@@ -116,6 +119,8 @@ export default Ember.Component.extend({
       spinner.fadeIn('fast');
 
       lights.setGroupState(groupId, {bri: value});
+
+      brightness.fadeTo('slow', briPercentage);
 
       Ember.run.later(() => {
 
@@ -136,9 +141,9 @@ export default Ember.Component.extend({
       let
           value = event.target.value,
           groupId = event.target.id,
-          initial = Number(254 / value),
+          satInitial = Number( 254 / value ),
           lights = this.get('lightsService'),
-          percentage = (100 / initial) / 100,
+          satPercentage = (100 / satInitial) / 100,
           spectrum = Ember.$('.group-spectrum-bg'),
           overlay = Ember.$('.overlay'),
           spinner = Ember.$('.loader');
@@ -148,7 +153,7 @@ export default Ember.Component.extend({
 
       lights.setGroupState(groupId, {sat: value});
 
-      spectrum.fadeTo('slow', percentage);
+      spectrum.fadeTo('slow', satPercentage);
 
       Ember.run.later(() => {
           this.sendAction('update');
