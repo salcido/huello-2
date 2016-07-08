@@ -4,7 +4,13 @@
   {{/power-select}}
 </div>
 
-{{group-controller group=groups allLights=allLights update="updateModel" colorTemp=colorTemp useColorTemp="setColorTemp"}}
+<div class="scenes">
+  {{#power-select options=model.scenes placeholder="Scenes" selected=currentScene onchange=(action "changeScene") searchEnabled=false as |scene|}}
+    {{scene.name}}
+  {{/power-select}}
+</div>
+
+{{group-controller group=groups allLights=allLights update="updateModel" resetScenes="resetScenes" colorTemp=colorTemp useColorTemp="setColorTemp"}}
 
 <div class='side-bar'>
   <div class="spacer"></div>

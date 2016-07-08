@@ -10,6 +10,9 @@ export default Ember.Route.extend({
   // Whether to use color temperature values
   colorTemp: false,
 
+  // last applied scene (if any)
+  currentScene: null,
+
   init() {
 
     let lights = this.get('lightsService');
@@ -34,7 +37,8 @@ export default Ember.Route.extend({
       lights: lights.getLights(),
       groups: lights.getGroups(group),
       allLights: lights.getGroupInfo(group),
-      colorTemp: this.get('colorTemp')
+      colorTemp: this.get('colorTemp'),
+      scenes: lights.getScenes()
     });
   },
 
@@ -79,6 +83,12 @@ export default Ember.Route.extend({
       }
     }
 
+    // Create a unique sceneId for ember-power-select to latch on to
+    for (let i = 0; i < model.scenes.length; i++) {
+
+      model.scenes[i].sceneId = i;
+    }
+
     // Set props on controller object
     Ember.set(controller, 'groups', model.groups[this.get('currentGroup')]);
 
@@ -87,9 +97,61 @@ export default Ember.Route.extend({
     Ember.set(controller, 'currentGroup', model.groups[this.get('currentGroup')]);
 
     Ember.set(controller, 'colorTemp', this.get('colorTemp'));
+
+    Ember.set(controller, 'scenes', model.scenes);
+
+    Ember.set(controller, 'currentScene', model.scenes[this.get('currentScene')]);
   },
 
   actions: {
+
+    /**
+     * Applies a scene to the lights
+     *
+     * @method   function
+     * @param    {object} scene [the selected scene object]
+     * @return   {undefined}
+     */
+
+    applyScene: function(scene) {
+
+      let lights = this.get('lightsService');
+
+      lights.activateScene(scene.id);
+
+      this.set('currentScene', scene.sceneId);
+
+      this.refresh();
+    },
+
+    /**
+     * Resets `currentScene` to null after
+     * the group controller is used to change
+     * hue or color temperature.
+     *
+     * @method   function
+     * @return   {undefined}
+     */
+
+    resetScenes: function() {
+
+      this.set('currentScene', null);
+    },
+
+    /**
+     * Sets colorTemp boolean
+     *
+     * @method   function
+     * @param    {boolean} value [whether to use color temperature values]
+     * @return   {undefined}
+     */
+
+    setColorTemp: function(value) {
+
+      this.set('colorTemp', value);
+
+      this.refresh();
+    },
 
     /**
      * Updates the model with all lights' current state
@@ -110,20 +172,5 @@ export default Ember.Route.extend({
         this.refresh();
       }, 500);
     },
-
-    /**
-     * Sets colorTemp boolean
-     *
-     * @method   function
-     * @param    {boolean} value [whether to use color temperature values]
-     * @return   {undefined}
-     */
-
-    setColorTemp: function(value) {
-
-      this.set('colorTemp', value);
-
-      this.refresh();
-    }
   }
 });

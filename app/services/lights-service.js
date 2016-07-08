@@ -12,6 +12,19 @@ let
 export default Ember.Service.extend({
 
   /**
+   * Applies a scene to a group of lights
+   *
+   * @method   function
+   * @param    {string} id [the ID of the scene]
+   * @return   {method}
+   */
+
+  activateScene: function(id) {
+
+    return api.activateScene(id);
+  },
+
+  /**
    * Configures a new HueApi instance
    *
    * @method   function
@@ -84,6 +97,22 @@ export default Ember.Service.extend({
     return api.lights().then(res => {
 
       return res;
+    });
+  },
+
+
+  /**
+   * Returns all scenes on the hub
+   *
+   * @method   function
+   * @return   {object}
+   */
+
+  getScenes: function() {
+
+    return api.getScenes().then(res => {
+
+       return res;
     });
   },
 

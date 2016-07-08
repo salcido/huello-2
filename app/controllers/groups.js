@@ -16,6 +16,11 @@ export default Ember.Controller.extend({
   		Ember.$('.group-controller .range-bri').prop('value', 128);
   		Ember.$('.group-controller .range-sat').prop('value', 128);
       Ember.$('.group-spectrum-bg, .group-brightness-wrap').css('opacity', 1);
+    },
+
+    changeScene: function(scene) {
+
+      this.send('applyScene', scene);
     }
   }
 });

@@ -1,6 +1,5 @@
 import Ember from 'ember';
 
-
 /**
  * Group Controller
  *
@@ -11,10 +10,15 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
-  // Inject the lights service
   lightsService: Ember.inject.service(),
 
-  // hide the mode-overlay after updating
+  /**
+   * Hide the App overlay after updating
+   *
+   * @method   function
+   * @return   {undefined}
+   */
+
   didReceiveAttrs: function() {
 
     let modeOverlay = Ember.$('.mode-overlay');
@@ -94,7 +98,9 @@ export default Ember.Component.extend({
       }
 
       Ember.run.later(() => {
+
           this.sendAction('update');
+          this.sendAction('resetScenes');
       }, 500);
     },
 

@@ -6,8 +6,7 @@
     <button {{action "togglePower"}} class="{{if group.state.any_on "powered" "off"}} group-power"></button>
 
     <div class="color-temp-box-wrap">
-      <label>Temp:</label>
-      <input type="checkbox" />
+      <label for="">Temp:</label>
       {{input type="checkbox" name="color-temp" checked=colorTemp change=(action "toggleColorTemp")}}
     </div>
 
