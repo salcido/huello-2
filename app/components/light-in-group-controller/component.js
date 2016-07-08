@@ -31,6 +31,10 @@ export default Ember.Component.extend({
   // The type of light (e.g. Dimmable Light, Color Light, etc...)
   type: null,
 
+  // Whether the component has rendered once already.
+  // Used to determine if updateRanges() should be run
+  hasRendered: false,
+
   /**
    * The following 4 properties will determine which type of template to render
    */
@@ -140,10 +144,13 @@ export default Ember.Component.extend({
 
   didRender: function() {
 
-    Ember.run.later(() => {
+    if (!this.get('hasRendered')) {
 
-      this.updateRanges();
-    }, 500);
+      Ember.run.later(() => {
+
+        this.updateRanges();
+      }, 500);
+    }
   },
 
   /**
@@ -192,6 +199,8 @@ export default Ember.Component.extend({
     // Fade spectrum to new opacity
     spectrum.fadeTo('slow', satPercentage);
     brightness.fadeTo('slow', briPercentage);
+
+    this.set('hasRendered', true);
   },
 
   actions: {
