@@ -131,6 +131,22 @@ export default Ember.Component.extend({
   },
 
   /**
+   * Ensure the ranges move to their correct positions
+   * when first rendered into the DOM
+   *
+   * @method   function
+   * @return   {undefined}
+   */
+
+  didRender: function() {
+
+    Ember.run.later(() => {
+
+      this.updateRanges();
+    }, 500);
+  },
+
+  /**
    * Animates an input range from it's current position to a new one
    *
    * @method   function
@@ -151,6 +167,31 @@ export default Ember.Component.extend({
         Ember.$(target).val(Math.ceil(this.position));
       }
     });
+  },
+
+  updateRanges: function() {
+
+    let
+        positionVal = (this.get('colorTemp') ? this.get('ct') : this.get('hue')),
+        id = this.get('light'),
+        hueVal = Ember.$('.powered .range-hue.' + id).val(),
+        satVal = Ember.$('.powered .range-sat.' + id).val(),
+        briVal = Ember.$('.powered .range-bri.' + id).val(),
+        spectrum = Ember.$('.powered .individual-spectrum-bg.' + id),
+        brightness = Ember.$('.powered .brightness-wrap.' + id),
+        briInitial = Number(254 / this.get('bri')),
+        briPercentage = ( (100 / briInitial) / 100 < 0.07 ? 0.07 : (100 / briInitial) / 100 ),
+        satInitial = Number(254 / this.get('sat')),
+        satPercentage = (100 / satInitial) / 100;
+
+    // Animate ranges
+    this.animateRange(hueVal, positionVal, '.range-hue' + '.' + id);
+    this.animateRange(satVal, this.get('sat'), '.range-sat' + '.' + id);
+    this.animateRange(briVal, this.get('bri'), '.range-bri' + '.' + id);
+
+    // Fade spectrum to new opacity
+    spectrum.fadeTo('slow', satPercentage);
+    brightness.fadeTo('slow', briPercentage);
   },
 
   actions: {
