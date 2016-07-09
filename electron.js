@@ -144,7 +144,6 @@ app.on('ready', function onReady() {
     });
 
     // Remove mainWindow.on('closed'), as it is redundant
-
     app.on('activate-with-no-open-windows', function(){
         mainWindow.show();
     });
