@@ -52,7 +52,6 @@
     "loader.js": "^4.0.0"
   },
   "dependencies": {
-    "electron-json-storage": "^2.0.0",
     "node-hue-api": "^2.2.0"
   },
   "main": "electron.js",

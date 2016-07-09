@@ -80,9 +80,11 @@ export default Ember.Service.extend({
   },
 
   /*
-
-    Individual lights
-
+  *
+  * /////////////////
+  * Individual lights
+  * /////////////////
+  *
    */
 
   /**

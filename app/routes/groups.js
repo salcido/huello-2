@@ -84,7 +84,7 @@ export default Ember.Route.extend({
       }
     }
 
-    // Insert a unique sceneId for ember-power-select to latch on to
+    // Insert a unique `sceneId` for ember-power-select to latch on to
     for (let i = 0; i < model.scenes.length; i++) {
 
       model.scenes[i].sceneId = i;
@@ -119,9 +119,7 @@ export default Ember.Route.extend({
 
     applyScene: function(scene) {
 
-      let lights = this.get('lightsService');
-
-      lights.activateScene(scene.id);
+      this.get('lightsService').activateScene(scene.id);
 
       this.set('currentScene', scene.sceneId);
 

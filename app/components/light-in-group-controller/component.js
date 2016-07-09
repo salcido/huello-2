@@ -83,7 +83,7 @@ export default Ember.Component.extend({
         spinner = Ember.$('.loader');
 
 
-    this.set('lightState', lights.getStatus(id)).then( res => {
+    this.set('lightState', lights.getStatus(id)).then(res => {
 
       // Set power state
       this.set('power', res.state.on);
@@ -176,11 +176,9 @@ export default Ember.Component.extend({
 
     togglePower: function() {
 
-      let
-          id = this.get('lightId'),
-          lights = this.get('lightsService');
+      let id = this.get('lightId');
 
-      lights.togglePower(id, this);
+      this.get('lightsService').togglePower(id, this);
 
       this.sendAction('update');
     },
@@ -189,7 +187,7 @@ export default Ember.Component.extend({
      * Changes the color value for an individual light
      *
      * @method   function
-     * @return   {undefined}
+     * @return   {method}
      */
 
     changeColor: function() {
@@ -260,9 +258,7 @@ export default Ember.Component.extend({
 
     changeName: function(newName, id) {
 
-      let lights = this.get('lightsService');
-
-      lights.rename(id, newName);
+      this.get('lightsService').rename(id, newName);
 
       // update the current model
       Ember.run.later(() => {

@@ -11,6 +11,7 @@ const template = [];
 
 let mainWindow = null;
 let force_quit = false;
+let menu;
 
 if (process.platform === 'darwin') {
 
@@ -63,7 +64,7 @@ if (process.platform === 'darwin') {
   });
 }
 
-let menu = Menu.buildFromTemplate(template);
+menu = Menu.buildFromTemplate(template);
 
 // Uncomment the lines below to enable Electron's crash reporter
 // For more information, see http://electron.atom.io/docs/api/crash-reporter/

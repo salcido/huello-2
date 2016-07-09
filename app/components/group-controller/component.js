@@ -132,7 +132,6 @@ export default Ember.Component.extend({
       Ember.run.later(() => {
 
           this.sendAction('update');
-
       }, 500);
     },
 
@@ -161,6 +160,8 @@ export default Ember.Component.extend({
 
       lights.setGroupState(groupId, {sat: value});
 
+      // Color temp lights respond to saturation the same as hue
+      // so don't bother fading the spectrum.
       if (!colorTemp) {
 
         spectrum.fadeTo('slow', satPercentage);
