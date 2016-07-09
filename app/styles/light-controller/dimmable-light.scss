@@ -2,32 +2,24 @@
   &.dimmable-light {
     &.off {
       .dimmable-bg {
-        opacity: 0.3;
-        background-size: cover;
         background: #292929;
-        border-radius: 3px;
-        display: block;
-        height: 28px;
         margin-top: -4px;
-        position: absolute;
-        left: 36px;
-        margin: 10px 0;
-        width: 300px;
+        opacity: 0.3;
       }
     }
   }
 }
 
 .dimmable-bg {
-  margin: 10px 0;
-  width: 300px;
   background-size: cover;
   background: $lemonchiffon;
   border-radius: 3px;
   display: block;
   height: 28px;
+  left: 36px;
+  margin: 10px 0;
   position: absolute;
   top: -9px;
-  left: 36px;
+  width: 300px;
   z-index: 2;
 }

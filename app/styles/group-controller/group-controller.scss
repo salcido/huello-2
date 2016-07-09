@@ -50,36 +50,37 @@
 
   input {
     width: 90%;
-  }
 
-  input.range-hue {
 
-    -webkit-appearance: none;
-    background: transparent;
-    cursor: pointer;
+    &.range-hue {
 
-    &::-webkit-slider-runnable-track {
       -webkit-appearance: none;
-      margin: 10px 0;
-      width: 100%;
-      background-size: cover;
-      border-radius: 3px;
-      display: block;
-      height: 30px;
-      margin-top: -4px;
-      width: 320px;
-      z-index: 2;
-    }
+      background: transparent;
+      cursor: pointer;
 
-    &::-webkit-slider-thumb {
+      &::-webkit-slider-runnable-track {
         -webkit-appearance: none;
-        border-bottom: 15px solid $emperor;
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        height: 20px;
-        margin-top: 10px;
-        outline: none;
-        width: 10px;
+        margin: 10px 0;
+        width: 100%;
+        background-size: cover;
+        border-radius: 3px;
+        display: block;
+        height: 30px;
+        margin-top: -4px;
+        width: 320px;
+        z-index: 2;
+      }
+
+      &::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          border-bottom: 15px solid $emperor;
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          height: 20px;
+          margin-top: 10px;
+          outline: none;
+          width: 10px;
+      }
     }
   }
 
