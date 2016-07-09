@@ -2,7 +2,7 @@
 
 The successor to Huello (formally an OS X Dashboard widget) built with Ember and Electron for quickly controlling your Philips Hue bulbs.
 
-<img src="https://dl.dropboxusercontent.com/u/22745901/huello-2/Huello.png" alt="Huello" style="width: 300px;"/>
+<img src="https://dl.dropboxusercontent.com/u/22745901/huello-2/Huello.png" alt="Huello" style="width: 300px;" />
 
 ## Prerequisites
 

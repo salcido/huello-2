@@ -218,7 +218,6 @@ export default Ember.Component.extend({
           briInitial = Number(254 / value),
           briPercentage = ( (100 / briInitial) / 100 < 0.07 ? 0.07 : (100 / briInitial) / 100 ),
           brightness = Ember.$('.brightness-wrap.' + id),
-
           lights = this.get('lightsService');
 
 
@@ -244,6 +243,7 @@ export default Ember.Component.extend({
           spectrum = Ember.$('.individual-spectrum-bg.' + id),
           lights = this.get('lightsService');
 
+
       lights.setState(id, {sat: value});
 
       spectrum.fadeTo('slow', percentage);
@@ -266,6 +266,7 @@ export default Ember.Component.extend({
 
       // update the current model
       Ember.run.later(() => {
+
           this.sendAction('update');
       }, 500);
     }

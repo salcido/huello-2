@@ -13,13 +13,17 @@ export default Ember.Route.extend({
   // last applied scene (if any)
   currentScene: null,
 
+  /**
+   * Configure the api instance
+   *
+   * @method   init
+   * @return   {undefined}
+   */
+
   init() {
 
-    let lights = this.get('lightsService');
-
     this._super(...arguments);
-
-    lights.config();
+    this.get('lightsService').config();
   },
 
   /**
@@ -53,8 +57,6 @@ export default Ember.Route.extend({
 
   setupController(controller, model) {
 
-    console.info('[Huello 2] Model:', model);
-
     this._super(...arguments);
 
     Ember.set(controller, 'lights', model.lights);
@@ -62,7 +64,7 @@ export default Ember.Route.extend({
     // Rename `name` prop of Group 0 so it's not listed as "Lightset 0"
     model.groups[0].name = 'All Lights';
 
-    // Map all lights ids into 'All Lights' group so that Group 0 has the same properties/structure as subsequent groups
+    // Map all light ids into 'All Lights' group so that Group 0 has the same properties/structure as subsequent groups
     model.groups[0].lights = model.lights.lights.map(function(light) {
 
       return light.id;
@@ -74,7 +76,6 @@ export default Ember.Route.extend({
       if (model.lights.lights[i].state.on) {
 
         model.groups[0].state = {any_on: true};
-
         break;
 
       } else {
@@ -83,7 +84,7 @@ export default Ember.Route.extend({
       }
     }
 
-    // Create a unique sceneId for ember-power-select to latch on to
+    // Insert a unique sceneId for ember-power-select to latch on to
     for (let i = 0; i < model.scenes.length; i++) {
 
       model.scenes[i].sceneId = i;
@@ -101,6 +102,9 @@ export default Ember.Route.extend({
     Ember.set(controller, 'scenes', model.scenes);
 
     Ember.set(controller, 'currentScene', model.scenes[this.get('currentScene')]);
+
+    // Draxx them sklounst
+    console.info('[Huello 2] Model:', model);
   },
 
   actions: {
@@ -124,11 +128,11 @@ export default Ember.Route.extend({
       return Ember.run.later(() => {
 
         this.refresh();
-      }, 5000);
+      }, 1000);
     },
 
     /**
-     * Resets `currentScene` to null after
+     * Resets `currentScene` to `null` after
      * the group controller is used to change
      * hue or color temperature.
      *
