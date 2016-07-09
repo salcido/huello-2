@@ -6,9 +6,59 @@ const path                 = require('path');
 const {app, BrowserWindow} = electron;
 const dirname              = __dirname || path.resolve(path.dirname());
 const emberAppLocation     = `file://${dirname}/dist/index.html`;
+const Menu = electron.Menu;
+const template = [];
+if (process.platform === 'darwin') {
+
+  let name = app.getName();
+
+  template.unshift({
+    label: name,
+    submenu: [
+      {
+        label: 'About ' + name,
+        role: 'about'
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Services',
+        role: 'services',
+        submenu: []
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Hide ' + name,
+        accelerator: 'Command+H',
+        role: 'hide'
+      },
+      {
+        label: 'Hide Others',
+        accelerator: 'Command+Alt+H',
+        role: 'hideothers'
+      },
+      {
+        label: 'Show All',
+        role: 'unhide'
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Quit',
+        accelerator: 'Command+Q',
+        click() { app.quit(); }
+      }
+    ]
+  });
+}
 
 let mainWindow = null;
 let force_quit = false;
+let menu = Menu.buildFromTemplate(template);
 
 // Uncomment the lines below to enable Electron's crash reporter
 // For more information, see http://electron.atom.io/docs/api/crash-reporter/
@@ -41,6 +91,8 @@ app.on('ready', function onReady() {
     });
 
     delete mainWindow.module;
+
+    Menu.setApplicationMenu(menu);
 
     // If you want to open up dev tools programmatically, call
     // mainWindow.openDevTools();
@@ -89,7 +141,7 @@ app.on('ready', function onReady() {
     // http://stackoverflow.com/questions/32885657/how-to-catch-the-event-of-clicking-the-app-windows-close-button-in-electron-app
     app.on('before-quit', function (e) {
         // Handle menu-item or keyboard shortcut quit here
-        if(!force_quit){
+        if(!force_quit) {
             e.preventDefault();
             mainWindow.hide();
         }
