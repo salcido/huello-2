@@ -1,8 +1,10 @@
-# Huello-2
+# Huello 2
 
 The successor to Huello (formally an OS X Dashboard widget) built with Ember and Electron for quickly controlling your Philips Hue bulbs.
 
 <img src="https://dl.dropboxusercontent.com/u/22745901/huello-2/Huello.png" alt="Huello" style="width: 300px;" />
+
+<img src="https://dl.dropboxusercontent.com/u/22745901/huello-2/huello-small.png" alt="Huello" style="width: 300px;" />
 
 ## Prerequisites
 
@@ -26,23 +28,11 @@ You will need the following things properly installed on your computer.
 * `ember server`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
 
 ### Building
 
-* `ember build` (development)
-* `ember build --environment production` (production)
+* `ember electron:package --platform mas` (Mac App Store)
 
-### Deploying
-
-Specify what it takes to deploy your app.
 
 ## Further Reading / Useful Links
 
