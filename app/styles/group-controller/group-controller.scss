@@ -73,9 +73,12 @@
 
       &::-webkit-slider-thumb {
           -webkit-appearance: none;
-          border-bottom: 15px solid $emperor;
-          border-left: 8px solid transparent;
-          border-right: 8px solid transparent;
+
+          /* hide the indicator */
+
+          // border-bottom: 15px solid $emperor;
+          // border-left: 8px solid transparent;
+          // border-right: 8px solid transparent;
           height: 20px;
           margin-top: 10px;
           outline: none;
