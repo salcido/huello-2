@@ -6,6 +6,8 @@ The successor to Huello (formally an OS X Dashboard widget) built with Ember and
 
 <img src="https://dl.dropboxusercontent.com/u/22745901/huello-2/huello-small.png" alt="Huello" style="width: 300px;" />
 
+<img src="https://dl.dropboxusercontent.com/u/22745901/huello-2/off-state.png" alt="Huello" style="width: 300px;" />
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
