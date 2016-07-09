@@ -14,7 +14,7 @@ export default Ember.Service.extend({
   /**
    * Applies a scene to a group of lights
    *
-   * @method   function
+   *
    * @param    {string} id [the ID of the scene]
    * @return   {method}
    */
@@ -27,7 +27,7 @@ export default Ember.Service.extend({
   /**
    * Configures a new HueApi instance
    *
-   * @method   function
+   *
    * @return   {object}
    */
 
@@ -47,7 +47,7 @@ export default Ember.Service.extend({
   /**
    * Deletes a user from the hub
    *
-   * @method   function
+   *
    * @param    {user} user [the unique user id]
    * @return   {object}
    */
@@ -67,7 +67,7 @@ export default Ember.Service.extend({
   /**
    * Returns the IP Address of the Bridge
    *
-   * @method   function
+   *
    * @return   {object}
    */
 
@@ -90,7 +90,7 @@ export default Ember.Service.extend({
   /**
    * Returns all lights and statuses
    *
-   * @method   function
+   *
    * @return   {object}
    */
 
@@ -106,7 +106,7 @@ export default Ember.Service.extend({
   /**
    * Returns all scenes on the hub
    *
-   * @method   function
+   *
    * @return   {object}
    */
 
@@ -121,7 +121,7 @@ export default Ember.Service.extend({
   /**
    * Returns the stats for a particular light
    *
-   * @method   function
+   *
    * @param    {string} id [the light's id]
    * @return   {object}
    */
@@ -137,7 +137,7 @@ export default Ember.Service.extend({
   /**
    * Sets the state of a particular light
    *
-   * @method   function
+   *
    * @param    {String} id    [the light's id]
    * @param    {object} state [an object representing the new state]
    * @return   {method}
@@ -151,7 +151,7 @@ export default Ember.Service.extend({
   /**
    * Turns a light on or off
    *
-   * @method   function
+   *
    * @param    {String} id [the light's id]
    * @return   {method}
    */
@@ -181,7 +181,7 @@ export default Ember.Service.extend({
   /**
    * Renames a light
    *
-   * @method   function
+   *
    * @param    {String} id      [The light's id]
    * @param    {String} newName [The new name of the light]
    * @return   {method}
@@ -201,7 +201,7 @@ export default Ember.Service.extend({
    /**
     * Returns an object with all light groups
     *
-    * @method   function
+    *
     * @return   {object}
     */
 
@@ -216,7 +216,7 @@ export default Ember.Service.extend({
    /**
     * Returns various attributes of the group state
     *
-    * @method   function
+    *
     * @param    {String} groupId [the ID of the group]
     * @return   {object}
     */
@@ -232,7 +232,7 @@ export default Ember.Service.extend({
    /**
     * Toggles the power state for the group
     *
-    * @method   function
+    *
     * @param    {String} groupId [the group's ID]
     * @return   {method}
     */
@@ -249,7 +249,7 @@ export default Ember.Service.extend({
    /**
     * Sets the state of the group
     *
-    * @method   function
+    *
     * @param    {String} groupId [The group's ID]
     * @param    {Object} state   [An object representing the new state]
     * @return   {method}
@@ -263,7 +263,7 @@ export default Ember.Service.extend({
    /**
     * Renames a group
     *
-    * @method   function
+    *
     * @param    {String} groupId [the ID of the group]
     * @param    {String} newName [the new name of the group]
     * @return   {method}

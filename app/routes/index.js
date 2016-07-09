@@ -11,7 +11,7 @@ export default Ember.Route.extend({
   /**
    * Inject the light service
    *
-   * @method   service
+   *
    * @return   {undefined}
    */
 
@@ -20,7 +20,7 @@ export default Ember.Route.extend({
   /**
    * Registers a new user on the hub
    *
-   * @method   function
+   *
    * @return   {undefined}
    */
 
@@ -63,7 +63,7 @@ export default Ember.Route.extend({
   /**
    * Sets the `hostname` in localStorage
    *
-   * @method   function
+   *
    * @return   {undefined}
    */
 
@@ -88,7 +88,6 @@ export default Ember.Route.extend({
   /**
    * Checks for an existing username/hostname value
    *
-   * @method   init
    * @return   {undefined}
    */
 

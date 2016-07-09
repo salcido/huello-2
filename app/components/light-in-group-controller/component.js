@@ -118,7 +118,7 @@ export default Ember.Component.extend({
   /**
    * Animates an input range from it's current position to a new one
    *
-   * @method   function
+   *
    * @param    {Number} currPos [the current range position]
    * @param    {Number} newPos  [the new range position]
    * @param    {String} target  [element target]
@@ -170,7 +170,7 @@ export default Ember.Component.extend({
     /**
      * Toggles the power for an individual light
      *
-     * @method   function
+     *
      * @return   {undefined}
      */
 
@@ -186,7 +186,7 @@ export default Ember.Component.extend({
     /**
      * Changes the color value for an individual light
      *
-     * @method   function
+     *
      * @return   {method}
      */
 
@@ -204,7 +204,7 @@ export default Ember.Component.extend({
     /**
      * Changes the brightness value for an individual light
      *
-     * @method   function
+     *
      * @return   {undefined}
      */
 
@@ -227,7 +227,7 @@ export default Ember.Component.extend({
     /**
      * Changes the saturation value for an individual light
      *
-     * @method   function
+     *
      * @return   {undefined}
      */
 
@@ -250,7 +250,7 @@ export default Ember.Component.extend({
     /**
      * Changes the name of an individual light
      *
-     * @method   function
+     *
      * @param    {String} newName [the new name of the light]
      * @param    {String} id      [the id of the light to be updated]
      * @return   {undefined}

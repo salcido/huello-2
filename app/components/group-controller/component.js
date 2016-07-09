@@ -15,7 +15,7 @@ export default Ember.Component.extend({
   /**
    * Hide the App overlay after updating
    *
-   * @method   function
+   *
    * @return   {undefined}
    */
 
@@ -37,7 +37,7 @@ export default Ember.Component.extend({
     /**
      * Toggles the power state for the light group
      *
-     * @method   function
+     *
      * @return   {undefined}
      */
 
@@ -57,7 +57,7 @@ export default Ember.Component.extend({
     /**
      * Sets the color temp value on the model
      *
-     * @method   function
+     *
      * @param    {object} event
      * @return   {undefined}
      */
@@ -70,7 +70,7 @@ export default Ember.Component.extend({
     /**
      * Sets the color value for the light group
      *
-     * @method   function
+     *
      * @return   {undefined}
      */
 
@@ -107,7 +107,7 @@ export default Ember.Component.extend({
     /**
      * Sets the brightness for the light group
      *
-     * @method   function
+     *
      * @return   {undefined}
      */
 
@@ -138,7 +138,7 @@ export default Ember.Component.extend({
     /**
      * Sets the saturation value for the light group
      *
-     * @method   function
+     *
      * @return   {undefined}
      */
 
@@ -175,7 +175,7 @@ export default Ember.Component.extend({
     /**
      * Sets a new group name
      *
-     * @method   function
+     *
      * @param    {String} newName [the new name of the group]
      * @param    {String} groupId [the id of the group that will be updated]
      * @return   {undefined}
