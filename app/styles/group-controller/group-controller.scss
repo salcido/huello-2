@@ -186,7 +186,20 @@ input[type=checkbox] {
   margin: 10px 0;
   width: 360px;
   background-size: cover;
-  background: white;
+  background: $white;
+  border-radius: 3px;
+  display: block;
+  height: 30px;
+  margin-top: -4px;
+  position: fixed;
+  z-index: -1;
+}
+
+.dark-bg {
+  margin: 10px 0;
+  width: 360px;
+  background-size: cover;
+  background: #292929;
   border-radius: 3px;
   display: block;
   height: 30px;
