@@ -4,9 +4,17 @@ The successor to Huello (formally an OS X Dashboard widget) built with Ember and
 
 <img src="https://dl.dropboxusercontent.com/u/22745901/huello-2/Huello.png" alt="Huello" style="width: 300px;" />
 
+### Group control
+
 <img src="https://dl.dropboxusercontent.com/u/22745901/huello-2/huello-small.png" alt="Huello" style="width: 300px;" />
 
+### Simple light state representation
+
 <img src="https://dl.dropboxusercontent.com/u/22745901/huello-2/off-state.png" alt="Huello" style="width: 300px;" />
+
+### Quickly rename individual lights
+
+<img src="https://dl.dropboxusercontent.com/u/22745901/huello-2/rename.png" alt="Huello" style="width: 300px;" />
 
 ## Prerequisites
 
