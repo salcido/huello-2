@@ -8,6 +8,7 @@ const dirname              = __dirname || path.resolve(path.dirname());
 const emberAppLocation     = `file://${dirname}/dist/index.html`;
 
 let mainWindow = null;
+let force_quit = false;
 
 // Uncomment the lines below to enable Electron's crash reporter
 // For more information, see http://electron.atom.io/docs/api/crash-reporter/
@@ -71,8 +72,33 @@ app.on('ready', function onReady() {
         console.log('The main window has become responsive again.');
     });
 
-    mainWindow.on('closed', () => {
-        mainWindow = null;
+    mainWindow.on('close', function(e) {
+
+      if(!force_quit) {
+        e.preventDefault();
+        mainWindow.hide();
+      }
+    });
+
+    /* 'activate' is emitted when the user clicks the Dock icon (OS X) */
+    app.on('activate',function() {
+      mainWindow.show();
+    });
+
+    // You can use 'before-quit' instead of (or with) the close event
+    // http://stackoverflow.com/questions/32885657/how-to-catch-the-event-of-clicking-the-app-windows-close-button-in-electron-app
+    app.on('before-quit', function (e) {
+        // Handle menu-item or keyboard shortcut quit here
+        if(!force_quit){
+            e.preventDefault();
+            mainWindow.hide();
+        }
+    });
+
+    // Remove mainWindow.on('closed'), as it is redundant
+
+    app.on('activate-with-no-open-windows', function(){
+        mainWindow.show();
     });
 
     // Handle an unhandled error in the main thread
@@ -95,4 +121,12 @@ app.on('ready', function onReady() {
         console.log('This is a serious issue that needs to be handled and/or debugged.');
         console.log(`Exception: ${err}`);
     });
+});
+
+// This is another place to handle events after all windows are closed
+app.on('will-quit', function () {
+    // This is a good place to add tests insuring the app is still
+    // responsive and all windows are closed.
+    console.log('will-quit');
+    mainWindow = null;
 });

@@ -174,6 +174,6 @@ export default Ember.Route.extend({
 
         this.refresh();
       }, 500);
-    },
+    }
   }
 });
