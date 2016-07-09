@@ -1,7 +1,5 @@
 import Ember from 'ember';
 
-// [{"id":"001788fffe2282ae","ipaddress":"10.0.1.2"}]
-
 export default Ember.Component.extend({
 
   // Light service injection
