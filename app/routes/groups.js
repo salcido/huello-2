@@ -14,7 +14,7 @@ export default Ember.Route.extend({
   currentScene: null,
 
   /**
-   * Configure the api instance
+   * Configure the api instance & poll for updates
    *
    * @method   init
    * @return   {undefined}
@@ -22,8 +22,14 @@ export default Ember.Route.extend({
 
   init() {
 
+    let timer = 5 * (60 * 1000);
+
     this._super(...arguments);
+
     this.get('lightsService').config();
+
+    // Long poll for light updates
+    setInterval(() => { this.refresh(); }, timer);
   },
 
   /**
