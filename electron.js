@@ -8,6 +8,10 @@ const dirname              = __dirname || path.resolve(path.dirname());
 const emberAppLocation     = `file://${dirname}/dist/index.html`;
 const Menu = electron.Menu;
 const template = [];
+
+let mainWindow = null;
+let force_quit = false;
+
 if (process.platform === 'darwin') {
 
   let name = app.getName();
@@ -50,14 +54,15 @@ if (process.platform === 'darwin') {
       {
         label: 'Quit',
         accelerator: 'Command+Q',
-        click() { app.quit(); }
+        click: function() {
+          force_quit = true;
+          app.quit();
+        }
       }
     ]
   });
 }
 
-let mainWindow = null;
-let force_quit = false;
 let menu = Menu.buildFromTemplate(template);
 
 // Uncomment the lines below to enable Electron's crash reporter
@@ -124,6 +129,7 @@ app.on('ready', function onReady() {
         console.log('The main window has become responsive again.');
     });
 
+    // http://stackoverflow.com/questions/32885657/how-to-catch-the-event-of-clicking-the-app-windows-close-button-in-electron-app
     mainWindow.on('close', function(e) {
 
       if(!force_quit) {
@@ -135,16 +141,6 @@ app.on('ready', function onReady() {
     /* 'activate' is emitted when the user clicks the Dock icon (OS X) */
     app.on('activate',function() {
       mainWindow.show();
-    });
-
-    // You can use 'before-quit' instead of (or with) the close event
-    // http://stackoverflow.com/questions/32885657/how-to-catch-the-event-of-clicking-the-app-windows-close-button-in-electron-app
-    app.on('before-quit', function (e) {
-        // Handle menu-item or keyboard shortcut quit here
-        if(!force_quit) {
-            e.preventDefault();
-            mainWindow.hide();
-        }
     });
 
     // Remove mainWindow.on('closed'), as it is redundant
