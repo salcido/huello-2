@@ -71,13 +71,15 @@ export default Ember.Route.extend({
     // Rename `name` prop of Group 0 so it's not listed as "Lightset 0"
     model.groups[0].name = 'All Lights';
 
-    // Map all light ids into 'All Lights' group so that Group 0 has the same properties/structure as subsequent groups
+    // Map every light id into the 'All Lights' group so that Group 0
+    // has the same properties as the subsequent groups
     model.groups[0].lights = model.lights.lights.map(function(light) {
 
       return light.id;
     });
 
-    // Add state object into 'All Lights' group because Philips is inconsistant with their group properties
+    // Add state object into 'All Lights' group because
+    // Philips is inconsistant with their group properties
     for (let i = 0; i < model.lights.lights.length; i++) {
 
       if (model.lights.lights[i].state.on) {
@@ -91,7 +93,8 @@ export default Ember.Route.extend({
       }
     }
 
-    // Insert a unique `sceneId` for ember-power-select to latch on to
+    // Insert a unique `sceneId` for the ember-power-select add-on
+    // to latch on to
     for (let i = 0; i < model.scenes.length; i++) {
 
       model.scenes[i].sceneId = i;

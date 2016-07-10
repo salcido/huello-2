@@ -185,9 +185,7 @@ export default Ember.Component.extend({
 
     changeGroupName(newName, groupId) {
 
-      let lights = this.get('lightsService');
-
-      lights.renameGroup(groupId, newName);
+      this.get('lightsService').renameGroup(groupId, newName);
 
       // update the current model
       Ember.run.later(() => {
