@@ -47,6 +47,11 @@ body {
   z-index: -1;
 }
 
+.handle-spacer {
+  height: 15px;
+  display: block;
+}
+
 .mode-overlay {
   background: $darkmineshaft;
   height: 100%;
