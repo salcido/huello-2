@@ -44,7 +44,8 @@ export default Ember.Component.extend({
   // Assign the initial values of each light
   init() {
 
-    let lights = this.get('lightsService'),
+    let
+        lights = this.get('lightsService'),
         id = this.get('light');
 
     this._super(...arguments);

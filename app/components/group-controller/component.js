@@ -43,7 +43,8 @@ export default Ember.Component.extend({
 
     togglePower() {
 
-      let groupId = this.get('group.id'),
+      let
+          groupId = this.get('group.id'),
           lights = this.get('lightsService');
 
       lights.toggleGroupPower(groupId);
@@ -62,7 +63,7 @@ export default Ember.Component.extend({
      * @return   {undefined}
      */
 
-    toggleColorTemp(event) {
+      toggleColorTemp(event) {
 
       this.sendAction('useColorTemp', event.target.checked);
     },
@@ -113,7 +114,8 @@ export default Ember.Component.extend({
 
     changeBrightness() {
 
-      let value = event.target.value,
+      let
+          value = event.target.value,
           groupId = event.target.id,
           lights = this.get('lightsService'),
           brightness = Ember.$('.group-brightness-wrap'),

@@ -40,7 +40,8 @@ export default Ember.Route.extend({
 
   model() {
 
-    let lights = this.get('lightsService'),
+    let
+        lights = this.get('lightsService'),
         group = Number(this.get('currentGroup'));
 
     return Ember.RSVP.hash({
