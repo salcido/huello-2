@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
 
   actions: {
 
-    changeMode: function(value) {
+    changeMode(value) {
 
       this.send('updateModel', value.id);
 
@@ -18,7 +18,7 @@ export default Ember.Controller.extend({
       Ember.$('.group-spectrum-bg, .group-brightness-wrap').css('opacity', 1);
     },
 
-    changeScene: function(scene) {
+    changeScene(scene) {
 
       this.send('applyScene', scene);
     }

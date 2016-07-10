@@ -19,7 +19,7 @@ export default Ember.Component.extend({
    * @return   {undefined}
    */
 
-  didReceiveAttrs: function() {
+  didReceiveAttrs() {
 
     let modeOverlay = Ember.$('.mode-overlay');
 
@@ -41,7 +41,7 @@ export default Ember.Component.extend({
      * @return   {undefined}
      */
 
-    togglePower: function() {
+    togglePower() {
 
       let groupId = this.get('group.id'),
           lights = this.get('lightsService');
@@ -62,7 +62,7 @@ export default Ember.Component.extend({
      * @return   {undefined}
      */
 
-    toggleColorTemp: function(event) {
+    toggleColorTemp(event) {
 
       this.sendAction('useColorTemp', event.target.checked);
     },
@@ -74,7 +74,7 @@ export default Ember.Component.extend({
      * @return   {undefined}
      */
 
-    changeColor: function() {
+    changeColor() {
 
       let
           colorTemp = this.get('colorTemp'),
@@ -111,7 +111,7 @@ export default Ember.Component.extend({
      * @return   {undefined}
      */
 
-    changeBrightness: function() {
+    changeBrightness() {
 
       let value = event.target.value,
           groupId = event.target.id,
@@ -142,7 +142,7 @@ export default Ember.Component.extend({
      * @return   {undefined}
      */
 
-    changeSaturation: function() {
+    changeSaturation() {
 
       let
           value = event.target.value,
@@ -181,7 +181,7 @@ export default Ember.Component.extend({
      * @return   {undefined}
      */
 
-    changeGroupName: function(newName, groupId) {
+    changeGroupName(newName, groupId) {
 
       let lights = this.get('lightsService');
 

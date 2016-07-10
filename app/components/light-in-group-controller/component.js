@@ -42,7 +42,7 @@ export default Ember.Component.extend({
 
 
   // Assign the initial values of each light
-  init: function() {
+  init() {
 
     let lights = this.get('lightsService'),
         id = this.get('light');
@@ -74,7 +74,7 @@ export default Ember.Component.extend({
   },
 
   // update light states when model refreshes
-  didReceiveAttrs: function() {
+  didReceiveAttrs() {
 
     let
         lights = this.get('lightsService'),
@@ -85,11 +85,10 @@ export default Ember.Component.extend({
 
     this.set('lightState', lights.getStatus(id)).then(res => {
 
-      // Set power state
-      this.set('power', res.state.on);
-
-      // Set new name value (if necessary)
-      this.set('lightName', res.name);
+      this.setProperties({
+        power: res.state.on,
+        lightName: res.name
+      });
 
       // Only update the component if the light is on
       if (this.get('power')) {
@@ -125,20 +124,20 @@ export default Ember.Component.extend({
    * @return   {undefined}
    */
 
-  animateRange: function(currPos, newPos, target) {
+  animateRange(currPos, newPos, target) {
 
     Ember.$({position: currPos}).animate({position: newPos}, {
 
       duration: 500,
 
-      step: function() {
+      step() {
 
         Ember.$(target).val(Math.ceil(this.position));
       }
     });
   },
 
-  updateRanges: function() {
+  updateRanges() {
 
     let
         id = this.get('light'),
@@ -174,7 +173,7 @@ export default Ember.Component.extend({
      * @return   {undefined}
      */
 
-    togglePower: function() {
+    togglePower() {
 
       let id = this.get('lightId');
 
@@ -190,7 +189,7 @@ export default Ember.Component.extend({
      * @return   {method}
      */
 
-    changeColor: function() {
+    changeColor() {
 
       let
           id = event.target.id,
@@ -208,7 +207,7 @@ export default Ember.Component.extend({
      * @return   {undefined}
      */
 
-    changeBrightness: function() {
+    changeBrightness() {
 
       let
           value = event.target.value,
@@ -231,7 +230,7 @@ export default Ember.Component.extend({
      * @return   {undefined}
      */
 
-    changeSaturation: function() {
+    changeSaturation() {
 
       let
           value = event.target.value,
@@ -256,7 +255,7 @@ export default Ember.Component.extend({
      * @return   {undefined}
      */
 
-    changeName: function(newName, id) {
+    changeName(newName, id) {
 
       this.get('lightsService').rename(id, newName);
 

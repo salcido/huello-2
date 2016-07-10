@@ -38,7 +38,7 @@ export default Ember.Route.extend({
    * @method model
    */
 
-  model: function() {
+  model() {
 
     let lights = this.get('lightsService'),
         group = Number(this.get('currentGroup'));
@@ -123,7 +123,7 @@ export default Ember.Route.extend({
      * @return   {undefined}
      */
 
-    applyScene: function(scene) {
+    applyScene(scene) {
 
       this.get('lightsService').activateScene(scene.id);
 
@@ -144,7 +144,7 @@ export default Ember.Route.extend({
      * @return   {undefined}
      */
 
-    resetScenes: function() {
+    resetScenes() {
 
       this.set('currentScene', null);
     },
@@ -157,7 +157,7 @@ export default Ember.Route.extend({
      * @return   {undefined}
      */
 
-    setColorTemp: function(value) {
+    setColorTemp(value) {
 
       this.set('colorTemp', value);
 
@@ -172,7 +172,7 @@ export default Ember.Route.extend({
      * @return   {undefined}
      */
 
-    updateModel: function(value) {
+    updateModel(value) {
 
       value = value || this.get('currentGroup');
 

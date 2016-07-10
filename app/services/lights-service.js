@@ -19,7 +19,7 @@ export default Ember.Service.extend({
    * @return   {method}
    */
 
-  activateScene: function(id) {
+  activateScene(id) {
 
     return api.activateScene(id);
   },
@@ -31,7 +31,7 @@ export default Ember.Service.extend({
    * @return   {object}
    */
 
-  config: function() {
+  config() {
 
     hostname = localStorage.getItem('hostname');
     username = localStorage.getItem('username');
@@ -52,7 +52,7 @@ export default Ember.Service.extend({
    * @return   {object}
    */
 
-  deleteUser: function(user) {
+  deleteUser(user) {
 
     return api.deleteUser(user).then(res => {
 
@@ -71,7 +71,7 @@ export default Ember.Service.extend({
    * @return   {object}
    */
 
-  logBridge: function() {
+  logBridge() {
 
     return hue.nupnpSearch().then(res => {
 
@@ -94,7 +94,7 @@ export default Ember.Service.extend({
    * @return   {object}
    */
 
-  getLights: function() {
+  getLights() {
 
     return api.lights().then(res => {
 
@@ -110,7 +110,7 @@ export default Ember.Service.extend({
    * @return   {object}
    */
 
-  getScenes: function() {
+  getScenes() {
 
     return api.getScenes().then(res => {
 
@@ -126,7 +126,7 @@ export default Ember.Service.extend({
    * @return   {object}
    */
 
-  getStatus: function(id) {
+  getStatus(id) {
 
     return api.lightStatus(id).then(res => {
 
@@ -143,7 +143,7 @@ export default Ember.Service.extend({
    * @return   {method}
    */
 
-  setState: function(id, state) {
+  setState(id, state) {
 
     return api.setLightState(id, state);
   },
@@ -156,7 +156,7 @@ export default Ember.Service.extend({
    * @return   {method}
    */
 
-  togglePower: function(id, context, cb) {
+  togglePower(id, context, cb) {
 
     this.getStatus(id).then(res => {
 
@@ -187,7 +187,7 @@ export default Ember.Service.extend({
    * @return   {method}
    */
 
-  rename: function(id, newName) {
+  rename(id, newName) {
 
     return api.setLightName(id, newName).done();
   },
@@ -205,7 +205,7 @@ export default Ember.Service.extend({
     * @return   {object}
     */
 
-   getGroups: function() {
+   getGroups() {
 
      return api.groups().then(res => {
 
@@ -221,7 +221,7 @@ export default Ember.Service.extend({
     * @return   {object}
     */
 
-   getGroupInfo: function(groupId) {
+   getGroupInfo(groupId) {
 
      return api.getGroup(groupId).then(res => {
 
@@ -237,7 +237,7 @@ export default Ember.Service.extend({
     * @return   {method}
     */
 
-   toggleGroupPower: function(groupId) {
+   toggleGroupPower(groupId) {
 
      this.getGroupInfo(groupId).then(res => {
 
@@ -255,7 +255,7 @@ export default Ember.Service.extend({
     * @return   {method}
     */
 
-   setGroupState: function(groupId, state) {
+   setGroupState(groupId, state) {
 
      return api.setGroupLightState(groupId, state);
    },
@@ -269,7 +269,7 @@ export default Ember.Service.extend({
     * @return   {method}
     */
 
-   renameGroup: function(groupId, newName) {
+   renameGroup(groupId, newName) {
 
      return api.updateGroup(groupId, newName).done();
    }
