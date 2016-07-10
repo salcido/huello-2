@@ -238,10 +238,12 @@ export default Ember.Component.extend({
           briPercentage = this.opacityVal(value, true),
           lights = this.get('lightsService');
 
+      if (this.get('power')) {
 
-      lights.setState(id, {bri: value});
+        lights.setState(id, {bri: value});
 
-      brightness.fadeTo('slow', briPercentage);
+        brightness.fadeTo('slow', briPercentage);
+      }
     },
 
     /**
@@ -260,10 +262,12 @@ export default Ember.Component.extend({
           spectrum = Ember.$('.individual-spectrum-bg.' + id),
           lights = this.get('lightsService');
 
+      if (this.get('power')) {
 
-      lights.setState(id, {sat: value});
+        lights.setState(id, {sat: value});
 
-      spectrum.fadeTo('slow', percentage);
+        spectrum.fadeTo('slow', percentage);
+      }
     },
 
     /**

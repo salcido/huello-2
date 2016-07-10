@@ -12,6 +12,9 @@ export default Ember.Component.extend({
 
   lightsService: Ember.inject.service(),
 
+  // Whether any lights in the current group are on
+  any_on: null,
+
   /**
    * Hide the App overlay after updating
    *
@@ -21,6 +24,8 @@ export default Ember.Component.extend({
   didReceiveAttrs() {
 
     let modeOverlay = Ember.$('.mode-overlay');
+
+    this.set('any_on', this.get('group.state.any_on'));
 
     if (modeOverlay) {
 
@@ -109,20 +114,23 @@ export default Ember.Component.extend({
       overlay.fadeIn('fast');
       spinner.fadeIn('fast');
 
-      if (colorTemp) {
+      if (this.get('any_on')) {
 
-        lights.setGroupState(groupId, {ct: value});
+        if (colorTemp) {
 
-      } else {
+          lights.setGroupState(groupId, {ct: value});
 
-        lights.setGroupState(groupId, {hue: value});
+        } else {
+
+          lights.setGroupState(groupId, {hue: value});
+        }
+
+        Ember.run.later(() => {
+
+            this.sendAction('update');
+            this.sendAction('resetScenes');
+        }, 500);
       }
-
-      Ember.run.later(() => {
-
-          this.sendAction('update');
-          this.sendAction('resetScenes');
-      }, 500);
     },
 
     /**
@@ -142,17 +150,20 @@ export default Ember.Component.extend({
           overlay = Ember.$('.overlay'),
           spinner = Ember.$('.loader');
 
-      overlay.fadeIn('fast');
-      spinner.fadeIn('fast');
+      if (this.get('any_on')) {
 
-      lights.setGroupState(groupId, {bri: value});
+        overlay.fadeIn('fast');
+        spinner.fadeIn('fast');
 
-      brightness.fadeTo('slow', briPercentage);
+        lights.setGroupState(groupId, {bri: value});
 
-      Ember.run.later(() => {
+        brightness.fadeTo('slow', briPercentage);
 
-          this.sendAction('update');
-      }, 500);
+        Ember.run.later(() => {
+
+            this.sendAction('update');
+        }, 500);
+      }
     },
 
     /**
@@ -174,21 +185,24 @@ export default Ember.Component.extend({
           spinner = Ember.$('.loader'),
           colorTemp = this.get('colorTemp');
 
-      overlay.fadeIn('fast');
-      spinner.fadeIn('fast');
+      if (this.get('any_on')) {
 
-      lights.setGroupState(groupId, {sat: value});
+        overlay.fadeIn('fast');
+        spinner.fadeIn('fast');
 
-      // Color temp lights respond to saturation the same as hue
-      // so don't bother fading the spectrum.
-      if (!colorTemp) {
+        lights.setGroupState(groupId, {sat: value});
 
-        spectrum.fadeTo('slow', satPercentage);
+        // Color temp lights respond to saturation the same as hue
+        // so don't bother fading the spectrum.
+        if (!colorTemp) {
+
+          spectrum.fadeTo('slow', satPercentage);
+        }
+
+        Ember.run.later(() => {
+            this.sendAction('update');
+        }, 500);
       }
-
-      Ember.run.later(() => {
-          this.sendAction('update');
-      }, 500);
     },
 
     /**
