@@ -5,25 +5,22 @@ export default Ember.Component.extend({
   // Light service injection
   lightsService: Ember.inject.service(),
 
-  // The id of the light
   lightId: null,
 
-  // the name of the light
   lightName: null,
 
-  // if the light is on
   power: null,
 
-  // hue value
+  // color value
   hue: null,
 
   // color temperature value
   ct: null,
 
-  // bri value
+  // brightness value
   bri: null,
 
-  // sat value
+  // sataturation value
   sat: null,
 
   // The type of light (e.g. Dimmable Light, Color Light, etc...)
@@ -118,7 +115,6 @@ export default Ember.Component.extend({
   /**
    * Animates an input range from it's current position to a new one
    *
-   *
    * @param    {Number} currPos [the current range position]
    * @param    {Number} newPos  [the new range position]
    * @param    {String} target  [element target]
@@ -170,7 +166,6 @@ export default Ember.Component.extend({
     /**
      * Toggles the power for an individual light
      *
-     *
      * @return   {undefined}
      */
 
@@ -185,7 +180,6 @@ export default Ember.Component.extend({
 
     /**
      * Changes the color value for an individual light
-     *
      *
      * @return   {method}
      */
@@ -203,7 +197,6 @@ export default Ember.Component.extend({
 
     /**
      * Changes the brightness value for an individual light
-     *
      *
      * @return   {undefined}
      */
@@ -227,7 +220,6 @@ export default Ember.Component.extend({
     /**
      * Changes the saturation value for an individual light
      *
-     *
      * @return   {undefined}
      */
 
@@ -249,7 +241,6 @@ export default Ember.Component.extend({
 
     /**
      * Changes the name of an individual light
-     *
      *
      * @param    {String} newName [the new name of the light]
      * @param    {String} id      [the id of the light to be updated]

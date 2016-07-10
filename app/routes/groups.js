@@ -122,7 +122,6 @@ export default Ember.Route.extend({
     /**
      * Applies a scene to the lights
      *
-     *
      * @param    {object} scene [the selected scene object]
      * @return   {undefined}
      */
@@ -144,7 +143,6 @@ export default Ember.Route.extend({
      * the group controller is used to change
      * hue or color temperature.
      *
-     *
      * @return   {undefined}
      */
 
@@ -155,7 +153,6 @@ export default Ember.Route.extend({
 
     /**
      * Sets colorTemp boolean
-     *
      *
      * @param    {boolean} value [whether to use color temperature values]
      * @return   {undefined}
@@ -170,7 +167,6 @@ export default Ember.Route.extend({
 
     /**
      * Updates the model with all lights' current state
-     *
      *
      * @param    {number} value [the group number that will be controlled by the group controller component]
      * @return   {undefined}
