@@ -31,6 +31,30 @@ export default Ember.Component.extend({
     }
   },
 
+  /**
+   * Calculate the opacity for a spectrum element
+   *
+   * @param    {Number} value [The initial value to start with]
+   * @return   {Number}
+   */
+
+  opacityVal(value, useLimiter) {
+
+    let
+        initial = Number(254 / value),
+        limiter = 0.25,
+        percentage = ( (100 / initial) / 100 );
+
+    if (useLimiter) {
+
+      return percentage < limiter ? limiter : percentage;
+
+    } else {
+
+      return percentage;
+    }
+  },
+
   actions: {
 
     /**
@@ -114,8 +138,7 @@ export default Ember.Component.extend({
           groupId = event.target.id,
           lights = this.get('lightsService'),
           brightness = Ember.$('.group-brightness-wrap'),
-          briInitial = Number( 254 / value ),
-          briPercentage = ( (100 / briInitial) / 100 < 0.07 ? 0.07 : (100 / briInitial) / 100 ),
+          briPercentage = briPercentage = this.opacityVal(value, true),
           overlay = Ember.$('.overlay'),
           spinner = Ember.$('.loader');
 

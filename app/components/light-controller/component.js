@@ -134,6 +134,36 @@ export default Ember.Component.extend({
     });
   },
 
+  /**
+   * Calculate the opacity for a spectrum element
+   *
+   * @param    {Number} value [The initial value to start with]
+   * @return   {Number}
+   */
+
+  opacityVal(value, useLimiter) {
+
+    let
+        initial = Number(254 / value),
+        limiter = 0.25,
+        percentage = ( (100 / initial) / 100 );
+
+    if (useLimiter) {
+
+      return percentage < limiter ? limiter : percentage;
+
+    } else {
+
+      return percentage;
+    }
+  },
+
+  /**
+   * Updates the range values
+   *
+   * @return {undefined}
+   */
+
   updateRanges() {
 
     let
@@ -144,10 +174,8 @@ export default Ember.Component.extend({
         briVal = Ember.$('.powered .range-bri.' + id).val(),
         spectrum = Ember.$('.powered .individual-spectrum-bg.' + id),
         brightness = Ember.$('.powered .brightness-wrap.' + id),
-        briInitial = Number(254 / this.get('bri')),
-        briPercentage = ( (100 / briInitial) / 100 < 0.07 ? 0.07 : (100 / briInitial) / 100 ),
-        satInitial = Number(254 / this.get('sat')),
-        satPercentage = (100 / satInitial) / 100;
+        briPercentage = this.opacityVal(this.get('bri'), true),
+        satPercentage = this.opacityVal(this.get('sat'), false);
 
 
     // Animate ranges
@@ -206,9 +234,8 @@ export default Ember.Component.extend({
       let
           value = event.target.value,
           id = event.target.id,
-          briInitial = Number(254 / value),
-          briPercentage = ( (100 / briInitial) / 100 < 0.07 ? 0.07 : (100 / briInitial) / 100 ),
           brightness = Ember.$('.brightness-wrap.' + id),
+          briPercentage = this.opacityVal(value, true),
           lights = this.get('lightsService');
 
 
