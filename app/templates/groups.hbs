@@ -16,7 +16,7 @@
   <div class="spacer"></div>
   <div class="group-wrap">
     {{#each groups.lights as |light|}}
-      {{light-in-group-controller light=light update="updateModel" currentGroup=currentGroup colorTemp=colorTemp}} {{! currentGroup: group ID number, colorTemp: boolean }}
+      {{light-controller light=light update="updateModel" currentGroup=currentGroup colorTemp=colorTemp}} {{! currentGroup: group ID number, colorTemp: boolean }}
     {{/each}}
   </div>
 </div>

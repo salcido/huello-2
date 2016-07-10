@@ -36,6 +36,7 @@ export default Ember.Route.extend({
    * The Group model
    *
    * @method model
+   * @return {object}
    */
 
   model() {
