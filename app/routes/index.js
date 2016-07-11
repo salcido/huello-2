@@ -24,7 +24,7 @@ export default Ember.Route.extend({
    * @return   {undefined}
    */
 
-  registerUser: function() {
+  registerUser() {
 
     let
         hostname = localStorage.getItem('hostname'),
@@ -67,7 +67,7 @@ export default Ember.Route.extend({
    * @return   {undefined}
    */
 
-  setHostname: function() {
+  setHostname() {
 
     let lights = this.get('lightsService');
 
