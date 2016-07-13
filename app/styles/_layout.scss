@@ -13,24 +13,6 @@ body {
   display: none;
 }
 
-.bg-logo {
-  background: url('img/huello-@2x.png') no-repeat;
-  background-size: cover;
-  width: 135px;
-  height: 30px;
-  position: fixed;
-  top: 250px;
-  left: 132px;
-
-  .output {
-    color: $white;
-    font-size: 13px;
-    margin-top: 40px;
-    text-align: center;
-    display: none;
-  }
-}
-
 .spacer {
   height: 296px;
   width: 400px;
@@ -106,9 +88,40 @@ body {
   position: fixed;
 }
 
-.loader-wrap {
-  position: absolute;
-  margin: 300px 185px;
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+}
+
+.inner {
+  .bg-logo {
+    background: url('img/huello-@2x.png') no-repeat;
+    background-size: cover;
+    width: 135px;
+    height: 30px;
+    margin: auto;
+  }
+
+  .output {
+    color: $white;
+    font-size: 13px;
+    margin-top: 10px;
+    text-align: center;
+    display: none;
+  }
 
   .loader {
     font-size: 10px;

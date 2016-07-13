@@ -21,7 +21,7 @@
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
     "devtron": "1.2.1",
-    "electron-packager": "7.1.0",
+    "electron-packager": "^7.1.0",
     "electron-prebuilt": "1.2.5",
     "electron-rebuild": "1.1.5",
     "ember-ajax": "0.7.1",
@@ -52,6 +52,7 @@
     "loader.js": "^4.0.0"
   },
   "dependencies": {
+    "menubar": "^5.0.0",
     "node-hue-api": "^2.2.0"
   },
   "main": "electron.js",
@@ -77,7 +78,7 @@
     "extend-info": null,
     "extra-resource": null,
     "helper-bundle-id": null,
-    "icon": "dist/assets/img/Icon.icns",
+    "icon": "dist/assets/img/Icon_app.icns",
     "ignore": null,
     "out": null,
     "osx-sign": {

@@ -37,14 +37,20 @@ You will need the following things properly installed on your computer.
 
 ## Running / Development
 
-* `ember server`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+* As a menubar app:
+  * `electron main.js`
+
+* As a desktop app:
+  * `ember serve`
+  * Visit your app at [http://localhost:4200](http://localhost:4200).
 
 
-### Building
+## Building
+* As a menubar app:
+  * `electron-packager ./dist/ Huello --platform=darwin --arch=x64 --version=1.00 --icon=./dist/assets/img/Icon.icns`
 
-* `ember electron:package --platform mas` (Mac App Store)
-
+* As a desktop app:
+ * `ember electron:package --platform mas` (Mac App Store)
 
 ## Further Reading / Useful Links
 
