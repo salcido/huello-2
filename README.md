@@ -53,7 +53,7 @@ You will need the following things properly installed on your computer.
 
 ## Building
 * As a menubar app:
-  * `electron-packager ./dist/ Huello --platform=darwin --arch=x64 --version=1.00 --icon=./dist/assets/img/Icon.icns`
+  * `electron-packager ./dist/ Huello --platform=darwin --arch=x64 --version=0.36.0 --icon=./dist/assets/img/Icon.icns`
 
 * As a desktop app:
  * `ember electron:package --platform mas` (Mac App Store)
