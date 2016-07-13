@@ -31,7 +31,7 @@
         <h3>
 <a id="huello-there" class="anchor" href="#huello-there" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Huello there!</h3>
 
-<p>Huello 2 is the successor to Huello (formally an OS X Dashboard widget) built with Ember and Electron for quickly controlling your Philips Hue bulbs.</p>
+<p>Huello 2 is the successor to Huello (formally an OS X Dashboard widget) built with Ember and Electron for quickly controlling your Philips Hue bulbs. Huello 2 can be setup as either a desktop or menubar application.</p>
 
 <h3>
 <a id="group-control" class="anchor" href="#group-control" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Group control</h3>
@@ -70,16 +70,42 @@
 <a id="running--development" class="anchor" href="#running--development" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running / Development</h2>
 
 <ul>
-<li><code>ember server</code></li>
+<li>
+<p>As a menubar app:</p>
+
+<ul>
+<li><code>electron main.js</code></li>
+</ul>
+</li>
+<li>
+<p>As a desktop app:</p>
+
+<ul>
+<li><code>ember serve</code></li>
 <li>Visit your app at <a href="http://localhost:4200">http://localhost:4200</a>.</li>
 </ul>
+</li>
+</ul>
 
-<h3>
-<a id="building" class="anchor" href="#building" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Building</h3>
+<h2>
+<a id="building" class="anchor" href="#building" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Building</h2>
+
+<ul>
+<li>
+<p>As a menubar app:</p>
+
+<ul>
+<li><code>electron-packager ./dist/ Huello --platform=darwin --arch=x64 --version=1.00 --icon=./dist/assets/img/Icon.icns</code></li>
+</ul>
+</li>
+<li>
+<p>As a desktop app:</p>
 
 <ul>
 <li>
 <code>ember electron:package --platform mas</code> (Mac App Store)</li>
+</ul>
+</li>
 </ul>
       </section>
       <footer>
