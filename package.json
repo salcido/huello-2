@@ -21,7 +21,7 @@
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
     "devtron": "1.2.1",
-    "electron-packager": "^7.1.0",
+    "electron-packager": "^7.3.0",
     "electron-prebuilt": "1.2.5",
     "electron-rebuild": "1.1.5",
     "ember-ajax": "0.7.1",
