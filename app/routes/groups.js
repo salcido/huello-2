@@ -94,12 +94,21 @@ export default Ember.Route.extend({
       }
     }
 
+    // Alphabetize Scenes
+    model.scenes.sort(function(a, b) {
+
+      let thisScene = a.name,
+          thatScene = b.name;
+
+      return thisScene > thatScene ? 1 : (thisScene < thatScene ? -1 : 0);
+    });
+
     // Insert a unique `sceneId` for the ember-power-select add-on
     // to latch on to
-    for (let i = 0; i < model.scenes.length; i++) {
+    model.scenes.forEach(function(scene, i) {
 
-      model.scenes[i].sceneId = i;
-    }
+      scene.sceneId = i;
+    });
 
     // Set props on controller object
     Ember.set(controller, 'groups', model.groups[this.get('currentGroup')]);
