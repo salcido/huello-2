@@ -146,7 +146,7 @@ export default Ember.Component.extend({
           groupId = event.target.id,
           lights = this.get('lightsService'),
           brightness = Ember.$('.group-brightness-wrap'),
-          briPercentage = briPercentage = this.opacityVal(value, true),
+          briPercentage = this.opacityVal(value, true),
           overlay = Ember.$('.overlay'),
           spinner = Ember.$('.loader');
 
