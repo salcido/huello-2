@@ -21,6 +21,8 @@ export default Ember.Controller.extend({
     changeScene(scene) {
 
       this.send('applyScene', scene);
+
+      this.send('resetScenes');
     }
   }
 });

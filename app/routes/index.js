@@ -106,6 +106,8 @@ export default Ember.Route.extend({
       Ember.run.next(function() {
 
         Ember.$('.output').text('Connecting to Hue...').fadeIn('slow');
+
+        return;
       });
 
       lights.config().then(res => {

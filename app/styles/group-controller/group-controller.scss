@@ -48,11 +48,17 @@
     position: relative;
   }
 
+  .range.neg-margin {
+    margin-top: -8px;
+  }
+
   input {
     width: 90%;
 
 
-    &.range-hue {
+    &.range-hue,
+    &.range-sat,
+    &.range-bri {
 
       -webkit-appearance: none;
       background: transparent;
@@ -94,19 +100,37 @@
     margin: 0;
   }
 
-  input.range-hue:focus {
+  input.range-hue:focus,
+  input.range-sat:focus,
+  input.range-bri:focus {
     outline: none;
   }
 
   input.range-sat::-webkit-slider-runnable-track,
   input.range-bri::-webkit-slider-runnable-track {
     -webkit-appearance: none;
-    background: $mineshaft;
+    background-size: cover;
+    background: linear-gradient(to right,  #ffffff 0%, #5bbdff 100%);
     box-shadow: inset 0px 0px px rgba(0, 0, 0, 0.5);
     cursor: pointer;
-    height: 5px;
+    height: 15px;
     width: 100%;
     border: none;
+    margin-top: 2px;
+    outline: transparent;
+  }
+
+  input.range-bri::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    background-size: cover;
+    background: linear-gradient(to right, #515151 0%, #ffe65b 100%);
+    box-shadow: inset 0px 0px px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    height: 15px;
+    width: 100%;
+    border: none;
+    margin-top: 2px;
+    outline: transparent;
   }
 
   input.range-sat::-webkit-slider-thumb,

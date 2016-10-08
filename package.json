@@ -52,7 +52,7 @@
     "loader.js": "^4.0.0"
   },
   "dependencies": {
-    "menubar": "^5.0.0",
+    "menubar": "4.1.3",
     "node-hue-api": "^2.2.0"
   },
   "main": "electron.js",

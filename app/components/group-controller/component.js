@@ -145,8 +145,8 @@ export default Ember.Component.extend({
           value = event.target.value,
           groupId = event.target.id,
           lights = this.get('lightsService'),
-          brightness = Ember.$('.group-brightness-wrap'),
-          briPercentage = this.opacityVal(value, true),
+          // brightness = Ember.$('.group-brightness-wrap'),
+          // briPercentage = this.opacityVal(value, true),
           overlay = Ember.$('.overlay'),
           spinner = Ember.$('.loader');
 
@@ -157,7 +157,7 @@ export default Ember.Component.extend({
 
         lights.setGroupState(groupId, {bri: value});
 
-        brightness.fadeTo('slow', briPercentage);
+        //brightness.fadeTo('slow', briPercentage);
 
         Ember.run.later(() => {
 
@@ -194,10 +194,10 @@ export default Ember.Component.extend({
 
         // Color temp lights respond to saturation the same as hue
         // so don't bother fading the spectrum.
-        if (!colorTemp) {
-
-          spectrum.fadeTo('slow', satPercentage);
-        }
+        // if (!colorTemp) {
+        //
+        //   spectrum.fadeTo('slow', satPercentage);
+        // }
 
         Ember.run.later(() => {
             this.sendAction('update');
