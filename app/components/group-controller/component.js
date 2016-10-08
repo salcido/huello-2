@@ -177,13 +177,13 @@ export default Ember.Component.extend({
       let
           value = event.target.value,
           groupId = event.target.id,
-          satInitial = Number( 254 / value ),
+          //satInitial = Number( 254 / value ),
           lights = this.get('lightsService'),
-          satPercentage = (100 / satInitial) / 100,
-          spectrum = Ember.$('.group-spectrum-bg'),
+          //satPercentage = (100 / satInitial) / 100,
+          //spectrum = Ember.$('.group-spectrum-bg'),
           overlay = Ember.$('.overlay'),
-          spinner = Ember.$('.loader'),
-          colorTemp = this.get('colorTemp');
+          spinner = Ember.$('.loader');
+          //colorTemp = this.get('colorTemp');
 
       if (this.get('any_on')) {
 
