@@ -96,6 +96,7 @@ export default Ember.Route.extend({
     this._super(...arguments);
 
     let
+        count = 0,
         hostname = localStorage.getItem('hostname'),
         lights = this.get('lightsService'),
         username = localStorage.getItem('username');
@@ -106,8 +107,6 @@ export default Ember.Route.extend({
       Ember.run.next(() => {
 
         Ember.$('.output').text('Connecting to Hue...').fadeIn('slow');
-
-        let count = 0;
 
         let c = setInterval(() => {
 
@@ -123,8 +122,6 @@ export default Ember.Route.extend({
 
               localStorage.clear();
 
-              this.setHostname();
-
               Ember.$('.output').fadeOut('slow');
 
               Ember.$('.reset').fadeOut('slow');
@@ -134,6 +131,12 @@ export default Ember.Route.extend({
           }
         }, 1000);
       });
+
+      // Issues with hostname, reset them...
+      if (count > 5) {
+
+        this.setHostname();
+      }
 
       lights.config().then(res => {
 
