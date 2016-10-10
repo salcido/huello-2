@@ -94,6 +94,23 @@ export default Ember.Route.extend({
       }
     }
 
+    // hide switch/timer related scenes
+    // -----------------------------------------
+    // Can't use a forEach here because a forEach
+    // won't let you reset the iteration length
+    for (let i = 0; i < model.scenes.length; i++) {
+
+      let name = model.scenes[i].name;
+
+      if (name.indexOf('Switch') > -1 || name.indexOf('Timer') > 0) {
+
+        model.scenes.splice(i, 1);
+        // reset count because removing an index resets the length
+        // of the array.
+        i = -1;
+      }
+    }
+
     // Alphabetize Scenes
     model.scenes.sort(function(a, b) {
 

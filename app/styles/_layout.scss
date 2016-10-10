@@ -123,6 +123,14 @@ body {
     display: none;
   }
 
+  .reset {
+    color: $white;
+    font-size: 13px;
+    margin-top: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+
   .loader {
     font-size: 10px;
     margin: 50px auto;

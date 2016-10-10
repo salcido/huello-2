@@ -103,11 +103,36 @@ export default Ember.Route.extend({
     // Existing user
     if (username && hostname) {
 
-      Ember.run.next(function() {
+      Ember.run.next(() => {
 
         Ember.$('.output').text('Connecting to Hue...').fadeIn('slow');
 
-        return;
+        let count = 0;
+
+        let c = setInterval(() => {
+
+          count++;
+
+          if (count > 5) {
+
+            Ember.$('.output').text('Issues connecting to bridge');
+
+            Ember.$('.reset').text('Remove hostname/username data?').fadeIn('slow');
+
+            Ember.$('.reset').on('click', function() {
+
+              localStorage.clear();
+
+              this.setHostname();
+
+              Ember.$('.output').fadeOut('slow');
+
+              Ember.$('.reset').fadeOut('slow');
+
+              clearInterval(c);
+            });
+          }
+        }, 1000);
       });
 
       lights.config().then(res => {
