@@ -1,0 +1,27 @@
+<div class="light-controller dimmable-light {{if power "powered" "off"}}">
+  <div class="overlay"></div>
+      <div class="loader"></div>
+  <div class="title-wrap">
+    <div class="title">
+      <h4>{{ember-inline-edit value=lightName onSave=(action "changeName" lightName lightId)}}</h4>
+    </div>
+
+  </div>
+
+  <div class="range-wrap">
+
+    {{! hue }}
+    <div class="range">
+      <label><button {{action "togglePower"}} class="{{if power "powered" "off"}}"></button></label>
+      <div class="brightness-wrap {{light}}">
+        <div class="dimmable-bg"></div>
+      </div>
+
+      {{! hue slider }}
+      <div class="range range-bri">
+        <label>Bri:</label>
+        <input type="range" {{action "changeBrightness" on="change"}} class="range-bri {{light}}" id={{light}} value={{bri}} min="1" max="254"/>
+      </div>
+    </div>
+  </div>
+</div>
