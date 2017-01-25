@@ -27,18 +27,18 @@ export default Ember.Component.extend({
   type: null,
 
   /**
-   * The following 4 properties will determine which type of template to render
+   * The following properties will determine which type of template to render
    */
   dimmableLight: Ember.computed.equal('type', 'Dimmable light'),
 
   colorTempLight: Ember.computed.equal('type', 'Color temperature light'),
 
   colorLight: Ember.computed.equal('type', 'Color light'),
-  // First Gen Light
+
   firstGenLight: Ember.computed.equal('modelid', 'LCT001'),
-  // Second Gen Light
+
   secondGenLight: Ember.computed.equal('modelid', 'LCT007'),
-  // Third Gen Light
+
   thirdGenLight: Ember.computed.equal('modelid', 'LCT014'),
 
   // Assign the initial values of each light
