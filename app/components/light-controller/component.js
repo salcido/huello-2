@@ -34,9 +34,12 @@ export default Ember.Component.extend({
   colorTempLight: Ember.computed.equal('type', 'Color temperature light'),
 
   colorLight: Ember.computed.equal('type', 'Color light'),
-
-  extendedLight: Ember.computed.equal('type', 'Extended color light'),
-
+  // First Gen Light
+  firstGenLight: Ember.computed.equal('modelid', 'LCT001'),
+  // Second Gen Light
+  secondGenLight: Ember.computed.equal('modelid', 'LCT007'),
+  // Third Gen Light
+  thirdGenLight: Ember.computed.equal('modelid', 'LCT014'),
 
   // Assign the initial values of each light
   init() {
@@ -60,7 +63,8 @@ export default Ember.Component.extend({
         bri: res.state.bri,
         sat: res.state.sat,
         ct: res.state.ct,
-        type: res.type
+        type: res.type,
+        modelid: res.modelid
       });
 
       if (!res.state.on) {
