@@ -14,7 +14,7 @@ export default Ember.Route.extend({
   currentScene: null,
 
   /**
-   * Configure the api instance & poll for updates
+   * Configure the api instance and poll for updates
    *
    * @method   init
    * @return   {undefined}
