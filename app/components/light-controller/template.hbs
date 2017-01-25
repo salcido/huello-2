@@ -1,6 +1,13 @@
-{{! Extended color light }}
-{{#if extendedLight}}
- {{partial 'partials/extended-light'}}
+{{#if firstGenLight}}
+  {{partial 'partials/first-gen-light'}}
+{{/if}}
+
+{{#if secondGenLight}}
+  {{partial 'partials/second-gen-light'}}
+{{/if}}
+
+{{#if thirdGenLight}}
+  {{partial 'partials/third-gen-light'}}
 {{/if}}
 
 {{! Color light }}
