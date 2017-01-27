@@ -130,11 +130,7 @@ export default Ember.Component.extend({
     Ember.$({position: currPos}).animate({position: newPos}, {
 
       duration: 500,
-
-      step() {
-
-        Ember.$(target).val(Math.ceil(this.position));
-      }
+      step() { Ember.$(target).val(Math.ceil(this.position)); }
     });
   },
 
@@ -206,7 +202,6 @@ export default Ember.Component.extend({
       let id = this.get('lightId');
 
       this.get('lightsService').togglePower(id, this);
-
       this.sendAction('update');
     },
 
@@ -245,7 +240,6 @@ export default Ember.Component.extend({
       if (this.get('power')) {
 
         lights.setState(id, {bri: value});
-
         brightness.fadeTo('slow', briPercentage);
       }
     },
@@ -269,7 +263,6 @@ export default Ember.Component.extend({
       if (this.get('power')) {
 
         lights.setState(id, {sat: value});
-
         spectrum.fadeTo('slow', percentage);
       }
     },
@@ -287,10 +280,7 @@ export default Ember.Component.extend({
       this.get('lightsService').rename(id, newName);
 
       // update the current model
-      Ember.run.later(() => {
-
-          this.sendAction('update');
-      }, 500);
+      Ember.run.later(() => { this.sendAction('update'); }, 500);
     }
   }
 });
