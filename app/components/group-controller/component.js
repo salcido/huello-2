@@ -53,11 +53,9 @@ export default Ember.Component.extend({
     if (useLimiter) {
 
       return percentage < limiter ? limiter : percentage;
-
-    } else {
-
-      return percentage;
     }
+
+    return percentage;
   },
 
   actions: {
@@ -76,10 +74,7 @@ export default Ember.Component.extend({
 
       lights.toggleGroupPower(groupId);
 
-      Ember.run.later(() => {
-
-          this.sendAction('update');
-      }, 500);
+      Ember.run.later(() => { this.sendAction('update'); }, 500);
     },
 
     /**
@@ -159,10 +154,7 @@ export default Ember.Component.extend({
 
         //brightness.fadeTo('slow', briPercentage);
 
-        Ember.run.later(() => {
-
-            this.sendAction('update');
-        }, 500);
+        Ember.run.later(() => { this.sendAction('update'); }, 500);
       }
     },
 
@@ -199,9 +191,7 @@ export default Ember.Component.extend({
         //   spectrum.fadeTo('slow', satPercentage);
         // }
 
-        Ember.run.later(() => {
-            this.sendAction('update');
-        }, 500);
+        Ember.run.later(() => { this.sendAction('update'); }, 500);
       }
     },
 
@@ -218,9 +208,7 @@ export default Ember.Component.extend({
       this.get('lightsService').renameGroup(groupId, newName);
 
       // update the current model
-      Ember.run.later(() => {
-          this.sendAction('update');
-      }, 500);
+      Ember.run.later(() => { this.sendAction('update'); }, 500);
     }
   }
 });

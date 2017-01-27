@@ -151,11 +151,9 @@ export default Ember.Component.extend({
     if (useLimiter) {
 
       return percentage < limiter ? limiter : percentage;
-
-    } else {
-
-      return percentage;
     }
+
+    return percentage;
   },
 
   /**
