@@ -10,20 +10,14 @@ export default Ember.Route.extend({
 
   /**
    * Inject the light service
-   *
-   *
    * @return   {undefined}
    */
-
   lightsService: Ember.inject.service(),
 
   /**
    * Registers a new user on the hub
-   *
-   *
    * @return   {undefined}
    */
-
   registerUser() {
 
     let
@@ -62,11 +56,8 @@ export default Ember.Route.extend({
 
   /**
    * Sets the `hostname` in localStorage
-   *
-   *
-   * @return   {undefined}
+   * @return   {method}
    */
-
   setHostname() {
 
     let lights = this.get('lightsService');
@@ -87,10 +78,8 @@ export default Ember.Route.extend({
 
   /**
    * Checks for an existing username/hostname value
-   *
    * @return   {undefined}
    */
-
   init() {
 
     this._super(...arguments);
