@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
-  // Light service injection
   lightsService: Ember.inject.service(),
 
   lightId: null,
@@ -26,9 +25,7 @@ export default Ember.Component.extend({
   // The type of light (e.g. Dimmable Light, Color Light, etc...)
   type: null,
 
-  /**
-   * The following properties will determine which type of template to render
-   */
+  // The following properties will determine which type of template to render
   dimmableLight: Ember.computed.equal('type', 'Dimmable light'),
 
   colorTempLight: Ember.computed.equal('type', 'Color temperature light'),
@@ -124,7 +121,6 @@ export default Ember.Component.extend({
    * @param    {String} target  [element target]
    * @return   {undefined}
    */
-
   animateRange(currPos, newPos, target) {
 
     Ember.$({position: currPos}).animate({position: newPos}, {
@@ -140,7 +136,6 @@ export default Ember.Component.extend({
    * @param    {Number} value [The initial value to start with]
    * @return   {Number}
    */
-
   opacityVal(value, useLimiter) {
 
     let
@@ -161,7 +156,6 @@ export default Ember.Component.extend({
    *
    * @return {undefined}
    */
-
   updateRanges() {
 
     let
@@ -194,7 +188,6 @@ export default Ember.Component.extend({
      *
      * @return   {undefined}
      */
-
     togglePower() {
 
       let id = this.get('lightId');
@@ -208,7 +201,6 @@ export default Ember.Component.extend({
      *
      * @return   {method}
      */
-
     changeColor() {
 
       let
@@ -225,7 +217,6 @@ export default Ember.Component.extend({
      *
      * @return   {undefined}
      */
-
     changeBrightness() {
 
       let
@@ -247,7 +238,6 @@ export default Ember.Component.extend({
      *
      * @return   {undefined}
      */
-
     changeSaturation() {
 
       let
@@ -272,7 +262,6 @@ export default Ember.Component.extend({
      * @param    {String} id      [the id of the light to be updated]
      * @return   {undefined}
      */
-
     changeName(newName, id) {
 
       this.get('lightsService').rename(id, newName);

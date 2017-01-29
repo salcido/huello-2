@@ -7,7 +7,6 @@ import Ember from 'ember';
  * @extends App.Component
  * @return   {undefined}
  */
-
 export default Ember.Component.extend({
 
   lightsService: Ember.inject.service(),
@@ -20,7 +19,6 @@ export default Ember.Component.extend({
    *
    * @return   {undefined}
    */
-
   didReceiveAttrs() {
 
     let modeOverlay = Ember.$('.mode-overlay');
@@ -42,7 +40,6 @@ export default Ember.Component.extend({
    * @param    {Number} value [The initial value to start with]
    * @return   {Number}
    */
-
   opacityVal(value, useLimiter) {
 
     let
@@ -65,7 +62,6 @@ export default Ember.Component.extend({
      *
      * @return   {undefined}
      */
-
     togglePower() {
 
       let
@@ -83,8 +79,7 @@ export default Ember.Component.extend({
      * @param    {object} event
      * @return   {undefined}
      */
-
-      toggleColorTemp(event) {
+    toggleColorTemp(event) {
 
       this.sendAction('useColorTemp', event.target.checked);
     },
@@ -94,7 +89,6 @@ export default Ember.Component.extend({
      *
      * @return   {undefined}
      */
-
     changeColor() {
 
       let
@@ -133,7 +127,6 @@ export default Ember.Component.extend({
      *
      * @return   {undefined}
      */
-
     changeBrightness() {
 
       let
@@ -163,7 +156,6 @@ export default Ember.Component.extend({
      *
      * @return   {undefined}
      */
-
     changeSaturation() {
 
       let
@@ -202,7 +194,6 @@ export default Ember.Component.extend({
      * @param    {String} groupId [the id of the group that will be updated]
      * @return   {undefined}
      */
-
     changeGroupName(newName, groupId) {
 
       this.get('lightsService').renameGroup(groupId, newName);
