@@ -56,7 +56,7 @@ export default Ember.Route.extend({
 
   /**
    * Sets the `hostname` in localStorage
-   * @return   {undefined}
+   * @return   {method}
    */
   setHostname() {
 

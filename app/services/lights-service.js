@@ -13,7 +13,6 @@ export default Ember.Service.extend({
 
   /**
    * Applies a scene to a group of lights
-   *
    * @param    {string} id [the ID of the scene]
    * @return   {method}
    */
@@ -24,7 +23,6 @@ export default Ember.Service.extend({
 
   /**
    * Configures a new HueApi instance
-   *
    * @return   {object}
    */
   config() {
@@ -42,7 +40,6 @@ export default Ember.Service.extend({
 
   /**
    * Deletes a user from the hub
-   *
    * @param    {user} user [the unique user id]
    * @return   {object}
    */
@@ -60,7 +57,6 @@ export default Ember.Service.extend({
 
   /**
    * Returns the IP Address of the Bridge
-   *
    * @return   {object}
    */
   logBridge() {
@@ -77,7 +73,6 @@ export default Ember.Service.extend({
 
   /**
    * Returns all lights and statuses
-   *
    * @return   {object}
    */
   getLights() {
@@ -91,7 +86,6 @@ export default Ember.Service.extend({
 
   /**
    * Returns all scenes on the hub
-   *
    * @return   {object}
    */
   getScenes() {
@@ -118,7 +112,6 @@ export default Ember.Service.extend({
 
   /**
    * Sets the state of a particular light
-   *
    * @param    {String} id    [the light's id]
    * @param    {object} state [an object representing the new state]
    * @return   {method}
@@ -130,7 +123,6 @@ export default Ember.Service.extend({
 
   /**
    * Turns a light on or off
-   *
    * @param    {String} id [the light's id]
    * @return   {method}
    */
@@ -158,7 +150,6 @@ export default Ember.Service.extend({
 
   /**
    * Renames a light
-   *
    * @param    {String} id      [The light's id]
    * @param    {String} newName [The new name of the light]
    * @return   {method}
@@ -174,7 +165,6 @@ export default Ember.Service.extend({
 
    /**
     * Returns an object with all light groups
-    *
     * @return   {object}
     */
    getGroups() {
@@ -187,7 +177,6 @@ export default Ember.Service.extend({
 
    /**
     * Returns various attributes of the group state
-    *
     * @param    {String} groupId [the ID of the group]
     * @return   {object}
     */
@@ -201,7 +190,6 @@ export default Ember.Service.extend({
 
    /**
     * Toggles the power state for the group
-    *
     * @param    {String} groupId [the group's ID]
     * @return   {method}
     */
@@ -216,7 +204,6 @@ export default Ember.Service.extend({
 
    /**
     * Sets the state of the group
-    *
     * @param    {String} groupId [The group's ID]
     * @param    {Object} state   [An object representing the new state]
     * @return   {method}
@@ -228,7 +215,6 @@ export default Ember.Service.extend({
 
    /**
     * Renames a group
-    *
     * @param    {String} groupId [the ID of the group]
     * @param    {String} newName [the new name of the group]
     * @return   {method}
