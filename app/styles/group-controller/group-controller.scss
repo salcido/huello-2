@@ -1,10 +1,10 @@
 .group-controller {
+  height: 254px;
+  width: 358px;
+  padding: 20px;
+  position: fixed;
   background-color: $emperor;
   border: 1px solid $emperor;
-  padding: 20px;
-  width: 358px;
-  height: 254px;
-  position: fixed;
 
   h4 {
     margin: 0 0 10px 0;
@@ -12,9 +12,9 @@
 
   label {
     display: inline-block;
-    font-weight: bold;
     margin-bottom: 10px;
     font-size: 13.5px;
+    font-weight: bold;
     letter-spacing: 1px;
 
     &.label-sat,
@@ -33,9 +33,9 @@
 
   .color-temp-box-wrap {
     position: absolute;
+    z-index: 2;
     top: 111px;
     left: 317px;
-    z-index: 2;
 
     input {
       position: absolute;
@@ -59,45 +59,46 @@
     &.range-hue,
     &.range-sat,
     &.range-bri {
-
-      -webkit-appearance: none;
       background: transparent;
       cursor: pointer;
 
+      -webkit-appearance: none;
+
       &::-webkit-slider-runnable-track {
-        -webkit-appearance: none;
-        margin: 10px 0;
-        width: 100%;
-        background-size: cover;
-        border-radius: 3px;
         display: block;
         height: 30px;
-        margin-top: -4px;
+        width: 100%;
         width: 320px;
+        margin: 10px 0;
+        margin-top: -4px;
         z-index: 2;
+        background-size: cover;
+        border-radius: 3px;
+
+        -webkit-appearance: none;
       }
 
       &::-webkit-slider-thumb {
-          -webkit-appearance: none;
+        /* hide the indicator */
+        // border-bottom: 15px solid $emperor;
+        // border-left: 8px solid transparent;
+        // border-right: 8px solid transparent;
+        height: 20px;
+        width: 10px;
+        margin-top: 10px;
+        outline: none;
 
-          /* hide the indicator */
-
-          // border-bottom: 15px solid $emperor;
-          // border-left: 8px solid transparent;
-          // border-right: 8px solid transparent;
-          height: 20px;
-          margin-top: 10px;
-          outline: none;
-          width: 10px;
+        -webkit-appearance: none;
       }
     }
   }
 
   input.range-hue,
   input.range-bri {
-    -webkit-appearance: none;
-    outline: none;
     margin: 0;
+    outline: none;
+
+    -webkit-appearance: none;
   }
 
   input.range-hue:focus,
@@ -108,29 +109,31 @@
 
   input.range-sat::-webkit-slider-runnable-track,
   input.range-bri::-webkit-slider-runnable-track {
-    -webkit-appearance: none;
-    background-size: cover;
-    background: linear-gradient(to right,  #ffffff 0%, #5bbdff 100%);
-    box-shadow: inset 0px 0px px rgba(0, 0, 0, 0.5);
-    cursor: pointer;
     height: 15px;
     width: 100%;
-    border: none;
     margin-top: 2px;
+    background: linear-gradient(to right,  #FFFFFF 0%, #5BBDFF 100%);
+    background-size: cover;
+    border: none;
     outline: transparent;
+    box-shadow: inset 0 0 px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+
+    -webkit-appearance: none;
   }
 
   input.range-bri::-webkit-slider-runnable-track {
-    -webkit-appearance: none;
-    background-size: cover;
-    background: linear-gradient(to right, #515151 0%, #fff 100%);
-    box-shadow: inset 0px 0px px rgba(0, 0, 0, 0.5);
-    cursor: pointer;
     height: 15px;
     width: 100%;
-    border: none;
     margin-top: 2px;
+    background: linear-gradient(to right, #515151 0%, #FFFFFF 100%);
+    background-size: cover;
+    border: none;
     outline: transparent;
+    box-shadow: inset 0 0 px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+
+    -webkit-appearance: none;
   }
 
   input.range-sat::-webkit-slider-thumb,
@@ -150,35 +153,35 @@
     }
 
     &.off {
-      background: url('img/group-power-off.png') no-repeat;
+      display: block;
+      height: 30px;
+      width: 30px;
+      background: url("img/group-power-off.png") no-repeat;
       background-color: $emperor;
       background-size: cover;
       border: 0;
-      display: block;
-      height: 30px;
-      width: 30px;
     }
 
     &.powered {
-      background: url('img/group-power-on.png') no-repeat;
-      background-size: cover;
-      border: 0;
       display: block;
       height: 30px;
       width: 30px;
+      background: url("img/light-power-on.png") no-repeat;
+      background-size: cover;
+      border: 0;
     }
   }
 
   .range-wrap {
-    margin-top: 60px;
     width: 400px;
+    margin-top: 60px;
   }
 
   .logo {
-    background: url('img/huello-@2x.png');
-    width: 135px;
-    height: 30px;
     display: block;
+    height: 30px;
+    width: 135px;
+    background: url("img/huello-@2x.png");
     background-size: cover;
   }
 }
@@ -191,8 +194,8 @@
 .ember-power-select-trigger,
 .ember-power-select-options {
   background: $mineshaft;
+  box-shadow: 0 1px 1px $mineshaft;
   color: lightgray;
-  box-shadow: 0px 1px 1px $mineshaft;
 }
 
 .ember-power-select-option[aria-selected="true"] {
@@ -210,45 +213,45 @@ input[type=checkbox] {
 }
 
 .white-bg {
-  margin: 10px 0;
-  width: 360px;
-  background-size: cover;
-  background: $white;
-  border-radius: 3px;
   display: block;
   height: 30px;
+  width: 360px;
+  margin: 10px 0;
   margin-top: -4px;
   position: fixed;
   z-index: -1;
+  background: $white;
+  background-size: cover;
+  border-radius: 3px;
 }
 
 .dark-bg {
-  margin: 10px 0;
-  width: 360px;
-  background-size: cover;
-  background: #292929;
-  border-radius: 3px;
   display: block;
   height: 30px;
+  width: 360px;
+  margin: 10px 0;
   margin-top: -4px;
   position: fixed;
   z-index: -1;
+  background: #292929;
+  background-size: cover;
+  border-radius: 3px;
 }
 
 .group-spectrum-bg {
-  margin: 10px 0;
-  width: 360px;
-  background-size: cover;
-  background: linear-gradient(to right,  #ff0000 0%,#ff9600 10%,#ffda46 20%,#fff710 30%,#a2ff10 40%,#ffffff 50%,#f0d9fe 60%,#7c3cff 70%,#ff00e4 80%,#ff006c 90%,#ff0000 100%);
-  border-radius: 3px;
   display: block;
   height: 30px;
+  width: 360px;
+  margin: 10px 0;
   margin-top: -4px;
   position: fixed;
   z-index: 0;
+  background: linear-gradient(to right,  #FF0000 0%,#FF9600 10%,#FFDA46 20%,#FFF710 30%,#A2FF10 40%,#FFFFFF 50%,#F0D9FE 60%,#7C3CFF 70%,#FF00E4 80%,#FF006C 90%,#FF0000 100%);
+  background-size: cover;
+  border-radius: 3px;
 
   &.color-temp {
-    background: linear-gradient(to right,  #ffffff 1%,#ffa801 100%);
+    background: linear-gradient(to right,  #FFFFFF 1%,#FFA801 100%);
   }
 }
 
@@ -256,16 +259,16 @@ input[type=checkbox] {
 .group-controller {
   &.off {
     .group-spectrum-bg {
-      margin: 10px 0;
-      width: 360px;
-      background-size: cover;
-      background: $mineshaft;
-      border-radius: 3px;
       display: block;
       height: 30px;
+      width: 360px;
+      margin: 10px 0;
       margin-top: -4px;
       position: fixed;
       z-index: 0;
+      background: $mineshaft;
+      background-size: cover;
+      border-radius: 3px;
     }
 
     .white-bg {

@@ -17,7 +17,6 @@ export default Ember.Service.extend({
    * @param    {string} id [the ID of the scene]
    * @return   {method}
    */
-
   activateScene(id) {
 
     return api.activateScene(id);
@@ -28,7 +27,6 @@ export default Ember.Service.extend({
    *
    * @return   {object}
    */
-
   config() {
 
     hostname = localStorage.getItem('hostname');
@@ -48,7 +46,6 @@ export default Ember.Service.extend({
    * @param    {user} user [the unique user id]
    * @return   {object}
    */
-
   deleteUser(user) {
 
     return api.deleteUser(user).then(res => {
@@ -66,7 +63,6 @@ export default Ember.Service.extend({
    *
    * @return   {object}
    */
-
   logBridge() {
 
     return hue.nupnpSearch().then(res => {
@@ -75,20 +71,15 @@ export default Ember.Service.extend({
     });
   },
 
-  /*
-  *
-  * /////////////////
-  * Individual lights
-  * /////////////////
-  *
-   */
+  // ========================================================
+  // Individual Lights
+  // ========================================================
 
   /**
    * Returns all lights and statuses
    *
    * @return   {object}
    */
-
   getLights() {
 
     return api.lights().then(res => {
@@ -103,7 +94,6 @@ export default Ember.Service.extend({
    *
    * @return   {object}
    */
-
   getScenes() {
 
     return api.getScenes().then(res => {
@@ -118,7 +108,6 @@ export default Ember.Service.extend({
    * @param    {string} id [the light's id]
    * @return   {object}
    */
-
   getStatus(id) {
 
     return api.lightStatus(id).then(res => {
@@ -134,7 +123,6 @@ export default Ember.Service.extend({
    * @param    {object} state [an object representing the new state]
    * @return   {method}
    */
-
   setState(id, state) {
 
     return api.setLightState(id, state);
@@ -146,7 +134,6 @@ export default Ember.Service.extend({
    * @param    {String} id [the light's id]
    * @return   {method}
    */
-
   togglePower(id, context) {
 
     this.getStatus(id).then(res => {
@@ -176,24 +163,20 @@ export default Ember.Service.extend({
    * @param    {String} newName [The new name of the light]
    * @return   {method}
    */
-
   rename(id, newName) {
 
     return api.setLightName(id, newName).done();
   },
 
-  /*
-
-    Light Groups
-
-   */
+  // ========================================================
+  // Light Groups
+  // ========================================================
 
    /**
     * Returns an object with all light groups
     *
     * @return   {object}
     */
-
    getGroups() {
 
      return api.groups().then(res => {
@@ -208,7 +191,6 @@ export default Ember.Service.extend({
     * @param    {String} groupId [the ID of the group]
     * @return   {object}
     */
-
    getGroupInfo(groupId) {
 
      return api.getGroup(groupId).then(res => {
@@ -223,7 +205,6 @@ export default Ember.Service.extend({
     * @param    {String} groupId [the group's ID]
     * @return   {method}
     */
-
    toggleGroupPower(groupId) {
 
      this.getGroupInfo(groupId).then(res => {
@@ -240,7 +221,6 @@ export default Ember.Service.extend({
     * @param    {Object} state   [An object representing the new state]
     * @return   {method}
     */
-
    setGroupState(groupId, state) {
 
      return api.setGroupLightState(groupId, state);
@@ -253,7 +233,6 @@ export default Ember.Service.extend({
     * @param    {String} newName [the new name of the group]
     * @return   {method}
     */
-
    renameGroup(groupId, newName) {
 
      return api.updateGroup(groupId, newName).done();
