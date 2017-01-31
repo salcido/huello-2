@@ -19,7 +19,9 @@
           <div class="dark-bg"></div>
         </div> --}}
 
-        {{! color temperature }}
+        {{! --------------------------------------------------------------------- }}
+        {{! Color Temperature
+        {{! --------------------------------------------------------------------- }}
         <div class="{{if colorTemp "" "hide"}}">
           <div class="group-brightness-wrap">
             <div class="group-spectrum-bg color-temp"></div>
@@ -27,7 +29,9 @@
           <input type="range" {{action "changeColor" on="change"}} class="range-hue color-temp" id={{group.id}} value={{group.state.ct}} min="154" max="500"/>
         </div>
 
-        {{! hue }}
+        {{! --------------------------------------------------------------------- }}
+        {{! Hue
+        {{! --------------------------------------------------------------------- }}
         <div class="{{if colorTemp "hide" ""}}">
           <div class="group-brightness-wrap">
             <div class="white-bg"></div>
@@ -37,14 +41,18 @@
         </div>
       </div>
 
-      {{! saturation }}
+      {{! --------------------------------------------------------------------- }}
+      {{! Saturation
+      {{! --------------------------------------------------------------------- }}
       <div class="range">
         <label class="label-sat">Saturation:</label>
         <div class="group-sat-bg"></div>
         <input type="range" {{action "changeSaturation" on="change"}} class="range-sat" id={{group.id}} value={{group.state.sat}} min="1" max="254"/>
       </div>
 
-      {{! brightness }}
+      {{! --------------------------------------------------------------------- }}
+      {{! Brighness
+      {{! --------------------------------------------------------------------- }}
       <div class="range neg-margin">
         <label class="label-bri">Brightness:</label>
         <input type="range" {{action "changeBrightness" on="change"}} class="range-bri" id={{group.id}} value={{group.state.bri}} min="1" max="254"/>
