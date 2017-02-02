@@ -123,21 +123,18 @@ export default Ember.Route.extend({
 
       // Issues with hostname, reset them...
       if (count > 5) {
-
         this.setHostname();
       }
 
       lights.config().then(res => {
 
         if (res.mac) {
-
           this.transitionTo('groups');
         }
       });
 
     // A new user needs to be created
     } else {
-
       this.setHostname();
     }
   }
