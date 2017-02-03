@@ -48,7 +48,6 @@ export default Ember.Route.extend({
       }).fail(res => {
 
         Ember.$('.output').text('Please press the link button on the hub.').fadeIn('slow');
-
         console.info('[Huello 2]', res.message);
       });
     }, 1000);
@@ -65,11 +64,8 @@ export default Ember.Route.extend({
     lights.logBridge().then(res => {
 
       console.info('[Huello 2] Setting hostname');
-
       localStorage.setItem('hostname', res.ipaddress);
-
       localStorage.setItem('userDescription', 'Huello 2');
-
       console.log(localStorage.getItem('hostname'), localStorage.getItem('userDescription'));
 
       return this.registerUser();
@@ -104,15 +100,12 @@ export default Ember.Route.extend({
           if (count > 5) {
 
             Ember.$('.output').text('Issues connecting to bridge');
-
             Ember.$('.reset').text('Remove hostname/username data?').fadeIn('slow');
 
             Ember.$('.reset').on('click', function() {
 
               localStorage.clear();
-
               Ember.$('.output').fadeOut('slow');
-
               Ember.$('.reset').fadeOut('slow');
 
               clearInterval(c);
