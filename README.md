@@ -66,3 +66,7 @@ You will need the following things properly installed on your computer.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+
+<a href="https://www.buymeacoffee.com/salcido" rel="nofollow">
+ <img src="https://github.com/salcido/Discogs-Enhancer/blob/master/img/learn/coffee-btn.png" alt="Buy Me A Coffee" style="max-width: 100%;">
+</a>
