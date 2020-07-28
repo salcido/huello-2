@@ -4,25 +4,25 @@
 
 The successor to Huello (formally an OS X Dashboard widget) built with Ember and Electron for quickly controlling your Philips Hue bulbs. Huello 2 can be setup as either a desktop or menubar application.
 
-<img src="http://msalcido.com/huello-2/Huello.png" alt="Huello" style="width: 300px;" />
+![Huello](https://user-images.githubusercontent.com/12960237/88605539-11dda480-d02f-11ea-8655-4f0682a1fc97.png)
 
 ### Group control
 
 Choose a group (default is "All Lights"), apply a Scene or simply click on a color. Use the sliders to control Saturation and Brightness. Pull down on the handle to expose individual light controllers. If you want to only use Color Temperature values, click the "Temp" checkbox.
 
-<img src="http://msalcido.com/huello-2/huello-small.png" alt="Huello" style="width: 300px;" />
+![huello-small](https://user-images.githubusercontent.com/12960237/88605538-10ac7780-d02f-11ea-906d-b69feb484f0e.png)
 
 ### Simple light state representation
 
 Quickly see each light's current state. Some lights do not support all features, so each light's controller will only render controls for that particular light's abilities.
 
-<img src="http://msalcido.com/huello-2/off-state.png" alt="Huello" style="width: 300px;" />
+![off-state](https://user-images.githubusercontent.com/12960237/88605540-12763b00-d02f-11ea-878d-6f1452c975a2.png)
 
 ### Quickly rename individual lights
 
 Easily rename a light by simply clicking on the name, typing a new value, and clicking "Save". To cancel, click outside of the input or press "Esc".
 
-<img src="http://msalcido.com/huello-2/rename.png" alt="Huello" style="width: 300px;" />
+![rename](https://user-images.githubusercontent.com/12960237/88605541-130ed180-d02f-11ea-9628-f4acb768001b.png)
 
 ## Prerequisites
 
